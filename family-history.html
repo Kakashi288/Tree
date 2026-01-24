@@ -1,0 +1,2464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Family Heritage - Understanding Our Roots</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation Menu Toggle -->
+    <button class="nav-menu-toggle" id="navMenuToggle">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+
+    <!-- Navigation Menu Overlay -->
+    <div class="nav-menu-overlay" id="navMenuOverlay"></div>
+
+    <!-- Navigation Menu -->
+    <nav class="nav-menu" id="navMenu">
+        <h2>Navigation</h2>
+        <a href="landing.html" class="nav-menu-item">🏠 Home</a>
+        <a href="tree.html" class="nav-menu-item">🌳 Family Tree</a>
+        <a href="family-data.html" class="nav-menu-item">📊 Family Data</a>
+        <a href="family-history.html" class="nav-menu-item active-page">🏛️ Family History</a>
+        <a href="family-timeline.html" class="nav-menu-item">📖 Family Timeline</a>
+    </nav>
+
+    <!-- Floating Table of Contents -->
+    <aside class="floating-toc" id="floatingToc">
+        <div class="toc-header">
+            <h3>📑 Contents</h3>
+        </div>
+        <nav class="toc-nav">
+            <a href="#vedic-path" class="toc-link toc-section-title" data-section="vedic-path">The Vedic Path</a>
+            <a href="#aryan-origins" class="toc-link" data-section="aryan-origins">The Aryan Origins</a>
+            <a href="#great-migration" class="toc-link" data-section="great-migration">The Great Migration</a>
+            <a href="#four-varnas" class="toc-link" data-section="four-varnas">The Four Varnas</a>
+            <a href="#merit-over-birth" class="toc-link" data-section="merit-over-birth">Merit Over Birth</a>
+            <a href="#scriptural-wisdom" class="toc-link" data-section="scriptural-wisdom">Scriptural Wisdom</a>
+            <a href="#qualities-equality" class="toc-link" data-section="qualities-equality">Qualities and Equality</a>
+            <a href="#varna-jati" class="toc-link" data-section="varna-jati">Varna vs. Jati</a>
+            <a href="#modern-reality" class="toc-link" data-section="modern-reality">Modern Reality</a>
+            <a href="#varna-system" class="toc-link" data-section="varna-system">Varna System Position</a>
+            <a href="#vedic-literature" class="toc-link" data-section="vedic-literature">Vedic Literature</a>
+            <a href="#ancestral-threads" class="toc-link toc-section-title" data-section="ancestral-threads">Ancestral Threads</a>
+            <a href="#vedic-texts" class="toc-link" data-section="vedic-texts">Prajapati in Vedic Texts</a>
+            <a href="#puranic-literature" class="toc-link" data-section="puranic-literature">Puranic Literature</a>
+            <a href="#shilpi-lineage" class="toc-link" data-section="shilpi-lineage">Shilpi Lineage</a>
+            <a href="#community-today" class="toc-link" data-section="community-today">Community Today</a>
+            <a href="#state-distribution" class="toc-link" data-section="state-distribution">State Distribution</a>
+            <a href="#bhalsod-surname" class="toc-link" data-section="bhalsod-surname">Bhalsod Surname</a>
+            <a href="#family-tree-creation" class="toc-link" data-section="family-tree-creation">Family Tree Creation</a>
+            <a href="#journey-abroad" class="toc-link" data-section="journey-abroad">Journey Abroad</a>
+            <a href="#building-community" class="toc-link" data-section="building-community">Building Our Community</a>
+        </nav>
+    </aside>
+
+    <div class="history-container">
+        <!-- Hero Section -->
+        <header class="history-hero">
+            <div class="family-equation">ℱ = ∑<sub>i=1</sub><sup>∞</sup> G<sub>i</sub>(L,M,T)</div>
+            <p class="family-presents">Bhalsod Family presents</p>
+            <h1>Understanding Our Family History</h1>
+            <p class="history-tagline">Exploring our roots, traditions, and the legacy that shaped us</p>
+        </header>
+
+        <!-- Collapsible TOC for Mobile/Tablet -->
+        <div class="collapsible-toc-container" id="collapsibleToc">
+            <button class="toc-toggle-btn" id="tocToggleBtn">
+                <span class="toc-toggle-icon">📜</span>
+                <span class="toc-toggle-text">Jump to Section</span>
+                <span class="toc-toggle-arrow">▼</span>
+            </button>
+            <nav class="collapsible-toc-content" id="collapsibleTocContent">
+                <a href="#vedic-path" class="collapsible-toc-link toc-section-title">The Vedic Path</a>
+                <a href="#aryan-origins" class="collapsible-toc-link">The Aryan Origins</a>
+                <a href="#great-migration" class="collapsible-toc-link">The Great Migration</a>
+                <a href="#four-varnas" class="collapsible-toc-link">The Four Varnas</a>
+                <a href="#merit-over-birth" class="collapsible-toc-link">Merit Over Birth</a>
+                <a href="#scriptural-wisdom" class="collapsible-toc-link">Scriptural Wisdom</a>
+                <a href="#qualities-equality" class="collapsible-toc-link">Qualities and Equality</a>
+                <a href="#varna-jati" class="collapsible-toc-link">Varna vs. Jati</a>
+                <a href="#modern-reality" class="collapsible-toc-link">Modern Reality</a>
+                <a href="#varna-system" class="collapsible-toc-link">Varna System Position</a>
+                <a href="#vedic-literature" class="collapsible-toc-link">Vedic Literature</a>
+                <a href="#ancestral-threads" class="collapsible-toc-link toc-section-title">Ancestral Threads</a>
+                <a href="#vedic-texts" class="collapsible-toc-link">Prajapati in Vedic Texts</a>
+                <a href="#puranic-literature" class="collapsible-toc-link">Puranic Literature</a>
+                <a href="#shilpi-lineage" class="collapsible-toc-link">Shilpi Lineage</a>
+                <a href="#community-today" class="collapsible-toc-link">Community Today</a>
+                <a href="#state-distribution" class="collapsible-toc-link">State Distribution</a>
+                <a href="#bhalsod-surname" class="collapsible-toc-link">Bhalsod Surname</a>
+                <a href="#family-tree-creation" class="collapsible-toc-link">Family Tree Creation</a>
+                <a href="#journey-abroad" class="collapsible-toc-link">Journey Abroad</a>
+                <a href="#building-community" class="collapsible-toc-link">Building Our Community</a>
+            </nav>
+        </div>
+        <!-- Placeholder to prevent content jump -->
+        <div class="collapsible-toc-placeholder" id="tocPlaceholder"></div>
+
+        <!-- Understanding Our Heritage Section -->
+        <section class="heritage-deep-dive">
+            <h2 id="memories" class="memories-main-title">Memories of a Bhalsod</h2>
+
+            <div class="heritage-content-detailed">
+                <div class="heritage-subsection">
+                    <p>
+                        These are recollections and research done on my part. There may be gaps or uncertainties in the information presented, as the passage of time and limited historical records can sometimes obscure the full picture. However, in my best effort, I have summarised the following account of our family heritage.
+                    </p>
+                </div>
+
+                <h3 class="centered-section-title" id="vedic-path">The Vedic Path</h3>
+
+                <div class="heritage-intro-text">
+                    <p>
+                        As one can see from the family tree chart, we have gone as far back as 23 generations. This means that we have a shared Bhalsod Parivar history that stretches back approximately 800 years. In this format, one generation is equal to 30-35 years. To know our history, we must examine the roots of the past Gujar Bhalsod Parivar and Prajapati community.
+                    </p>
+                    <p>
+                        The Hindu caste system and Aryan civilization dictate this particular way of life of the Bhalsod Parivar, and while it is not possible to go into greater detail concerning these subjects since we are at the mercy of what history can provide, effort is nonetheless made to point out some broad salient aspects so that we can appreciate and evaluate our past perspectives.
+                    </p>
+                </div>
+
+                <div class="heritage-subsection">
+                    <h3 id="aryan-origins">The Aryan Origins</h3>
+                    <p>
+                        We are descendants of the "Aryan race." There are differing views on the theory regarding the location of the original native place (motherland) of these people. According to some sources, the native place of the Aryan civilization started in the northwest of India. Others argue that they had migrated there and existed before the Vedic period, where they sought comfort and settled near fertile land.
+                    </p>
+                    <p>
+                        According to this theory, it is said that with the lapse of time and climate changes, extreme weather patterns emerged. Heavy rains and flooding submerged the fertile areas, and the prosperity of this golden land of Āryāvarta vanished. Āryāvarta (आर्यावर्त), in Sanskrit translates to "Land of the Noble Ones," referred to northern India, particularly the Indo-Gangetic Plain where Vedic culture and Indo-Aryan languages predominated. Its geographical boundaries evolved over time, initially centered on the Ganges-Yamuna doab, but later expanding to include the region between the Himalayas in the north and the Vindhya Mountains in the south. This sacred land was where core Hindu traditions and epics like the Ramayana and Mahabharata flourished. Subsequently, on account of uninterrupted snowfall and unbearable, deadly cold, this golden and prosperous land was completely covered in snow—an environment completely unsuitable for human habitation.
+                    </p>
+                </div>
+
+                <div class="heritage-subsection">
+                    <h3 id="great-migration">The Great Migration</h3>
+                    <p>
+                        Under the leadership of Vaivasvata Manu, these Aryans embarked on their great migration. Vaivasvata Manu was a pivotal figure in Hindu cosmology, serving as the seventh Manu of the current kalpa (aeon) and the progenitor of the present human race. As the son of Vivasvan (the Sun God) and Saranyu, he was responsible for establishing the moral and social laws that would guide humanity.
+                    </p>
+                    <p>
+                        According to the Puranas and Mahabharata, Manu was forewarned by the Matsya avatar (fish incarnation) of Lord Vishnu about a massive world-ending deluge. Following divine instructions, he built a boat and placed his family, the Saptarishi (seven sages), and the seeds of life aboard. The boat was tied to the horn of the fish, which guided them to safety in the Himalayas. From this survival, humanity was re-established through Manu and his wife Shraddha, whose children included Ikshvaku (founder of the Solar Dynasty) and Ila (founder of the Lunar Dynasty).
+                    </p>
+                    <p>
+                        Under his guidance, these Aryans left their homeland and migrated southward. Exhausted by the harsh conditions and challenges of travel, some of the Aryan migrants settled wherever they found rivers and fertile land. Others among them continued their journey. This pattern continued, and eventually very few remained with Manu Vaiswata.
+                    </p>
+                    <p>
+                        They were determined to establish a new Āryāvarta in a land with abundant water, rivers, mountains, forests, and fertile soil. To achieve this vision, many continued their journey, facing innumerable adversities. Eventually, they found such a land in the Sapta Sindhu region, situated in the holy Himalayan mountains. They settled here, and the Aryan civilization was established and flourished once more. Over time, the civilization spread southward and westward across Bharat. The society became stable and prosperous throughout this period.
+                    </p>
+                </div>
+
+                <div class="heritage-subsection">
+                    <h3 id="four-varnas">The Four Varnas: Society's Foundation</h3>
+                    <p>
+                        The four Varnas (Brahmins, Kshatriyas, Vaishyas, and Shudras) were established in ancient Vedic texts as a social framework based on duty (dharma) and natural qualities. The structural factors of any well-managed society can be thought of as knowledge power, administrative power, financial power, and labor power. Keeping these four factors in mind, our ancestors established these four varnas or social classes: Brahmin (knowledge), Kshatriya (administration/protection), Vaishya (commerce/agriculture), and Shudra (service/labor).
+                    </p>
+                    <p>
+                        As described in the Bhagavad Gita, Lord Krishna explained how these four Varnas were created. Originally, the varna of an individual was decided based on their characteristics, aptitudes, and natural qualities. However, with the lapse of time, varna became rigidly determined by birth rather than merit. This evolution into a hereditary caste system caused significant inequality. According to the Gita, the birth-based caste system is not proper. To decide the varna of an individual, their aptitude and actions—work, profession, vocation—should be the decisive factor, not birth itself.
+                    </p>
+                </div>
+
+                <div class="heritage-subsection">
+                    <h3 id="merit-over-birth">Merit Over Birth: The Original Varna System</h3>
+                    <p>
+                        To illustrate this principle, consider modern government administration, which has four classes of employees: First class (top administrative officers), Second class (middle management), Third class (clerks, typists, head clerks), and Fourth class (support staff). Recruitment is made through competitive examination, considering educational achievements and experience in the relevant field.
+                    </p>
+                    <p>
+                        Now imagine if recruitment was made only from among members of the respective classes' families. The results would be problematic: Fourth class employees could become First class officers without proper qualifications, while highly qualified Third class members would never advance. Anyone would recognize this as a flawed and unjust system. This is precisely what happened when the varna system became a rigid, birth-based caste system.
+                    </p>
+                    <p>
+                        In ancient times, the varna system was based on an individual's qualities, aptitudes, and profession, and it was possible to move between varnas based on qualification, education, and merit. For example, Rishi Jabali and Rishi Valmiki were born into the Shudra varna, but their wisdom and spiritual accomplishments led them to be recognized as Brahmins. Similarly, Bhagwan Parshuram was born a Brahmin but is widely considered a Brahma-Kshatriya (Brahman Warrior) due to his actions, traits, and role as a warrior sage. As the sixth avatar of Vishnu, he possessed the spiritual radiance of a Brahmin (Brahmatej) combined with the warrior prowess of a Kshatriya (Kshatratej), demonstrating how an individual's deeds and qualities determined their varna rather than birth alone.
+                    </p>
+                </div>
+
+                <div class="heritage-subsection">
+                    <h3 id="scriptural-wisdom">Scriptural Wisdom on Varna</h3>
+                    <p>
+                        The 35th verse of the 7th chapter in Srimad Bhagavatam states that if an individual displays the characteristics of a particular varna, they should be recognized as belonging to that varna, regardless of birth. An individual's varna cannot be determined by birth alone.
+                    </p>
+                    <p>
+                        The principle of determining varna is discussed in the Vana Parva, meaning "Book of the Forest" in Sanskrit, the third book of the Mahabharata detailing the Pandavas' 12-year exile in the forest. In a dialogue between Yaksha and Yudhishthira, Yaksha asks: "O king, tell me, by which factor should a person be considered a Brahmin—by birth in a high caste, by education, by being well-read, or by behavior and conduct?" Yudhishthira replies: "O Acharya, to be a Brahmin, it is not important to be born in a high caste, nor to be educated or well-read. Good behavior and conduct alone are the main characteristics of a true Brahmin."
+                    </p>
+                </div>
+
+                <div class="heritage-subsection">
+                    <h3 id="qualities-equality">Qualities and Equality of the Varnas</h3>
+                    <p>
+                        According to Chapter 18 of the Bhagavad Gita, a Brahmin possesses qualities such as serenity, self-control, austerity, foresight, straightforwardness, wisdom, and faith in the supreme being. A Kshatriya possesses prowess, courage, resourcefulness, steadfastness in battle, generosity, and leadership. A Vaishya possesses skills suited for agriculture, trade, commerce, and animal husbandry. A Shudra possesses dedication to service and support of others.
+                    </p>
+                    <p>
+                        According to the Gita, while each varna has distinct characteristics, no varna is superior or inferior to another. For the completeness of the social structure, all four varnas are equally important and necessary. No one is inherently greater or lesser than others. All persons are born without varna, but one attains their varna as a Brahmin, Kshatriya, Vaishya, or Shudra according to their demonstrated characteristics, education, and chosen profession.
+                    </p>
+                </div>
+
+                <div class="heritage-subsection">
+                    <h3 id="varna-jati">Varna vs. Jati: Understanding the Distinction</h3>
+                    <p>
+                        We often consider the words "Varna" and "Caste" (Jati) as synonymous, but examining both reveals important differences. Varna was the original, fluid system based on innate qualities (gunas) and chosen duties (dharma), allowing for social mobility as described in early Vedic texts. The term "Varna" literally means color—not the color of one's skin, but the color of one's mental aptitude, characteristics, and inclination. Qualities like harmony (sattva), action (rajas), and inactivity (tamas) were thought to influence one's varna. Thus, Varna expresses an individual's psycho-mental constitution and chosen duties.
+                    </p>
+                    <p>
+                        On the other hand, Jati (caste) represents the evolved reality—a rigid, hereditary system where one's birth determined their caste, occupation, and social interactions, leading to significant inequality and discrimination. Jati indicates both family lineage and particular social characteristics of the family. Thus, two children born in one family will have the same Jati (birth caste), but their Varna could differ based on their aptitude, characteristics, and inclination—which can only be determined when they grow up.
+                    </p>
+                    <p>
+                        On the basis of these principles, one can say that the five Pandavas belonged to the same Kshatriya family by birth (Jati). However, considering their aptitudes, characteristics, and mental abilities, their varnas differed: Yudhishthira could be said to be of the Brahmin varna, Arjuna and Bhima of Kshatriya varna, Sahadeva of Brahmin and Vaishya varna, and Nakula of Shudra varna.
+                    </p>
+                </div>
+
+                <div class="heritage-subsection">
+                    <h3 id="modern-reality">From Ancient Ideals to Modern Reality</h3>
+                    <p>
+                        In modern times, traditional varna boundaries have dissolved in practice. Education is no longer the exclusive domain of those born as Brahmins. Defense and protection are not carried out solely by those born as Kshatriyas. Agriculture, trade, and business extend far beyond those born as Vaishyas. Service work, once associated with the Shudra varna, is now performed by people from all backgrounds, regardless of birth.
+                    </p>
+                    <p>
+                        Both ancient scriptures and contemporary society affirm that varna should be determined by aptitude, profession, and character. Yet the reality remains that for centuries, varna and caste have been rigidly determined by birth, and this system persists in present-day society. Over time, varnas evolved into numerous castes and sub-castes, each with its own history, privileges, practices, traditions, customs, and rites. These communities preserve and maintain their distinct identities with great care.
+                    </p>
+                    <p>
+                        Understanding this complex heritage—the gap between ancient ideals and historical reality—allows us to honor our past while building a future based on merit, character, and the enduring values that have sustained our family through centuries of change and adaptation.
+                    </p>
+                </div>
+
+                <div class="heritage-subsection">
+                    <h3 id="varna-system">Our Position in the Varna System</h3>
+                    <p>
+                        An important question often asked is: what is the root of the Bhalsod Parivar and the Prajapati community within the present birth-based caste system? Are we Brahmin, Kshatriya, Vaishya, or Shudra? This question is complex and difficult to answer definitively. However, through extensive research efforts by dedicated scholars who have examined our ancient scriptures—the Vedas, Upanishads, Ramayana, Mahabharata, and Puranas—it has been established that in ancient times, dating from the Vedic period, Prajapatis were Yajurvedic Brahmins.
+                    </p>
+                    <p>
+                        During that period, they served as acharyas (spiritual teachers) who guided society. They pursued study and knowledge, and transmitted this wisdom to others. Research has concluded that the respectable and magnanimous heritage of the Prajapati community extends from the Vedic period through historical and Puranic literature.
+                    </p>
+                </div>
+
+                <div class="heritage-subsection">
+                    <h3 id="vedic-literature">Vedic Literature: The Foundation</h3>
+                    <p>
+                        Ancient religious literature includes four main bodies of knowledge that form separate yet interconnected texts: the Rig Veda, Yajur Veda, Sama Veda, and Atharva Veda. The Vedas are considered divine revelations, not of human creation. They are attributed to the penance and sacred rituals practiced by ancient rishis (sages). Through meditation and profound contemplation, these rishis gained insights into the deepest mysteries of the universe and beyond.
+                    </p>
+                    <p>
+                        This knowledge was transmitted through subsequent centuries by word of mouth, as written language had not yet fully developed during this period. For many thousands of years, this divine knowledge was preserved and passed down through generations via oral transmission, memorization, and the oral composition of hymns.
+                    </p>
+                </div>
+
+                <h3 class="centered-section-title" id="ancestral-threads">Ancestral Threads</h3>
+
+                <div class="heritage-subsection">
+                    <h3 id="vedic-texts">Prajapati in Vedic Texts</h3>
+                    <p>
+                        During the Vedic period, Prajapati Dev is described as the principal deity, also known as Brahman, whose consort is Brahmani. Prajapati Dev of the Vedic period had a son known as Maharshi Prajapati, also addressed as Paramesthin Prajapati. This Paramesthin Prajapati is considered the original ancestor of the Prajapati community.
+                    </p>
+                    <p>
+                        Brahma is known as "self-born" without any external medium. The Aitareya Brahmana describes him as a descendant of Prajapati Maharshi who revealed and composed Vedic mantras. He composed all the mantras of the final chapters of the Yajurveda, one of the four Vedas. The Yajurveda contains 1,975 mantras across 40 chapters. Of these, Maharshi Paramesthin Prajapati composed 140 mantras, and Maharshi Prajapati composed 200 mantras—totaling 340 mantras of this Veda composed by these two Prajapatis. Similarly, Suktas (hymns, each containing a certain number of mantras) 107, 121, 129, 161, and 183 of the 10th Mandala (book) of the Rigveda were composed by Maharshi Prajapati.
+                    </p>
+                    <p>
+                        The Yajurveda has two divisions: Shukla Yajurveda (White Yajurveda) and Krishna Yajurveda (Black Yajurveda). To elucidate the Shukla Yajurveda, a scripture named Shatapatha Brahmana was composed, with Maharshi Prajapati serving as its principal teacher. In one branch of the Krishna Yajurveda called Taittiriya, Brahma (Prajapati) is identified as the first and original teacher of Brahmanical scriptures, followed by his son Maharshi Prajapati. Descendants of this lineage of knowledge and spiritual practice are referred to as Yajurvedic Brahmins.
+                    </p>
+
+                    <h4>Connection to Ayurveda</h4>
+                    <p>
+                        Ayurveda, the medical science of ancient India, is derived from the Vedas and is therefore known as an Upaveda (subsidiary Veda). Prajapati Brahma, the father of Maharshi Prajapati, was the pioneering teacher of this Upaveda. Maharshi Prajapati learned Ayurveda from his father Prajapati (Brahma), and from him the Ashwini Kumaras (divine physicians) acquired this knowledge. The Ashwini Kumaras passed this knowledge to Indra, who transmitted it to Divodasa, the king of Kashi (Benares). Divodasa was also known as Dhanvantari. For the welfare of humanity, Dhanvantari taught Ayurveda widely, and thus this medical knowledge spread throughout society.
+                    </p>
+                    <p>
+                        We can see that Ayurveda has a special relationship with the Yajurveda and is known as its Upaveda. Maharshi Prajapati was the chief composer of the Yajurveda mantras and was himself a Yajurvedic Brahmin. The Yajurveda is primarily related to Yajna (fire sacrifice) and its ceremonies.
+                    </p>
+
+                    <h4>The Sacred Clay Work</h4>
+                    <p>
+                        Brahmins who performed Yajna ceremonies—the ancestors of today's Prajapatis—used to produce themselves the necessary clay utensils such as pots, water vessels, and broad-mouthed containers. This was essential for providing sacrificial offerings during the ritual service. Thus, during the Vedic period, one of the sacred duties of Brahmins who performed Yajna ceremonies was creating these ritual objects.
+                    </p>
+                    <p>
+                        Even today, Brahmins in parts of Rajasthan produce various types of clay utensils and statues. To maintain the purity of these sacred clay products, the family members of Yajurvedic Brahmins produced them personally. With the passage of time, it became considered undesirable for Brahmins to accept donations alone for their livelihood. Therefore, these Brahmins, along with their traditional work of study, teaching, and conducting Yajnas, adopted clay work as a means of sustenance.
+                    </p>
+                    <p>
+                        During the Buddhist period, the practice of performing Yajnas significantly reduced or nearly discontinued. The Yajurvedic Brahmins therefore increasingly relied on clay work for their livelihood. Thus, the Prajapati community has been established as Yajurvedic Brahmins with a historical connection to sacred pottery and ritual object creation.
+                    </p>
+                </div>
+
+                <div class="heritage-subsection">
+                    <h3 id="puranic-literature">Prajapati in Puranic Literature</h3>
+                    <p>
+                        "Prajapati Dev" of the Vedic period is identified as "Brahma" in Puranic literature. In the Ramayana, Mahabharata, and Puranas, Prajapatis are described as "Manasaputras" (mind-born sons) of Brahma. The chief Prajapati sages of the Vedic period include Marichi, Atri, Angiras, Pulastya, Pulaha, Kratu, Daksha, Vasishtha, Bhrigu, and Narada. The Mahabharata speaks of Paramesthin Prajapati. Similarly, Kashyapa, the son of sage Marichi, is identified as a Prajapati. This Kashyapa Prajapati married daughters of Daksha Prajapati.
+                    </p>
+                    <p>
+                        It can be concluded from Vedic and Puranic literature that in the Vedas, Maharshi Paramesthin Prajapati is described as the son of Prajapati Dev, while in the Puranas, the sons of Brahma are known as Prajapatis. In Chapter 66 of the Adi Parva of the Mahabharata, it has been stated that Daksha Prajapati was born from Brahma's thumb. Thus, Maharshi Prajapati (Paramesthin Prajapati) of the Vedic period is identified with Daksha Prajapati in the Puranic period.
+                    </p>
+                    <p>
+                        The essence of scriptural evidence indicates that the ancestors of the present-day Prajapati community were Yajurvedic Brahmins. The Puranas explain the meaning of the word "Prajapati"—it refers to Lord Brahma as the creator, and the sons of Brahma who are responsible for the growth and propagation of humanity. The Puranas describe Prajapati as the lord of people, from whom they are created or born. The Brahmanda Purana states that in every era, it is the duty of Prajapati to create new life for the world.
+                    </p>
+                </div>
+
+                <div class="heritage-subsection">
+                    <h3 id="shilpi-lineage">The Lineage of Shilpi Prajapati</h3>
+                    <p>
+                        The family lineage of our original ancestor, Maharshi Prajapati (known as Daksha Prajapati during the Puranic period), is documented in the Puranas. One of Daksha Prajapati's daughters, named Vasu, was married to Dharma. They had eight sons known as the Vasus. One of these Vasus was Prabhasa, who became an heir to the Prajapati sages and was therefore known as Prabhasa Prajapati or Vasu Prajapati.
+                    </p>
+                    <p>
+                        In the Vishnu Purana, it is stated that Prabhasa Prajapati married a learned woman possessing divine knowledge. The couple had a son named Vishwakarma Prajapati. In the Matsya Purana (Chapter 5, Shlokas 27-28), Vishwakarma is described as the son of Prabhasa Prajapati and the divine architect of the Devas (gods).
+                    </p>
+                    <p>
+                        The Brahma Vaivarta Purana (Chapter 10, Shlokas 88-91) states that Vishwakarma Prajapati married a woman named Gopika. They had five sons, each of whom became legendary in their respective crafts:
+                    </p>
+
+                    <div class="heritage-list-section">
+                        <ol>
+                            <li><strong>Manu</strong> – Architect/Designer</li>
+                            <li><strong>Maya</strong> – Carpenter/Woodworker</li>
+                            <li><strong>Tvashta</strong> – Metalworker/Blacksmith</li>
+                            <li><strong>Shilpi</strong> – Clay worker/Potter</li>
+                            <li><strong>Devagya</strong> – Goldsmith/Jeweler</li>
+                        </ol>
+                    </div>
+
+                    <p>
+                        <strong>The present Prajapati community descends from Shilpi Prajapati.</strong> This Shilpi community belongs to the Brahmin varna.
+                    </p>
+                    <p>
+                        According to the Brahma Vaivarta Purana, Shilpi Prajapati married a daughter of Rishi Bhrigu, who was a learned sage. Their son was named Bhargava. The word "Bhargava" means a workplace for pottery making. Hence, it is believed that Bhargava is recognized as the Prajapati of potters.
+                    </p>
+
+                    <h4>Family Tree of Prajapati Community</h4>
+                    <div class="heritage-list-section" style="margin-left: 20px; line-height: 2;">
+                        <p style="font-family: monospace; font-size: 14px;">
+                            Prajapati Dev (Brahma)<br>
+                            &nbsp;&nbsp;→ Maharshi Prajapati (Paramesthin/Daksha Prajapati)<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;→ Vasu (daughter) married to Dharma<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;→ Prabhasa Vasu (Prabhasa Prajapati)<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;→ Vishwakarma Prajapati<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;→ <strong>Shilpi Prajapati</strong> (ancestor of present Prajapati community)<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;→ Bhargava (potter lineage)
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+                <!-- Genealogical Diagram -->
+                <div class="prajapati-lineage-diagram">
+                    <div class="lineage-headers">
+                        <div class="lineage-header-left">
+                            <h3>As per Vedic Literature</h3>
+                        </div>
+                        <div class="lineage-header-right">
+                            <h3>As per Puranic Literature</h3>
+                        </div>
+                    </div>
+
+                    <div class="lineage-content">
+                        <!-- SVG for diagonal connectors -->
+                        <svg class="lineage-connectors-svg" xmlns="http://www.w3.org/2000/svg">
+                            <line class="diagonal-line-left" x1="18%" y1="190" x2="50%" y2="380" stroke="#4a90e2" stroke-width="2"/>
+                            <line class="diagonal-line-right" x1="82%" y1="188" x2="50%" y2="380" stroke="#4a90e2" stroke-width="2"/>
+                        </svg>
+
+                        <!-- Left Side - Vedic Literature -->
+                        <div class="lineage-left">
+                            <div class="lineage-box">
+                                <span class="lineage-number">1.</span>
+                                <span class="lineage-name">Prajapati Dev</span>
+                            </div>
+                            <div class="lineage-connector"></div>
+                            <div class="lineage-box">
+                                <span class="lineage-number">2.</span>
+                                <span class="lineage-name">Maharshi Prajapati<br>(Paramesthin Prajapati)</span>
+                            </div>
+                        </div>
+
+                        <!-- Right Side - Puranic Literature -->
+                        <div class="lineage-right">
+                            <div class="lineage-box">
+                                <span class="lineage-name">Brahma</span>
+                            </div>
+                            <div class="lineage-connector"></div>
+                            <div class="lineage-box">
+                                <span class="lineage-name">Daksha Prajapati</span>
+                            </div>
+                        </div>
+
+                        <!-- Converged Lineage -->
+                        <div class="lineage-merged">
+                            <div class="lineage-box-wide">
+                                <div class="lineage-item">
+                                    <span class="lineage-number">3.</span>
+                                    <span class="lineage-name">Vasu (daughter) married to Dharma</span>
+                                </div>
+                                <div class="lineage-connector-vertical"></div>
+                                <div class="lineage-item">
+                                    <span class="lineage-number">4.</span>
+                                    <span class="lineage-name">Prabhasa Vasu (Prabhasa Prajapati)</span>
+                                </div>
+                                <div class="lineage-connector-vertical"></div>
+                                <div class="lineage-item">
+                                    <span class="lineage-number">5.</span>
+                                    <span class="lineage-name">Vishwakarma Prajapati</span>
+                                </div>
+                                <div class="lineage-connector-vertical"></div>
+                                <div class="lineage-item">
+                                    <span class="lineage-number">6.</span>
+                                    <span class="lineage-name">Shilpi Prajapati</span>
+                                </div>
+                                <div class="lineage-connector-vertical"></div>
+                                <div class="lineage-item">
+                                    <span class="lineage-number">7.</span>
+                                    <span class="lineage-name">Bhargava (potter lineage)</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Present Day Prajapati Community -->
+                <div class="heritage-content-detailed">
+                    <div class="heritage-subsection">
+                    <h3 id="community-today">The Prajapati Community Today</h3>
+                    <p>
+                        The descendants of Shilpi and Bhargava Prajapati are spread throughout almost all the states of the country. According to census figures from 1991, the population of the Prajapati community in India is estimated to be about 5 thousand. In Gujarat, there are different branches of the Prajapati community, with a total population estimated to be 22 thousand. Captain W. Cook documented about 272 branches of the Prajapati community in his book "Castes and Tribes."
+                    </p>
+                    <p>
+                        Among these branches, some indicate Brahmin varna lineage, while others indicate Kshatriya varna lineage. The following are the main branches of the Prajapati community in different states of the country:
+                    </p>
+
+                    <!-- Prajapati Community Branches Table -->
+                    <div class="prajapati-branches-table">
+                        <table>
+                            <tr>
+                                <td>1. Gurjar</td>
+                                <td>2. Varya</td>
+                                <td>3. Vatelia</td>
+                                <td>4. Sorathia</td>
+                            </tr>
+                            <tr>
+                                <td>5. Pargia</td>
+                                <td>6. Lad</td>
+                                <td>7. Maru</td>
+                                <td>8. Khambhati</td>
+                            </tr>
+                            <tr>
+                                <td>9. Ajameri</td>
+                                <td>10. Dalvib</td>
+                                <td>11. Mistri</td>
+                                <td>12. Swami</td>
+                            </tr>
+                            <tr>
+                                <td>13. Kadia</td>
+                                <td>14. Katchi</td>
+                                <td>15. Patania</td>
+                                <td>16. Hadoti</td>
+                            </tr>
+                            <tr>
+                                <td>17. Purabia</td>
+                                <td>18. Agarai</td>
+                                <td>19. Tansalia</td>
+                                <td>20. Lunav</td>
+                            </tr>
+                            <tr>
+                                <td>21. Banda</td>
+                                <td>22. Sakaharia</td>
+                                <td>23. Chakvis</td>
+                                <td>24. Gadera</td>
+                            </tr>
+                            <tr>
+                                <td>25. Gola</td>
+                                <td>26. Kanogia</td>
+                                <td>27. Magadhia</td>
+                                <td>28. Hathelia</td>
+                            </tr>
+                            <tr>
+                                <td>29. Mathuria</td>
+                                <td>30. Khushgar</td>
+                                <td>31. Kujagar</td>
+                                <td>32. Suyariha</td>
+                            </tr>
+                            <tr>
+                                <td>33. Churiha</td>
+                                <td>34. Atharia</td>
+                                <td>35. Hathalia</td>
+                                <td>36. Kastor</td>
+                            </tr>
+                            <tr>
+                                <td>37. Chauhania</td>
+                                <td>38. Mishra</td>
+                                <td>39. Varodia</td>
+                                <td>40. Parovia</td>
+                            </tr>
+                            <tr>
+                                <td>41. Agavala</td>
+                                <td>42. Baharia</td>
+                                <td>43. Dekhinaha</td>
+                                <td>44. Chamaria</td>
+                            </tr>
+                            <tr>
+                                <td>45. Tikulia</td>
+                                <td>46. Badalna</td>
+                                <td>47. Mahera</td>
+                                <td>48. Bahalia</td>
+                            </tr>
+                            <tr>
+                                <td>49. Varasera</td>
+                                <td>50. Bhardvuja</td>
+                                <td>51. Deshi</td>
+                                <td>52. Vidania</td>
+                            </tr>
+                            <tr>
+                                <td>53. Charavari</td>
+                                <td>54. Dilval</td>
+                                <td>55. Gore</td>
+                                <td>56. Gadahila</td>
+                            </tr>
+                            <tr>
+                                <td>57. Barvari</td>
+                                <td>58. Pundir</td>
+                                <td>59. Kasaucha</td>
+                                <td>60. Ayodhyavasi</td>
+                            </tr>
+                            <tr>
+                                <td>61. Dalarvalia</td>
+                                <td>62. Saravaria</td>
+                                <td>63. Baharichiya</td>
+                                <td>64. Hariyavadi</td>
+                            </tr>
+                            <tr>
+                                <td>65. Mampuria</td>
+                                <td>66. Juhotia</td>
+                                <td>67. Haradia</td>
+                                <td>68. Gangari</td>
+                            </tr>
+                            <tr>
+                                <td>69. Varavana</td>
+                                <td>70. Urikit</td>
+                                <td>71. Parashar</td>
+                                <td>72. Vebi</td>
+                            </tr>
+                            <tr>
+                                <td>73. Pachhaiya</td>
+                                <td>74. Bhagod</td>
+                                <td>75. Karari</td>
+                                <td>76. Bhatt</td>
+                            </tr>
+                            <tr>
+                                <td>77. Bhal-Bhaluki</td>
+                                <td>78. Uvareli</td>
+                                <td>79. Kushaven</td>
+                                <td>80. Kuyavan</td>
+                            </tr>
+                            <tr>
+                                <td>81. Chetiyar</td>
+                                <td>82. Pathiyar</td>
+                                <td>83. Payachar</td>
+                                <td>84. Mannu</td>
+                            </tr>
+                            <tr>
+                                <td>85. Nayiyyar</td>
+                                <td>86. Odar</td>
+                                <td>87. Odhyar</td>
+                                <td>88. Velar</td>
+                            </tr>
+                            <tr>
+                                <td>89. Gaudar</td>
+                                <td>90. Andhranayar</td>
+                                <td>91. Pllai</td>
+                                <td>92. Pardeshi</td>
+                            </tr>
+                            <tr>
+                                <td>93. Vohra</td>
+                                <td>94. Kumavat</td>
+                                <td>95. Chanpaneri</td>
+                                <td>96. Pandit</td>
+                            </tr>
+                            <tr>
+                                <td>97. Pal</td>
+                                <td>98. Oza</td>
+                                <td>99. Mahato</td>
+                                <td>100. Varma</td>
+                            </tr>
+                            <tr>
+                                <td>101. Bonsale</td>
+                                <td>102. Dharmaiya</td>
+                                <td>103. Kubhavat</td>
+                                <td>104. Goyal</td>
+                            </tr>
+                            <tr>
+                                <td>105. Sinvadia</td>
+                                <td>106. Jethival</td>
+                                <td>107. Osval</td>
+                                <td>108. Dangival</td>
+                            </tr>
+                            <tr>
+                                <td>109. Chhaparval</td>
+                                <td>110. Sadival</td>
+                                <td>111. Kulal</td>
+                                <td></td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <style>
+                        .prajapati-branches-table {
+                            margin: 2rem 0;
+                            overflow-x: auto;
+                        }
+
+                        .prajapati-branches-table table {
+                            width: 100%;
+                            border-collapse: collapse;
+                            background: white;
+                            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+                        }
+
+                        .prajapati-branches-table td {
+                            border: 1px solid #333;
+                            padding: 0.75rem 1rem;
+                            font-size: 1rem;
+                        }
+
+                        .prajapati-branches-table tr:hover {
+                            background-color: #f5f5f5;
+                        }
+
+                        @media (max-width: 768px) {
+                            .prajapati-branches-table td {
+                                padding: 0.5rem;
+                                font-size: 0.9rem;
+                            }
+                        }
+                    </style>
+                </div>
+
+                <!-- State-wise Prajapati Branches Section -->
+                <div class="heritage-subsection">
+                    <h3 id="state-distribution">State-wise Distribution of Prajapati Branches</h3>
+                    <p>
+                        From all the above main branches, the details of Prajapati branches in various states are listed below:
+                    </p>
+
+                    <!-- State-wise Branches Table -->
+                    <div class="state-branches-table">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Serial Number</th>
+                                    <th>State</th>
+                                    <th>Existing Prajapati Branch</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1.</td>
+                                    <td>Uttar Pradesh</td>
+                                    <td>Gol, Kanaogia, Varadia, Mahar, Mathuria, Mishra, Bhardwaj, Chakvaishya, Pundia, Bhatt, Sakharia, Hathelia</td>
+                                </tr>
+                                <tr>
+                                    <td>2.</td>
+                                    <td>Bihar</td>
+                                    <td>Pandit, Varabia, Kanojia, Magadhia, Ayodhyavasi</td>
+                                </tr>
+                                <tr>
+                                    <td>3.</td>
+                                    <td>Bengal</td>
+                                    <td>Pal</td>
+                                </tr>
+                                <tr>
+                                    <td>4.</td>
+                                    <td>Odisha</td>
+                                    <td>Mehra, Pradhan</td>
+                                </tr>
+                                <tr>
+                                    <td>5.</td>
+                                    <td>Delhi</td>
+                                    <td>Gole, Mahar, Kanojia, Varadia, Varma</td>
+                                </tr>
+                                <tr>
+                                    <td>6.</td>
+                                    <td>Gujarat</td>
+                                    <td>Gurjar, Lad, Ajaameri, Khambhati, Varia, Maru, Sorathia, Vatalia, Parajia, Dalvadi, Mistri, Swami, Kadia, Katchhi, Patania</td>
+                                </tr>
+                                <tr>
+                                    <td>7.</td>
+                                    <td>Maharashtra-Mumbai</td>
+                                    <td>Chakvaish, Gurjar, Sorathia, Marhatha, Varia, Matkar, Malvia, Bhonsle</td>
+                                </tr>
+                                <tr>
+                                    <td>8.</td>
+                                    <td>Madhya-Pradesh</td>
+                                    <td>Vardia, Kanojia, Gole, Maru, Purvia, Kubhavat, Dharmaiya</td>
+                                </tr>
+                                <tr>
+                                    <td>9.</td>
+                                    <td>Rajasthan</td>
+                                    <td>Malvia, Goyal, Tank, Dangival, Parihar, Limba, Nilayacha, Jethoval, Ostval, Chardor, Sinvadia, Sadival, Chhaparval, Rajoria, Chauhan, Sisodia, Maru, Kumavat</td>
+                                </tr>
+                                <tr>
+                                    <td>10.</td>
+                                    <td>South India</td>
+                                    <td>Kulal, Kushaven, Kuyavan, Kummaran, Cheteivar, Godar, Nayar, Atha</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <style>
+                        .state-branches-table {
+                            margin: 2rem 0;
+                            overflow-x: auto;
+                        }
+
+                        .state-branches-table table {
+                            width: 100%;
+                            border-collapse: collapse;
+                            background: white;
+                            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+                        }
+
+                        .state-branches-table th,
+                        .state-branches-table td {
+                            border: 1px solid #333;
+                            padding: 0.75rem 1rem;
+                            text-align: left;
+                        }
+
+                        .state-branches-table th {
+                            background-color: #f5f5f5;
+                            font-weight: 600;
+                            text-align: center;
+                        }
+
+                        .state-branches-table td:first-child {
+                            text-align: center;
+                            width: 10%;
+                        }
+
+                        .state-branches-table td:nth-child(2) {
+                            width: 20%;
+                            font-weight: 500;
+                        }
+
+                        .state-branches-table tr:hover {
+                            background-color: #f9f9f9;
+                        }
+
+                        @media (max-width: 768px) {
+                            .state-branches-table th,
+                            .state-branches-table td {
+                                padding: 0.5rem;
+                                font-size: 0.9rem;
+                            }
+                        }
+                    </style>
+
+                    <h4>How Branch Names Originated</h4>
+                    <p>
+                        The naming of these branches is a matter of deep examination and research. According to scholarly opinion, these names have been decided mostly on the basis of place of residence, profession pursued, and ancestral lineage.
+                    </p>
+                    <p>
+                        <strong>Geographical Names:</strong><br>
+                        For example, Prajapatis settled in Gujarat are known as "Gurjar," those settled in Lad Pradesh are known as "Lad," settlers around Khambhat are known as Khambhati, those settled in the southern area of Saurashtra are known as Sorathia, and persons who came from the area around the river Sarayu are known as Sarvaiya.
+                    </p>
+                    <p>
+                        <strong>Occupational Names:</strong><br>
+                        Kusha grass is useful in Yagna ceremonies. Persons who kept this Kusha grass in store are known as "Kushegar." Persons who made Yagnashalas are known as Vedi. Persons doing carpentry are known as Mistri, and those doing masonry work are known as Masons.
+                    </p>
+                    <p>
+                        <strong>Ancestral Names:</strong><br>
+                        Similarly, descendants of Maharshi Atharva became "Atharia," descendants of Maharshi Haradru became "Hardiya," descendants of Maharshi Paundra became "Pundir," descendants of Maharshi Galav became "Gol," and descendants of Maharshi Bhardwaja became "Bhardwaja."
+                    </p>
+                    <p>
+                        <strong>Rajput Integration:</strong><br>
+                        According to another theory, during the Muslim invasions of India, many Kshatriyas and Rajputs migrated to safer places to preserve their religion and culture. Some of them merged with the Prajapati community. As a result, a number of surnames based on Rajput lineages—such as Chavda, Solanki, Parmar, Gohil, Vaghela, and Varayu—came into existence within the Prajapati community.
+                    </p>
+
+                    <h4>Caste Classification Across India</h4>
+                    <p>
+                        The descendants of Yajurvedic Brahmins who merged with the Prajapati community have spread throughout different states of the country. In some states, these Prajapatis are included in higher castes, while in Uttar Pradesh, Haryana, Punjab, Bihar, Kerala, Tamil Nadu, Andhra Pradesh, Karnataka, Odisha, Maharashtra, and Gujarat, they are considered as backward class. According to some sources, in eight districts of Madhya Pradesh, these Prajapatis are classified as "scheduled class" due to severe social and economic disadvantages.
+                    </p>
+
+                    <h4>Gujarat's Three Historical Regions</h4>
+                    <p>
+                        As mentioned above, we have seen 111 branches of the Prajapati community, of which the first 15 exist in Gujarat. Present-day Gujarat comprises three old administrative units:
+                    </p>
+                    <div class="heritage-list-section">
+                        <ol>
+                            <li><strong>Gujarat</strong> - Proper Gujarat region</li>
+                            <li><strong>Kutch</strong> - The old Kutch state</li>
+                            <li><strong>Saurashtra</strong> - The old Saurashtra region, formerly ruled by princely states, Talukdars, and Darbars</li>
+                        </ol>
+                    </div>
+                    <p>
+                        Prajapatis settled in the Gujarat region are known as Gurjar, those settled in Kutch are known as Katchi, and those settled in the Saurath area of Saurashtra are known as Sorathia.
+                    </p>
+
+                    <h4>The Gurjar Pratihar Kingdom Connection</h4>
+                    <p>
+                        There is one theory about Gurjar Prajapatis that explains their name's origin. In medieval times, there was a powerful kingdom named Gurjar Pratihar, consisting of areas in Rajasthan, Gujarat, and Malwa. Its original capital was Ajmer (Rajasthan). Over time, as the kingdom's boundaries contracted, the capital was shifted from one place to another—from Ajmer to Bhinmal (Rajasthan), then to Vadnagar (Gujarat), then to Ujjain (Madhya Pradesh), and finally to Patan (Gujarat).
+                    </p>
+                    <p>
+                        Present-day Gujarat is one remnant of the once-great Gurjar Pratihar Kingdom. The native Prajapatis of this kingdom addressed themselves as Gurjar or Gujjar. Thus, Prajapatis known as Gurjar are also found in present-day Rajasthan and Madhya Pradesh.
+                    </p>
+
+                    <h4>Sorathia Prajapatis and Shree Bai Mataji</h4>
+                    <p>
+                        For Sorathia Prajapatis, there is another theory regarding their name. Some believe that Brahmins who studied and taught the Vedas were known as "Shrotriya." Over time, this word transformed and was pronounced as "Sorathia."
+                    </p>
+                    <p>
+                        Whatever the case may be, the fact remains that in ancient times, Sorathia Prajapatis were mostly settled in the Sorathia area of Saurashtra—specifically the region around the present-day Junagadh district. It is quite possible that their settlement in the Saurath area led them to be known as Sorathia Prajapatis.
+                    </p>
+                    <p>
+                        Shree Bai Mataji, the family deity of Sorathia Prajapatis, is believed to have existed during the time of King Hiranyakashipu. The area of this kingdom was Saurath, and more specifically, areas around the existing Gir Forest, Talala, and Veraval talukas. At present, the deity's temple stands on the bank of the river Hiran in Talala town (Junagadh District).
+                    </p>
+                    <p>
+                        As stated earlier, there is an opinion that during Muslim rule, many Rajputs fled from Rajasthan and found refuge in the areas surrounding the Shree Bai Temple. They merged with the Sorathia Prajapatis. It is inferred that from that time onwards, Rajput surnames like Chauhan, Gohil, and Parmar became prevalent among Sorathia Prajapatis. In short, one can conclude that Prajapatis settled in areas known as Saurath came to be addressed as Sorathia Prajapatis.
+                    </p>
+
+                    <h3 id="bhalsod-surname">Origins of the Bhalsod Surname</h3>
+                    <p>
+                        "Bhalsod" is one of the surnames found in Sorathia Prajapatis. This surname also exists among Gurjar Prajapatis. At present, there are hundreds of Bhalsod families among Gurjar Prajapatis, while among Sorathia Prajapatis there are only 168 families.
+                    </p>
+                    <p>
+                        It is not known how this surname originated or what its exact meaning is. No authoritative historical evidence has been found thus far. However, Barot records indicate that there was a violent battle in a place known as "Bhalasoda." Prajapatis who participated in this battle were later known as Bhalasoda or Bhalsod. The exact location of this place remains unknown.
+                    </p>
+                    <p>
+                        Our ancestors of the Bhalsod Parivar took part in this battle, and that is how they acquired the surname Bhalsod. Originally, they were Gurjar Prajapati Bhalsods. At present, the system of writing surnames has been abolished among Gurjar Prajapatis. They are now known simply as Prajapatis, without any surname. Hence, it is not possible to determine how many Bhalsod families currently exist among Gurjar Prajapatis.
+                    </p>
+
+                    <h4>The Sorathia Bhalsod Lineage</h4>
+                    <p>
+                        Ramshi Bhai is considered the first ancestor of the Sorathia Bhalsod Parivar. It is said that Ramshi Bhai migrated from Gujarat proper and came to Saurath, where he settled and merged with the Sorathia Prajapatis. From that point forward, he was known as Bhalsod among the Sorathia Prajapatis.
+                    </p>
+                    <p>
+                        At present, counting from Ramshi Bhai, we are at the 23rd generation, and our history stretches back approximately 800 years. The family tree covering all 23 generations has been prepared and published separately, but research into the origins and early history of this family still requires further effort.
+                    </p>
+                </div>
+
+                <!-- Creation of Bhalsod Family Tree Section -->
+                <div class="heritage-subsection">
+                    <h3 id="family-tree-creation">Creation of Bhalsod Family Tree</h3>
+
+                    <h4>The Need for Preserving Family History</h4>
+                    <p>
+                        Looking back about 60 to 70 years, only a few families of our Parivar were living in villages around Ranavav. Today, these families have spread and settled in various countries, thousands of miles away from each other. What are the contributory factors for this situation? Did it happen only to the Bhalsod Parivar? No.
+                    </p>
+                    <p>
+                        As we know, mobility among people at large—changes in profession, occupation, residence, towns, cities, and even countries—has become very rapid in recent times due to industrialization, development, progress in modern technology, political changes, and many other known or unknown reasons. This has made it easy to meet and become familiar with people one may never have dreamed of encountering. However, this increased mobility has also made it difficult to maintain and preserve our traditional culture and family heritage.
+                    </p>
+                    <p>
+                        When one culture interacts with other cultures, or when one lifestyle comes into contact with other lifestyles, the original form does not remain the same. The resultant culture or lifestyle will be either enriched or diluted compared to the original. If we look into the recent past, we find that society was then homogeneous, largely pursuing the same religion. Today, traditional social values have changed, people prefer to live in small families, and society has become heterogeneous. As a result, it is becoming increasingly difficult to maintain the original form of our traditions.
+                    </p>
+                    <p>
+                        This applies to individual families as well. We can overcome this difficulty if we preserve our past history with regard to our culture, traditional values, and social values. From this perspective, we should seek to know: Who were the ancestors of the Sorathia Bhalsod Prajapati Parivar? What were their professions or occupations? From where did they come? What was their contribution in building the social values of the Bhalsod family? What were their shortcomings and strengths? How did we reach our present-day position?
+                    </p>
+                    <p>
+                        We must address these and many other questions to understand and appreciate our heritage. This is the most important consideration for starting the publication of our Gauragatha series. After constructing our Mataji's temple in Tersai, we could have simply published its annual administrative and financial reports. But that would not be enough. We need to know and preserve our past, and this is our humble beginning. We know that our present effort is like a drop of water in the ocean, but we have to make a start. Bhalsod Parivar members in India and abroad have begun giving serious thought to these questions.
+                    </p>
+                    <p>
+                        During my recent foreign tours, I have personally seen people thinking and working seriously on these issues. Every Parivar is researching to find details about their ancestors and collecting data about the present-day position, especially regarding financial, social, religious, and professional progress and development. They are also documenting their family's contribution to present-day progress. I understand people have begun this work with dedicated responsibility, and it is hoped that in the near future we will see good results in the next Gauragatha edition.
+                    </p>
+
+                    <h4>The Barot Institution</h4>
+                    <p>
+                        In the history of an individual, family, Parivar, or society, a family tree is an important instrument. I had been thinking for many years about doing research on our Parivar history and, if possible, preparing a family tree of the Sorathia Bhalsod Parivar. But it was a complex and difficult problem—where and how to start this work?
+                    </p>
+                    <p>
+                        In our community, we have a recognized institution called the "Barot institution." Barots keep records of family history, names of male members in the family, details of marriages, and other religious functions carried out in the past. Every Parivar has their own Barot. As a matter of practice, the Barot was invited to all auspicious events like marriages and Bhagwat Kathas. They would attend the function and bring with them a book containing the history of the family who invited them.
+                    </p>
+                    <p>
+                        A gathering would be arranged where all family members—males and females, guests, and other Parivar members—would attend. The senior women in the family would honor the book and the Barot. The Barot would then record the names of newborn male babies in the family book maintained by them. They would also note down good or bad incidents that occurred in the family, details of religious functions performed, Yatras carried out, and gifts in cash or kind given to the family.
+                    </p>
+                    <p>
+                        After the main function of recording names and events was completed, entertainment programs would follow. The Barot would narrate names and histories of the host family and their Parivar, recount important events like Bhagwat Kathas, Yatras, marriages, and gifts received from time to time. They would also narrate stories of bravery or good work of the ancestors. Thus, the host family would learn about the history of their ancestors and the good events that occurred in the family in the past.
+                    </p>
+                    <p>
+                        One can presume that the past history of the Bhalsod Parivar, details of the family tree, and all other information would be in the books maintained by our Barot. But unfortunately, over the passage of time, circumstances have changed and the Barot institution is at a vanishing stage. From time immemorial, Barots used to keep detailed records of our history and generations without any financial remuneration. By and large, today the Barots are lost. Who are the Barots of the Bhalsod Parivar? Where are the record books? No reliable information is available. Under these circumstances—without our Barot and without their record books—it was a big question as to how to prepare the family tree.
+                    </p>
+
+                    <h4>Beginning the Research (1972-1982)</h4>
+                    <p>
+                        Nevertheless, it was decided to start this work. In about 1972, I started collecting information regarding Bhalsod families residing in different villages, towns, and cities. The data collected was examined and a rough draft was prepared showing the interrelationship of one Bhalsod family with another. Thus, a beginning was made.
+                    </p>
+                    <p>
+                        In this work, the elders of each family were contacted and the names of their ancestors were ascertained. The contribution and help of my grandfather, Pujya Ramji Bhai Arjun Bhai Bhalsod, was very precious. He lived to the age of 105 years, had a sharp memory and intellect, and lots of administrative experience. He was a "Chowatia" in the then Jamnagar state and was also a respected community leader in Tersai and surrounding villages. Even today, his family is well known as the Chowatia Parivar. I obtained from him a great deal of information and names of ancestors of various Bhalsod families.
+                    </p>
+                    <p>
+                        On the basis of the information collected, a preliminary draft of the family tree was prepared. During my tours on government work, I continued to research this draft with Bhalsod Parivar elders wherever and whenever I had a chance to meet them, ascertaining first-hand information directly from Bhalsod family members. Even family elders coming from abroad were contacted and consulted for this work. Thus, the work of corrections, editions, and alterations continued for about 10 years.
+                    </p>
+                    <p>
+                        A final rough draft of the family tree was ready to be placed before the Parivar. In 1982, the Parivar gathered at Tersai to celebrate Devna Mahotsav. This draft was shown to the Parivar members, and to my extreme joy, everybody—especially the youngsters—took keen interest in finding their names in the family tree. The details were read in an open session, and it was unanimously decided to publish this final family tree as early as possible.
+                    </p>
+
+                    <h4>International Collaboration (1990)</h4>
+                    <p>
+                        Scrutiny of the draft continued thereafter. As we know, a good number of Bhalsod families have settled in other countries such as the UK, USA, and Africa. It was necessary to ascertain the correct position of these Parivar members in the draft. A circular letter was prepared and sent to all Parivar members settled abroad, requesting them to send information in the prescribed format. A few Parivar members responded and furnished information, but the majority did not.
+                    </p>
+                    <p>
+                        In 1990, I visited the UK. It was decided to collect the missing information during this visit. Most of the families were contacted personally during this Parivar Yatra. The draft was shown to them, discussed, and their correct position was ascertained. Necessary corrections were carried out. The elders helped greatly and gave valuable information.
+                    </p>
+                    <p>
+                        Shree Manu Bhai Mulji Bhai Bhalsod (Cambridge) took active interest in this work and entered this rough family tree draft and other related information into his computer. This draft family tree was shown to the majority of Parivars, and suggestions were noted. On the basis of the collected information and discussions with Parivar members, a final family tree covering all 168 Sorathia Bhalsod families was prepared and published as Appendix 15 in this Sopan.
+                    </p>
+                    <p>
+                        We have seen above some information regarding the origin and history of our Parivar, but this is not an end—it is a beginning, and the research work on this issue still requires further effort. Similarly, research and correction of the present family tree is a must, and this is an open invitation to all Parivar members taking interest in this work to contribute as best as possible. We are open to carrying out corrections in our past history and family history. If reliable information is found, all Bhalsod Parivar members are earnestly requested to send such information or details so that we can correct and update both our history and the family tree.
+                    </p>
+
+                    <h4>Understanding the Family Tree Structure</h4>
+                    <p>
+                        From the present family tree, we can see that we have spread to the extent of 23 generations. One generation means 30-35 years, and accordingly the history of the Sorathia Bhalsod Parivar covers approximately 800 years.
+                    </p>
+                    <p>
+                        In the beginning, up to 10 generations, there is only one male member recorded. Though distant in time, it is possible that this situation may not be entirely correct. However, we have no other reliable information or evidence, and therefore we must proceed with the available information. From the 11th generation onwards, expansion is visible, and there are two main branches: one from Chothbapa and the second from Bhayabapa.
+                    </p>
+                    <p>
+                        Up to 23 generations, at some places we have not found the names of the ancestors, and therefore those junctions are kept blank (to be filled when reliable evidence regarding these names is found). It is interesting to note that in the line of our ancestor Shree Chothbapa, there are only 22-25 families, whereas the remaining Bhalsod families are in the line of his brother Bhayabapa.
+                    </p>
+                    <p>
+                        As we have seen above, at present all Bhalsod families are settled in 7 countries and 35 villages or towns. All these families are shown in the present family tree. No Bhalsod family is excluded from this family tree. We can verify the names of our fathers, grandfathers, great-grandfathers, uncles, sons, grandsons, great-grandsons, etc., in this tree according to our interrelated existing relations in the different families. Hence, we can safely presume that this family tree, despite a few inaccuracies, shows the correct position to the extent of 95-98%.
+                    </p>
+                    <p>
+                        The other feature of this family tree is that it reveals our interrelated relationships. We can immediately find out how a particular Bhalsod family member is related to us and how many generations they are away from us.
+                    </p>
+                    <p>
+                        In the family tree, each generation is shown with a number and different color. All individuals shown in different colors are displayed in half circles. All individuals shown in one color and in the same half circle are related as brothers. For example, the writer of this family tree is shown in the 20th generation. All persons shown in this generation are his brothers; persons shown in the 19th generation are his father and uncles; those shown in the 18th generation are his grandfathers; those shown in the 17th generation are his great-grandfathers, and so on. Similarly, persons in the 21st generation are his sons and nephews; in the 22nd generation are his grandsons.
+                    </p>
+                    <p>
+                        In this way, by a simple look at the family tree, one can easily ascertain their relationship with other Bhalsod family members. In short, the present family tree is complete, up-to-date, and satisfactory.
+                    </p>
+
+                    <h4>Known Limitations</h4>
+                    <p>
+                        However, we should be aware of its limitations so that they can be remedied in the future:
+                    </p>
+
+                    <div class="heritage-list-section">
+                        <ol>
+                            <li><strong>Early Generation Gaps:</strong> The first 10 generations show only one name. The possibility of having other names in these generations cannot be ruled out, but this is a question of research and further investigation into the past.</li>
+                            <li><strong>Missing Names:</strong> Certain names are missing in this family tree. They need to be found by the concerned family members and noted at the relevant place.</li>
+                            <li><strong>Incomplete Records:</strong> It may have happened that in certain families, only the names of living members are shown and names of deceased members may be missing. If such names are found, they should be added at the proper place.</li>
+                        </ol>
+                    </div>
+
+                    <p>
+                        We have established that there are 168 Sorathia Bhalsod families, of which 62 are living in other countries and the rest in India. It would be interesting to know when and for what reasons our ancestors migrated to other countries from India. We should also try to know what they did in the beginning in foreign countries, how they settled, what professions they pursued. Without this information, our family history will be incomplete. During my two foreign visits, I have collected some information from leaders and other knowledgeable persons. Based on this oral research and my experience, I present here a bird's-eye view of our ancestors who have settled in other countries.
+                    </p>
+                </div>
+
+                <!-- Journey Abroad Section -->
+                <div class="heritage-subsection">
+                    <h3 id="journey-abroad">The Journey Abroad: Migration to Africa, UK, and Beyond</h3>
+
+                    <h4>Introduction: The Overseas Diaspora</h4>
+                    <p>
+                        We have seen that out of the 168 Sorathia Bhalsod Parivars, 62 families are living abroad. Our story will be incomplete if we do not know how our ancestors—the families who live abroad today—settled in those countries. What did they do? What were the logistics of settling in those places? I have collated some details during my visits to these foreign countries. Based on the information gathered and observed through my visits, I present here a bird's-eye view of our ancestry and the present-day Parivar members living abroad.
+                    </p>
+                    <p>
+                        Our ancestors left their native homelands more than 100 years ago for many reasons—to maintain their livelihood, experience new ways of life, and further the line of succession in other countries. Our forefathers were settled in about 5-7 villages around the region of Porbandar.
+                    </p>
+
+                    <h4>Early Migration to Mumbai (Early 1900s)</h4>
+                    <p>
+                        The first migration was within India itself. One of our families migrated to the city of Mumbai during British rule, when increased industrialization meant new opportunities would open up. At that time, there was no passport system as there is today. It would be interesting to know how this family migrated to Mumbai and what difficulties and challenges they faced along this route. However, these details are hard to ascertain, and without reliable information, I cannot make definite conclusions here. What is known is that there are currently 4 Sorathia Bhalsod families residing in Mumbai.
+                    </p>
+
+                    <h4>Historical Context: India Under British Rule</h4>
+                    <p>
+                        At the time of British rule in India, there were more than 500 native states in the country, including Junagadh and Bhavnagar, along with numerous Talukas. By and large, people were dependent on agriculture. There were few cities, and the development of business, trade, and industry was negligible. The common man's life was poor and substandard in those days. This poor population constituted 90% of the total population. The Sorathia Prajapati community was part of this poor majority, and Sorathia Bhalsods were farmers, though the majority also worked as carpenters and laborers.
+                    </p>
+                    <p>
+                        In the last quarter of the 19th century, labor and working-class people from all areas around the western coast started to migrate overseas to earn a better standard of living and seek new opportunities in life.
+                    </p>
+
+                    <h4>South Africa: The Pioneer Journey (1875)</h4>
+                    <p>
+                        The first overseas migration of our ancestors was to South Africa. At present, it is known as the Republic of South Africa. In the year 1909, the "Union of South Africa" was formed, consisting of Natal, Transvaal, Cape, and some free state provinces. The British ruled this union, which had its capital in Pretoria and parliament in Cape Town. This land on the African plains was incredibly fertile with inexhaustible natural resources.
+                    </p>
+                    <p>
+                        In the late 19th century, many Indians from different parts of the country migrated and settled in Natal and surrounding areas of the "Union of South Africa." Prajapatis from Surat (South Gujarat) and our ancestors from the Sorathia Bhalsod Parivar came to Transvaal.
+                    </p>
+
+                    <h5>Understanding Transvaal's History</h5>
+                    <p>
+                        Transvaal has a very interesting history. Portuguese and Dutch sailors started their sea voyages to reach India. On their way at the southernmost tip of Africa, they found a cape from which they discovered the eastern sea route to India. They named this the "Cape of Good Hope." Portuguese sailors continued their journey to the Indian subcontinent, while the Dutch sailors stayed at this place and settled there permanently.
+                    </p>
+                    <p>
+                        These Dutch settlers conquered the native people, made them slaves, and established their kingdom, which became known as the Republic of Transvaal. Transvaal is rich in gold mines, and the land is very fertile for agriculture. Farming was carried out mainly with the help of local laborers.
+                    </p>
+                    <p>
+                        In the last quarter of the 19th century, some adventurous Prajapatis from the villages around Surat and Porbandar came to this prosperous area of Transvaal and settled there. In the beginning, these Prajapatis faced many adversities. It was not an easy task for these earlier generations to leave their homeland and settle in unknown environments with different cultures. They faced challenges with the local language, communication, and the logistics of setting up their own businesses or trades. Without external support, they had to forge their new lives by taking the correct course of action that would lead to their families becoming happy and prosperous. The Prajapatis braved these situations and, in turn, changed the circumstances for the following generations.
+                    </p>
+
+                    <h5>Kashanbhai Bhalsod: The First Pioneer</h5>
+                    <p>
+                        Do you know who was the first person from the Bhalsod Parivar to migrate abroad? He was our most venerable ancestor, Kasham Lakha Bhalsod.
+                    </p>
+                    <p>
+                        Around 1875, Shree Kashanbhai Bhalsod of the Lakha Kumbha Parivar went to South Africa. He was only a teenager—16 years of age at the time. He started his career and after some time established a business in the name of Kasham Lakha and Company. He continued this solitary life for about 14 years and then returned to India (Ranavav). In Ranavav, he purchased some land and built a house for himself. He stayed here for about 4 years, during which he became the father of one son (Naranbhai) and one daughter.
+                    </p>
+                    <p>
+                        Then he went back to South Africa with his wife, Shrimati Ratanben. His two children later joined his business. In 1893, his younger brother Shree Kauji Lakha went there to support his brother's business. Thus, these two brothers settled in Louis Trichardt (Dutch Transvaal).
+                    </p>
+                    <p>
+                        In the beginning of the 20th century, there was a war between the British and Dutch. With the help of the Indian military, Britain conquered Transvaal, and administration was handed over to the British governor. When the "Union of South Africa" was established in 1909, Transvaal became one of the states of this union.
+                    </p>
+                    <p>
+                        Kashanbhai died in 1918 from a heart attack, which resulted in the closure of the business Kasham Lakha & Co. His eldest son Naranbhai established a new company, Naran Kasham & Co., in 1926 and restarted the business. Kashanbhai's younger brother and his son started a business in the capital, Pretoria, in 1930. However, they could not succeed due to the heavy recession of that year. The business name was later changed to "Harji Kauya & Co."
+                    </p>
+                    <p>
+                        Both these Bhalsod Parivars settled there permanently. Later, the government imposed a new law and prohibited the entry of Indian people into the country. This created many difficulties for the Indian community already present and for those wishing to settle there from India. The prohibition continued until 1979. On account of political changes and other reasons, families from both of these Parivars eventually left South Africa and at regular intervals visited the UK.
+                    </p>
+
+                    <h4>East Africa: The Second Wave (Late 1800s-Early 1900s)</h4>
+                    <p>
+                        The migration of the Bhalsod Parivar started in the last quarter of the 19th century and expanded at the beginning of the 20th century. Many laborers and working-class people from the area around the western coast of India went to Kenya, Uganda, and Tanzania. This included hundreds of Sorathia Prajapati families who settled in these areas. Along with other Prajapati community members, Bhalsod families from Tersai, Ranavav, and surrounding areas went to Africa and settled there.
+                    </p>
+                    <p>
+                        These families were hundreds of miles away from each other; however, they would still meet on auspicious occasions. Collective activities had yet to take formal shape, but they remained in contact with each other when needed. According to estimates from the time India became independent, the main professions followed by Bhalsod families in Africa were artisan work such as carpentry and masonry. It would be very encouraging and inspiring if we could know in detail how these families achieved financial prosperity and what difficulties they endured along this journey.
+                    </p>
+
+                    <h4>Political Upheaval and the Great Migration (1960s-1970s)</h4>
+                    <p>
+                        India became independent from British rule in 1947. This freedom movement spread to other countries under the British Empire. The era of imperialism began to wane. In the African continent, freedom movements took shape in all colonial states. Ghana was the first country to gain its freedom in 1960, and thereafter a number of countries followed suit, obtaining their independence.
+                    </p>
+                    <p>
+                        Indians, and specifically Prajapatis, were settled in countries like Kenya, Uganda, and Tanzania. After these countries gained independence from British rule, there were significant political disturbances in these areas, and as a result, the entire Indian population became unsafe and unstable. These Indians, who had settled in these countries for financial reasons, were again forced to migrate collectively on account of strong political pressures.
+                    </p>
+                    <p>
+                        The majority of these Indians migrated to the UK, some went to other European countries, while many returned to India. The African continent was largely underdeveloped at the time. The Indians who had labored day and night to build their lives found their position unstable. They collectively migrated in search of a new future.
+                    </p>
+
+                    <h4>Settlement in the United Kingdom</h4>
+                    <p>
+                        In this mass migration due to political reasons, our Bhalsod families mainly went to the UK. They settled primarily in cities like London, Leicester, Birmingham, Bolton, and Cambridge.
+                    </p>
+                    <p>
+                        In Africa, the climate conditions were similar to India, while in the UK it was quite the opposite and unsuitable. The culture, social life, and family life were also very different. But through their grit and determination, they managed to build a life there and settle down. It would be worthwhile to know in detail how these families settled in these circumstances and what challenges they faced. This would be fascinating and inspiring to document, but I will leave this to future historians of the family to resolve.
+                    </p>
+
+                    <h4>Onwards to USA and Australia</h4>
+                    <p>
+                        These families settled in the UK and worked hard. For further development in trade, business, or whatever profession they pursued, some families moved onwards to the USA and Australia, continuing the journey of the Bhalsod diaspora across the globe.
+                    </p>
+
+                    <!-- Overseas Families Distribution Table -->
+                    <div class="overseas-families-table">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Country</th>
+                                    <th>No. Of families</th>
+                                    <th colspan="3">Population</th>
+                                </tr>
+                                <tr>
+                                    <th></th>
+                                    <th></th>
+                                    <th>Male</th>
+                                    <th>Female</th>
+                                    <th>Total</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>UK</td>
+                                    <td>48</td>
+                                    <td>107</td>
+                                    <td>91</td>
+                                    <td>198</td>
+                                </tr>
+                                <tr>
+                                    <td>Australia</td>
+                                    <td>3</td>
+                                    <td>11</td>
+                                    <td>8</td>
+                                    <td>19</td>
+                                </tr>
+                                <tr>
+                                    <td>USA</td>
+                                    <td>4</td>
+                                    <td>5</td>
+                                    <td>6</td>
+                                    <td>11</td>
+                                </tr>
+                                <tr>
+                                    <td>Africa</td>
+                                    <td>7</td>
+                                    <td>19</td>
+                                    <td>15</td>
+                                    <td>34</td>
+                                </tr>
+                                <tr class="table-total-row">
+                                    <td><strong>Total</strong></td>
+                                    <td><strong>62</strong></td>
+                                    <td><strong>142</strong></td>
+                                    <td><strong>120</strong></td>
+                                    <td><strong>262</strong></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <p>
+                        Out of the Bhalsod families in the UK, 26 have migrated from Africa. 17 other families are on account of partition.
+                    </p>
+
+                    <!-- UK Families Migration Details Table -->
+                    <div class="uk-migration-table">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>No.</th>
+                                    <th>Notes</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>26 Families</td>
+                                    <td>Came from African countries, migrants from 1962</td>
+                                </tr>
+                                <tr>
+                                    <td>5 Families</td>
+                                    <td>Came from African countries, migrants from 1962</td>
+                                </tr>
+                                <tr>
+                                    <td>17 Families</td>
+                                    <td>On account of partition of families</td>
+                                </tr>
+                                <tr class="table-total-row">
+                                    <td><strong>Total 48 Families</strong></td>
+                                    <td></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <style>
+                        .overseas-families-table,
+                        .uk-migration-table {
+                            margin: 2rem 0;
+                            overflow-x: auto;
+                        }
+
+                        .overseas-families-table table,
+                        .uk-migration-table table {
+                            width: 100%;
+                            border-collapse: collapse;
+                            background: white;
+                            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+                        }
+
+                        .overseas-families-table th,
+                        .overseas-families-table td,
+                        .uk-migration-table th,
+                        .uk-migration-table td {
+                            border: 1px solid #333;
+                            padding: 0.75rem 1rem;
+                            text-align: center;
+                        }
+
+                        .overseas-families-table th,
+                        .uk-migration-table th {
+                            background-color: #f5f5f5;
+                            font-weight: 600;
+                        }
+
+                        .overseas-families-table td:first-child,
+                        .uk-migration-table td:first-child {
+                            text-align: left;
+                            font-weight: 500;
+                        }
+
+                        .uk-migration-table td:last-child {
+                            text-align: left;
+                        }
+
+                        .table-total-row {
+                            background-color: #f9f9f9;
+                        }
+
+                        .overseas-families-table tr:hover,
+                        .uk-migration-table tr:hover {
+                            background-color: #f5f5f5;
+                        }
+
+                        .table-total-row:hover {
+                            background-color: #f0f0f0 !important;
+                        }
+
+                        @media (max-width: 768px) {
+                            .overseas-families-table th,
+                            .overseas-families-table td,
+                            .uk-migration-table th,
+                            .uk-migration-table td {
+                                padding: 0.5rem;
+                                font-size: 0.9rem;
+                            }
+                        }
+                    </style>
+                </div>
+
+                <!-- Building Our Community Section -->
+                <div class="heritage-subsection">
+                    <h3 id="building-community">Building Our Community: Collective Parivaar Activities in the UK</h3>
+
+                    <h4>Early Settlement and Founding Leaders (1962-1979)</h4>
+                    <p>
+                        The majority of overseas Bhalsod families have settled in the UK, and thus collective Parivar activities have begun. As seen earlier, our Bhalsod Parivar families have settled in different cities in the UK, though the majority of these families live in London. On social or marriage occasions these families would meet, but there was no collective Parivar activity. This situation continued for 17 years.
+                    </p>
+                    <p>
+                        Our settlement in the UK was started by two pioneering brothers. Thereafter, families came one after the other. Tremendous efforts were made by both of these brothers. They would often visit other members of the family, ensuring they were okay and helping resolve any problems they faced collectively. This involved purchasing a house, finding out about particular services, researching schools for their children, and in some cases, giving financial help. The elders of this family are witnesses to the efforts and assistance of these two brothers. They were sympathetic guides who were willing to give their time and effort to help members of the family. Their leadership proved to be invaluable in the initial stages of settling and the tough conditions which met the families. The credit for the social and financial stability of the Bhalsod Parivar goes to these two brothers. The UK Bhalsod Parivar takes note of their selfless actions with deep respect, in the continuing effort to progress the Bhalsod family into future generations.
+                    </p>
+
+                    <h4>The Historic First Meeting (February-March 1980)</h4>
+                    <p>
+                        Family activities concerning the Bhalsod Parivar were thus gaining momentum. Elders were cooperating with these two brothers. The youth of those generations were working under their guidance, and thus years passed. Everyone was feeling the importance of collective Parivar activities and would discuss how to celebrate the collective Parivar community regularly. But for one reason or another, no collective decision could be made, and this situation continued for years. At last, Bhanjibhai took the initiative to start collective Parivar activities. He wrote a letter to Shree Vasarambhai on February 27, 1980. This is an important and historical document for the start of collective Bhalsod activities, and it is reproduced below:
+                    </p>
+
+                    <p><strong>Letter to Bhai Shree Vasaram, Dated: February 27, 1980</strong></p>
+
+                    <p>
+                        "A few days ago, Bhimjibhai Muljibhai from Birmingham wrote a letter stating that if it is possible, Bhalsod families should celebrate Devna for Khodiya Mataji. I considered the matter myself, and Shree Jeevanbhai, Shree Narashibhai, Shri Keshavjibhai, and Shree Govindbhai met in Hounslow at the residence of Shree Liladhar Devshi at the time of his daughter's birthday. We discussed this issue in general and decided that we should write a letter to all Bhalsod families, call a meeting, and decide thereafter whether we should celebrate Devna—and if yes, on what date and where it should be located.
+                    </p>
+                    <p>
+                        Cooperation of all the Bhalsod families is needed in this respect, and hence a meeting is convened at the residence of Dayalalbhai Khimjibhai. This will occur on Sunday the 9th of March. Everyone is requested to be present at the meeting so that they can express their opinions and any concerns they have over the issue. If on account of any reason one cannot attend the meeting, he is requested to convey his opinion by letter.
+                    </p>
+                    <p>
+                        Everyone is also invited to lunch at this meeting."
+                    </p>
+
+                    <p>
+                        Thus began the collective Parivar activities through this historic letter, and the Parivar was fortunate to have the able and efficient leader Shree Dhaujibhai Khimjibhai Bhalsod. The first official meeting of the Bhalsod Parivar was held on March 9, 1980, at his residence, where 18 members were present. The atmosphere was pleasant and encouraging. A decision was taken unanimously that we should celebrate Devna regularly. The discussion then commenced on setting up the very first Devna. There was a unanimous decision to celebrate the first-ever Devna in the city of London on Sunday, May 4, 1980.
+                    </p>
+                    <p>
+                        According to the information available, there were 26 Bhalsod families at the time in the directory of Bhalsod families. The enthusiasm on the part of the leadership is evident. Shree Dhaujibhai Khimjibhai prepared this directory in his own handwriting and contacted each and every Bhalsod family along with New Year's congratulation cards. The card reads as follows:
+                    </p>
+
+                    <p>
+                        "The new year beginning from today may become lucky, successful, and prosperous to you and all your family members.
+                    </p>
+                    <p>
+                        From Meghjibhai Bhalsod<br>
+                        Dhauji Khimji Bhalsod<br>
+                        And family"
+                    </p>
+
+                    <h4>The First Devna Mahotsav (May 4, 1980)</h4>
+                    <p>
+                        Collective Parivar activities thus gained momentum. The invitation cards for the first Devna dated May 4, 1980, had historic importance, and it is reproduced here for reference:
+                    </p>
+
+                    <p><strong>Invitation Card</strong></p>
+
+                    <p>
+                        "In continuation of my letter dated February 27, 1980, I am to state that a meeting was held at the residence of Shree Dhauji Khimji on March 9, 1980, and 18 members of the Bhalsod Parivar attended this meeting. The question of celebrating Mataji Devna was considered at the meeting, and the location was unanimously fixed to London. It is hoped all the Bhalsod families will accept this.
+                    </p>
+                    <p>
+                        The celebration day is fixed as Sunday. The ceremony will start at 9am. We have booked a hall for the whole day to celebrate this event.
+                    </p>
+                    <p>
+                        Dated: March 22, 1980
+                    </p>
+                    <p>
+                        Members present in the meeting (March 9, 1980) have fixed the lunch menu, which includes Jalebi, Monthal, Dhokari, Puri, Undhiyu, Val, Dal, Rice, Papad, and Salad. Morning breakfast will be Gathia with tea. The expenditure of this event will be shared out evenly among all Bhalsod families. Parivar members coming from other cities are specifically requested to inform us as to whether they will be coming so that all arrangements can be made beforehand. All the Parivar members are requested to attend this function with their family and make the Devna an incredible and successful event. It is also requested to participate and contribute in the pleasure of the Bhalsod family gathering.
+                    </p>
+                    <p>
+                        Dhauji Khimji<br>
+                        For and on behalf of Bhalsod Parivar<br>
+                        Jay Khodiar"
+                    </p>
+
+                    <p>
+                        As can be seen, enthusiasm and pleasure of commencing the collective Parivar activities is amply reflected in each and every word that is written in the invitation card. On the due date, about 100 Bhalsod family members attended the function at the Trinity Community Centre in London. The Devna was celebrated with all family members—the 26 Parivar families who were present. The celebration started at 10am. The collective Devna Mahotsav outside India will be remembered permanently in the history of Bhalsod Devna.
+                    </p>
+
+                    <h4>Temple Construction Era (1982-1987)</h4>
+                    <p>
+                        In 1982, Devna Mahotsav was celebrated in Tersai. At this time, a prudent decision having a far-reaching effect—to construct Pujya Khodiya Mataji temple—was taken. On receiving this information from India, collective Parivar activities became even more rapid. To give concrete shape to this decision and construct the temple, Parivar welfare activities became more common. Discussions and deliberations started in this process on the individual level. To take proper decisions on these issues, it was decided to celebrate Devna Mahotsav and call a Parivar gathering.
+                    </p>
+                    <p>
+                        On behalf of the UK Bhalsod Parivar, Shree Vasarambhai Bhalsod issued an invitation card on September 6, 1983, at Trinity Community Centre London, and everybody was cordially invited to attend the Mahotsav. With this card, a form was sent. All families were requested to fill in the form and send it to Shree Mahanbhai Bhalsod in Cambridge. At the fixed time, again the entire UK Bhalsod Parivar gathered at Trinity Community Centre and held a grand Devna Mahotsav.
+                    </p>
+                    <p>
+                        Shree Khimjibhai Bhalsod was elected the president of this function. A general meeting was held to decide issues pertaining to the Parivar. After detailed discussion, a number of decisions were taken. Some of the important decisions are reproduced below:
+                    </p>
+
+                    <div class="heritage-list-section">
+                        <ol>
+                            <li>On the advice of Chairperson Shree Dhaujibhai Khimjibhai, we should be able to help financially less able persons in the Parivar. For this we should collect a fund and appoint a committee for its management. It was also decided to give financial help to bright students in the Parivar.</li>
+                            <li>One can give any amount as a voluntary contribution, but the tax amount should be the same for all. For other contributions, one is free to give any amount as per their will and financial position.</li>
+                            <li>It is decided to take £1.87 per person as tax on male births. Any amount received more than this can be diverted to any other Parivar benevolent fund.</li>
+                            <li>There should also be a corresponding trustee present in India, so that whatever donations are made in the UK or other countries may be passed on correctly and accurately to their counterparts in India.</li>
+                        </ol>
+                    </div>
+
+                    <p>
+                        On behalf of the UK Bhalsod Parivar, Vasarambhai contacted the Tersai main office and obtained the necessary clarifications on all the points. He then explained the necessary clarifications to all. At the time of the Devna Mahotsav and thereafter, everyone collectively contributed to the temple's construction. Everybody gave donations generously.
+                    </p>
+                    <p>
+                        After completion of the construction work of the temple, the ceremonial installation of the idol was celebrated in 1987. From the UK Bhalsod Parivar, Shree Nathalal Rudabhai from Bolton, Shree Jivabhai Govabhai from Leicester, Shree Ramanjibhai Jethabhai from London, and Shree Keshavbhai Kaujibhai from London came to India with their families and attended this ceremony. They gave their acknowledgment of the temple construction. This resulted in better understanding, better cooperation, and better unity regarding the Bhalsod Parivar members and families.
+                    </p>
+
+                    <h4>Growth and Expansion: The Cambridge Devna (1989)</h4>
+                    <p>
+                        They started to think about celebrating Devna at the earliest. During this period, a letter dated May 14, 1989, was received from Shree Muljibhai Bhimjibhai Bhalsod of Cambridge, wherein he informed that the incoming Devna would be celebrated at Cambridge on June 25, 1989. He informed that for this Mahotsav, a hall had already been booked, and all other necessary arrangements were also completed. The entire Bhalsod family accepted this invitation. UK Bhalsod Parivar committee member Shree Vasarambhai invited all the Bhalsod families to attend the function. He also advised that if the Bhalsod Parivar would like, Ras-Garba/Bhajan would be performed after lunch.
+                    </p>
+                    <p>
+                        This was the 3rd Devna Mahotsav in the UK and the first one that was conducted outside of the capital city London. Bhalsod families attended this function in good numbers, and the celebration was started at the stipulated time. Laljibhai Laxmanbhai Bhalsod of Leicester performed Maha Arti and Puja of Mataji. Mahila Mandal played Garba at the highest tempo and sang Bhajans also. The entire atmosphere became highly devotional.
+                    </p>
+                    <p>
+                        Thereafter, a meeting was held to discuss Parivar welfare items, with Shree Dhaujibhai Khimjibhai in the Chair position. Following decisions were taken unanimously after detailed discussion:
+                    </p>
+
+                    <div class="heritage-list-section">
+                        <ol>
+                            <li>There is a scheme to put photos in the temple at Tersai. Parivar members interested may participate in this scheme.</li>
+                            <li>Devna Mahotsav should be celebrated every third year.</li>
+                            <li>The Chairman informed the meeting that anybody deciding to celebrate Devna in their city may come forward. Shree Jivabhai Govabhai declared that the next Devna Mahotsav would be celebrated in 1992. Invitations were sent out, and Bhalsod Parivar members accepted this.</li>
+                            <li>Shree Trikumbhai Gigabhai of Leicester suggested that all Parivar members should give their introductions. This was accepted by family members, and consequently everybody gave their own introductions.</li>
+                        </ol>
+                    </div>
+
+                    <p>
+                        In the joyful and enthusiastic atmosphere, the Mahotsav was concluded at 5pm.
+                    </p>
+
+                    <h4>Formalization of Activities (1990 Special Meeting)</h4>
+                    <p>
+                        The collective activities of the UK Bhalsod Parivar now became regular and systematic. Discussions were often held with Parivar members as to how the temple movement could be improved and what Parivar welfare activities could be conducted.
+                    </p>
+                    <p>
+                        In 1990, Shree Trikambhai Bhurabhai Bhalsod came to the UK from India. He was associated with the temple construction right from the outset, and he was also well aware of our Parivar activities. With a view to give concrete shape to all thoughts regarding Parivar welfare, a special Parivar gathering was arranged in London on October 7, 1990, in his presence. On the due date, most Parivar members from different cities were present. In the gathering, Shree Muljibhai Bhimjibhai Bhalsod of Cambridge was elected as president of the function. The president asked Trikambhai to give additional information regarding the temple construction and other Parivar activities carried out in India.
+                    </p>
+                    <p>
+                        Trikambhai gave detailed information about the temple construction, covering acquisition of land, preparing the plan and estimates, and various phases of the construction until completion of work, and then the celebration of Pran Pratishtha Mahotsav. He also gave details about what Parivar welfare activities were being undertaken. Questions raised by Parivar members were also clarified, and necessary information was given. Thereafter, special discussions and deliberations were held on the following items:
+                    </p>
+
+                    <div class="heritage-list-section">
+                        <ol>
+                            <li>Construction of guest house</li>
+                            <li>Kayami Tithi Yagna for Puja and Arti</li>
+                            <li>Parivar Welfare Schemes</li>
+                        </ol>
+                    </div>
+
+                    <p>
+                        After detailed discussion and on receiving suggestions from the members present, the following broad decisions were taken:
+                    </p>
+
+                    <div class="heritage-list-section">
+                        <ol>
+                            <li>Trikambhai is preparing the Family Tree for Bhalsod Parivar. All families are requested to provide the information that is requested.</li>
+                            <li>In the Kayami Tithi Scheme for Puja and Arti, at present we are registering only one name in each Tithi. It was unanimously decided to modify this scheme and register more than one name in each Tithi.</li>
+                            <li>The amount of tax levied on each male birth and male marriage in the Parivar should be sent to Vasarambhai immediately after the birth or marriage.</li>
+                            <li>It was decided in principle to construct the guest house at Tersai. For this, contributions/donations should be collected from the Parivar.</li>
+                            <li>A general decision was taken to celebrate Devna Mahotsav in the UK when such a Mahotsav is celebrated in Tersai, India.</li>
+                            <li>Shree Mahanbhai Muljibhai of Cambridge proposed that the UK Bhalsod family should have regular gatherings at least once every year, and they should enjoy the day by having programs like Ras Garba and other cultural items. Everybody accepted the proposal, and it was decided to implement the same.</li>
+                        </ol>
+                    </div>
+
+                    <h4>The Leicester Devna (1992)</h4>
+                    <p>
+                        In India, Devna Mahotsav is celebrated regularly, while the UK decided in the 1989 Cambridge Devna that the Mahotsav should be held every three years. The next Devna Mahotsav was to be celebrated at Leicester in 1992. The question was discussed with Bhalsod families of Leicester, and it was decided to celebrate the Mahotsav on May 24, 1992, at Leicester. Managing committee member Shree Vasarambhai sent invitations to all Bhalsod families.
+                    </p>
+                    <p>
+                        Accordingly, the Parivar members gathered at the Sangathan Centre in Leicester on the due date of Sunday, May 24, 1992. Local Parivar leader Shree Jivabhai Govabhai Bhalsod was elected as president, and the celebration then began. The president performed the Arti of Pujya Mataji and offered Naivedya. After Ras Garba and Bhajan, a regular meeting was held, and the following decisions were taken unanimously:
+                    </p>
+
+                    <div class="heritage-list-section">
+                        <ol>
+                            <li>As Devna Mahotsav is celebrated in different cities, it was decided that from now onwards, for the incoming Devna, we should invite all Bhalsod family daughters to participate in the Devna. The invitation should be for all the family members. This decision should be implemented from the upcoming Devna.</li>
+                            <li>Under the Photo Scheme, so far only 14 photos are displayed in the temple at Tersai, India. Those who wish to display their photo should send their photos without any delay.</li>
+                            <li>The Family Tree of Bhalsod Parivar prepared in English by Shree Mahanbhai Muljibhai of Cambridge was displayed and shown to everyone.</li>
+                            <li>General donations for construction of the guest house were collected.</li>
+                            <li>Shree Jivabhai Jerambhai Bhalsod proposed that the next Devna Mahotsav may be celebrated at Wimbledon, London. The Parivar accepted this invitation.</li>
+                            <li>A preliminary discussion was made as to whether the UK Bhalsod Parivar may be requested to register as a charitable organization. The meeting could not come to any conclusion, and the rest of the items were postponed for further discussion and decision at the next Devna.</li>
+                        </ol>
+                    </div>
+
+                    <p>
+                        The Mahotsav was completed in the evening with a vote of thanks to the chairs and local Bhalsod families.
+                    </p>
+                    <p>
+                        It may be noted that the UK Bhalsod Parivar stays united and works with full cooperation with each other in all works connected with Mataji or Parivar welfare.
+                    </p>
+
+                    <h4>Publication of Gaurava Gatha (1993)</h4>
+                    <p>
+                        A similar instance was witnessed when the question of publication of "Sorathia Bhalsod Parivar Gaurava Gatha – Sopan First" was discussed and decided. A letter dated April 20, 1995, from the secretary of Bhalsod Parivar, Tersai, India, was received wherein it was stated that the work of preparing and publishing "Gaurava Gatha Sopan First" for the period from 1982 to March 31, 1993, was underway. The executive committee had taken a decision by resolution on March 3, 1993, that the amount for printing and sending it to all Bhalsod families may be collected by advertisements from Parivar members and others. All Parivar members were therefore requested to collect such advertisements.
+                    </p>
+                    <p>
+                        On receipt of this letter, committee member Shree Vasarambhai started discussing these matters with the Parivar elders. Internally it was thought that instead of collecting the required fund by accepting advertisements, it would be better if we could find some other way to meet these expenditures. At this time, Shree Trikambhai Bhurabhai Bhalsod came from India. The Parivar was shown the format of the Sopan, and they could realize that the publication does not contain only financial administration details but so many other important topics, such as History of Bhalsod Parivar, Family Tree, history of Khodiar Mataji, procedures for the Devna, and performing Puja or other rituals. They decided firmly that we should not collect the required amount by advertisements, and that the entire expenditure of this publication should be borne by the UK Bhalsod Parivar.
+                    </p>
+                    <p>
+                        Intense discussion started within the Parivar, and a final decision was taken to have this publication named as "Bhalsod Parivar – Gaurava Gatha – Sopan – First." It was also suggested that all Bhalsod families may give £25 as a voluntary contribution. A joint letter dated July 22, 1993, by Shree Trikambhai and Shree Vasarambhai containing this information was sent to all Bhalsod families abroad. The reaction to this letter was very positive, encouraging, and accepted with enthusiasm. Then started the area-wise meetings of Bhalsod families to review the write-up and structure of Gaurava Gatha. The area-wise meetings were held at the residences of the Parivar members, the details of which are as follows:
+                    </p>
+
+                    <!-- Area-wise Meetings Table -->
+                    <div class="areawise-meetings-table">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Meeting No.</th>
+                                    <th>Location of Meeting</th>
+                                    <th>Resident</th>
+                                    <th>Date of Meeting</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>Cambridge</td>
+                                    <td>Residence to Shree Muljibhai Bhimjibhai Bhalsod</td>
+                                    <td>03-07-1993 to 06-07-1993</td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>London - Wimbledon</td>
+                                    <td>Residence to Shree Jivannbhai Jerambhai Bhalsod</td>
+                                    <td>10/07/1993</td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td>London - Sevenkings</td>
+                                    <td>Residence of Shree Keshanbhai Kaujibhai Bhalsod</td>
+                                    <td>18/07/1993</td>
+                                </tr>
+                                <tr>
+                                    <td>4</td>
+                                    <td>Leicester</td>
+                                    <td>Residence of Shree "" Govabhai Bhalsod</td>
+                                    <td>24/07/1993</td>
+                                </tr>
+                                <tr>
+                                    <td>5</td>
+                                    <td>London - Stratford</td>
+                                    <td>Residence of Shree Vasrambhai Bhalsod</td>
+                                    <td>25/09/1993</td>
+                                </tr>
+                                <tr>
+                                    <td>6</td>
+                                    <td>London - Hounslow</td>
+                                    <td>Residence of Shree Hareshbhai Trikambhai Bhalsod</td>
+                                    <td>02/10/1993</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <style>
+                        .areawise-meetings-table {
+                            margin: 2rem 0;
+                            overflow-x: auto;
+                        }
+
+                        .areawise-meetings-table table {
+                            width: 100%;
+                            border-collapse: collapse;
+                            background: white;
+                            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+                        }
+
+                        .areawise-meetings-table th,
+                        .areawise-meetings-table td {
+                            border: 1px solid #333;
+                            padding: 0.75rem 1rem;
+                            text-align: left;
+                        }
+
+                        .areawise-meetings-table th {
+                            background-color: #f5f5f5;
+                            font-weight: 600;
+                            text-align: center;
+                        }
+
+                        .areawise-meetings-table td:first-child,
+                        .areawise-meetings-table td:last-child {
+                            text-align: center;
+                        }
+
+                        .areawise-meetings-table tr:hover {
+                            background-color: #f9f9f9;
+                        }
+
+                        @media (max-width: 768px) {
+                            .areawise-meetings-table th,
+                            .areawise-meetings-table td {
+                                padding: 0.5rem;
+                                font-size: 0.9rem;
+                            }
+                        }
+                    </style>
+
+                    <p>
+                        As a general practice, a full-day program was arranged at the place of the meeting. Bhalsod Parivar members from the area and surrounding areas would attend. Vasarambhai, as a member of the committee, was present at all the meetings and helped in the discussions. In the beginning, the draft of the Gaurava Gatha was read aloud. Then general discussion took place. Necessary corrections and additions were made and inserted into the draft version. To be precise, Parivar members participated actively in reviewing the "History of Bhalsod Parivar," "Family Tree," and "Pooja Vidhi." The contribution of the UK Bhalsod Parivar proved very valuable in finalizing the present format of the Gaurava Gatha. The financial contribution was much more than expected.
+                    </p>
+                    <p>
+                        While the Gaurava Gatha was in press, information was received that the UK Bhalsod Parivar had celebrated Devna Mahotsav at London on May 7, 1995. Detailed information was received from Shree Vasarambhai Bhalsod, and hence the same is included in the Gatha.
+                    </p>
+
+                    <h4>The 1995 London Devna Milestone</h4>
+                    <p>
+                        In the Devna Mahotsav celebrated in London on May 24, 1992, Shree Jivabhai Jerambhai Bhalsod invited the Parivar to celebrate the next Devna Mahotsav in London. The Parivar accepted this invitation. Accordingly, the date of the Mahotsav was fixed for May 2, 1995. Mahanbhai Mulji Bhalsod of Cambridge prepared the invitation in both English and Gujarati format, which was then sent to all the Bhalsod families in the UK.
+                    </p>
+                    <p>
+                        On the due date of May 2, 1995, the Bhalsod Parivar members gathered in the morning at the celebration venue. The members of the families greeted each other respectfully and then collectively had tea and breakfast. The celebration continued and Arti was performed. The collective prayer was conducted in a harmonious fashion. All the Parivar members (male and female) joined the program with full attention and enthusiasm. Thereafter, a minute's silence was observed in the memory of Parivar members who had passed away, including Shreemati Gaugaben Jerambhai Bhalsod of Wimbledon, London, and Shrimati Santokben Trikambhai Bhalsod of Leicester. Special prayers were also offered for Pujya Mataji in these remembrances.
+                    </p>
+                    <p>
+                        Thereafter, the meeting was convened. Before proceeding with the work as per the agenda, election of the president was held. Shree Jivabhai Jerambhai Bhalsod was elected as the president for the meeting. Honoring the decision of the Parivar, he humbly took the role, and as per the agenda, the following decisions were taken unanimously:
+                    </p>
+
+                    <p><strong>Decision 1: Introduction of New Married Couples</strong></p>
+                    <p>
+                        As usual, all newly married couples were required to introduce themselves. All Parivar members present congratulated and bestowed their blessings onto the new couples in the presence of Pujya Mataji.
+                    </p>
+
+                    <p><strong>Decision 2: Parivar Welfare Fund</strong></p>
+                    <p>
+                        Following discussion of correspondence from Parivar members in Australia, a decision was taken to establish a Parivar Welfare Fund to support the community through school scholarships, medical assistance, and financial help for daughters' weddings in cases of need. A draft plan would be prepared and submitted to the Tersai Mandir for review before being presented to the general assembly for unanimous approval.
+                    </p>
+
+                    <p><strong>Decision 3: Annual Youth Gatherings</strong></p>
+                    <p>
+                        While Devna Mahotsav would continue every three years, Mahanbhai proposed organizing annual youth gatherings. The proposal was unanimously accepted, and he was authorized to implement this initiative.
+                    </p>
+
+                    <p><strong>Decision 4: Next Devna Location</strong></p>
+                    <p>
+                        Several Parivar members extended an invitation to host the next Devna Mahotsav in West London, which was gladly accepted by the community.
+                    </p>
+
+                    <p><strong>Decision 5: Invitation to Bhalsod Daughters</strong></p>
+                    <p>
+                        As previously decided, all Bhalsod Parivar daughters living in London were invited to attend with their families. Those present gave introductions and were warmly welcomed by the community. The presence of the daughters magnified the joyful atmosphere, and Srimati Motiben Gordhanbhai Pankhania bestowed blessings on behalf of all, praying for the Parivar's continued happiness and prosperity.
+                    </p>
+
+                    <p><strong>Decision 6: Special Programs</strong></p>
+                    <p>
+                        The host organized special items including a raffle draw and a Garba program performed by a Prajapati group led by Srimati Motiben Gordhanbhai Pankhania. The program was very successful and enjoyed by all.
+                    </p>
+
+                    <p><strong>Decision 7: Financial Contributions</strong></p>
+                    <p>
+                        The celebration expenses were shared equally among all Bhalsod families present, while Parivar daughters were honored as guests. Collected donations were sent to Pujya Mataji's temple in Tersai.
+                    </p>
+                    <p>
+                        The program was completed in a jubilant atmosphere, with everyone expressing appreciation for the wonderful celebration and hoping this pattern would continue in future gatherings.
+                    </p>
+
+                    <h4>Leadership and Community Structure</h4>
+                    <p>
+                        This provides a brief overview of the UK Bhalsod Parivar's collective activities. Much gratitude is owed to Shree Dhaujibhai Khimjibhai Bhalsod, who laid the foundation of Parivar activities abroad and provided stable leadership.
+                    </p>
+                    <p>
+                        Following the 1987 constitutional approval, Shree Vasarambhai Raujibhai Bhalsod was appointed as the overseas executive committee member, serving as a bridge between generations. He works with an advisory board of elder members and a team of dedicated youth volunteers.
+                    </p>
+                    <p>
+                        The success of all collective Parivar events is attributed to active cooperation from all members—young and old, men and women. The Parivar Mahila Mandal has been particularly notable in their contributions, including food preparation, organizing Arti ceremonies, and preparing venues for Garba and Bhajans.
+                    </p>
+
+                    <h4>Acknowledgments</h4>
+                    <p>
+                        Many Parivar members contributed valuable information to this work, including Shree Vasarambhai Raujibhai Bhalsod, Shree Mahanbhai Muljibhai Bhalsod, and Shree Muljibhai Bhimjibhai Bhalsod. Special thanks to Shree Bhalsod of Louis Trichardt for providing information about the early migration journey.
+                    </p>
+                    <p>
+                        The stories of our elders' brave efforts to relocate and settle abroad are valuable treasures that must be preserved before they are lost to time. It is my earnest appeal to all Parivar members settled abroad to collect and share these stories with their families. Such documentation would provide invaluable information for our family history and serve as inspiration for future generations.
+                    </p>
+                </div>
+            </div>
+
+<style>
+                    .heritage-list-section {
+                        margin: 1.5rem 0;
+                    }
+
+                    .memories-main-title {
+                        color: #667eea !important;
+                        font-size: 2.6rem !important;
+                    }
+
+                    .centered-section-title {
+                        text-align: center;
+                        color: #555;
+                        font-size: 2.2rem;
+                        font-weight: 600;
+                        margin: 4rem 0 3rem 0;
+                    }
+
+                    .heritage-subsection h3 {
+                        color: #667eea !important;
+                    }
+
+                    .memories-section-break {
+                        margin-top: 6rem;
+                        padding-bottom: 3rem;
+                        color: #333;
+                    }
+
+                    .heritage-list-section ol {
+                        margin-left: 2rem;
+                        margin-bottom: 1.5rem;
+                        line-height: 1.8;
+                        color: #666;
+                    }
+
+                    .heritage-list-section li {
+                        margin-bottom: 0.75rem;
+                        color: #666;
+                    }
+
+                    .heritage-subsection h4 {
+                        color: #667eea;
+                        font-size: 1.1rem;
+                        font-weight: 600;
+                        margin-top: 1.5rem;
+                        margin-bottom: 1rem;
+                    }
+
+                    .heritage-subsection h5 {
+                        color: #667eea;
+                        font-size: 1rem;
+                        font-weight: 600;
+                        margin-top: 1.2rem;
+                        margin-bottom: 0.8rem;
+                    }
+
+                    .prajapati-lineage-diagram {
+                        margin: 3rem auto;
+                        max-width: 1000px;
+                        padding: 2rem;
+                        background: #f9f9f9;
+                        border-radius: 8px;
+                    }
+
+                    .lineage-headers {
+                        display: flex;
+                        justify-content: space-between;
+                        margin-bottom: 2rem;
+                    }
+
+                    .lineage-header-left,
+                    .lineage-header-right {
+                        flex: 1;
+                        text-align: center;
+                    }
+
+                    .lineage-header-left h3,
+                    .lineage-header-right h3 {
+                        font-size: 1.1rem;
+                        font-weight: 600;
+                        margin: 0;
+                        padding-bottom: 1rem;
+                    }
+
+                    .lineage-content {
+                        position: relative;
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        min-height: 550px;
+                    }
+
+                    .lineage-connectors-svg {
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        width: 100%;
+                        height: 100%;
+                        pointer-events: none;
+                        z-index: 1;
+                    }
+
+                    .lineage-left,
+                    .lineage-right {
+                        position: absolute;
+                        top: 0;
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        z-index: 2;
+                    }
+
+                    .lineage-left {
+                        left: 5%;
+                    }
+
+                    .lineage-right {
+                        right: 5%;
+                    }
+
+                    .lineage-box {
+                        border: 2px solid #333;
+                        background: white;
+                        padding: 1rem 1.5rem;
+                        min-width: 250px;
+                        text-align: center;
+                        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+                        position: relative;
+                    }
+
+                    .lineage-number {
+                        font-weight: 600;
+                        margin-right: 0.5rem;
+                    }
+
+                    .lineage-name {
+                        font-size: 1rem;
+                    }
+
+                    .lineage-connector {
+                        width: 2px;
+                        height: 80px;
+                        background: #4a90e2;
+                        margin: 0 auto;
+                    }
+
+                    .lineage-connector-vertical {
+                        width: 2px;
+                        height: 40px;
+                        background: #4a90e2;
+                        margin: 0 auto;
+                    }
+
+                    .lineage-merged {
+                        margin-top: 380px;
+                        width: 100%;
+                        display: flex;
+                        justify-content: center;
+                        position: relative;
+                        z-index: 2;
+                    }
+
+                    .lineage-box-wide {
+                        border: 2px solid #333;
+                        background: white;
+                        padding: 2rem;
+                        max-width: 600px;
+                        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+                    }
+
+                    .lineage-item {
+                        text-align: center;
+                        padding: 0.5rem 0;
+                    }
+
+                    @media (max-width: 768px) {
+                        .prajapati-lineage-diagram {
+                            padding: 1rem;
+                        }
+
+                        .lineage-headers {
+                            flex-direction: column;
+                            gap: 1rem;
+                        }
+
+                        .lineage-left,
+                        .lineage-right {
+                            position: static;
+                            margin-bottom: 2rem;
+                        }
+
+                        .lineage-merged {
+                            margin-top: 0;
+                        }
+
+                        .lineage-connectors-svg {
+                            display: none;
+                        }
+
+                        .lineage-box {
+                            min-width: 200px;
+                        }
+                    }
+                </style>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>&copy; 2026 Bhalsod Family Tree. Preserving memories, connecting generations.</p>
+        </footer>
+    </div>
+
+    <!-- Navigation Menu Toggle Script -->
+    <script>
+        const navMenuToggle = document.getElementById('navMenuToggle');
+        const navMenu = document.getElementById('navMenu');
+        const navMenuOverlay = document.getElementById('navMenuOverlay');
+
+        navMenuToggle.addEventListener('click', function() {
+            navMenuToggle.classList.toggle('active');
+            navMenu.classList.toggle('active');
+            navMenuOverlay.classList.toggle('active');
+        });
+
+        navMenuOverlay.addEventListener('click', function() {
+            navMenuToggle.classList.remove('active');
+            navMenu.classList.remove('active');
+            navMenuOverlay.classList.remove('active');
+        });
+    </script>
+
+    <!-- Floating Table of Contents Styles and Script -->
+    <style>
+        /* Collapsible TOC for Small/Medium Viewports */
+        .collapsible-toc-container {
+            display: none;
+            position: relative;
+            margin: 20px 0 0 0;
+            padding: 0 20px;
+            z-index: 950;
+        }
+
+        /* Placeholder to prevent content jump when button goes fixed */
+        .collapsible-toc-placeholder {
+            display: none;
+            height: 0;
+        }
+
+        @media (max-width: 1460px) {
+            .collapsible-toc-container {
+                display: block;
+            }
+
+            /* When transitioning/sticky, make button fixed */
+            .collapsible-toc-container.transitioning,
+            .collapsible-toc-container.sticky {
+                position: fixed;
+                left: 20px;
+                margin: 0;
+                padding: 0;
+                z-index: 950;
+            }
+
+            /* Show placeholder when button is fixed to prevent content jump */
+            .collapsible-toc-placeholder.active {
+                display: block;
+            }
+        }
+
+        @media (min-width: 1461px) {
+            .collapsible-toc-container {
+                display: none;
+            }
+        }
+
+        .toc-toggle-btn {
+            width: auto;
+            min-width: 60px;
+            height: 60px;
+            padding: 0 1.5rem;
+            background: rgba(240, 235, 250, 0.5);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(123, 63, 228, 0.3);
+            border-radius: 8px;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            color: #7b3fe4;
+            transition: background 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 2px 8px rgba(123, 63, 228, 0.15);
+            white-space: nowrap;
+        }
+
+        /* Gradual transition styles - will be set via JavaScript */
+        .collapsible-toc-container.transitioning .toc-toggle-btn,
+        .collapsible-toc-container.sticky .toc-toggle-btn {
+            /* Width, height, padding will be set dynamically */
+            transition: background 0.1s ease, box-shadow 0.1s ease;
+        }
+
+        /* When fully sticky, match nav button size (60x60) */
+        .collapsible-toc-container.sticky .toc-toggle-btn {
+            width: 60px !important;
+            min-width: 60px !important;
+            height: 60px !important;
+            padding: 0 !important;
+            justify-content: center;
+            border-radius: 12px;
+        }
+
+        .toc-toggle-icon {
+            font-size: 1.8rem;
+            transition: font-size 0.1s ease;
+        }
+
+        .toc-toggle-text,
+        .toc-toggle-arrow {
+            transition: opacity 0.1s ease;
+        }
+
+        /* Hide text and arrow when sticky */
+        .collapsible-toc-container.sticky .toc-toggle-btn .toc-toggle-text,
+        .collapsible-toc-container.sticky .toc-toggle-btn .toc-toggle-arrow {
+            opacity: 0;
+            display: none;
+        }
+
+        .collapsible-toc-container.sticky .toc-toggle-btn .toc-toggle-icon {
+            margin: 0;
+        }
+
+        .toc-toggle-btn:hover {
+            background: rgba(240, 235, 250, 0.7);
+            box-shadow: 0 4px 12px rgba(123, 63, 228, 0.25);
+        }
+
+        .toc-toggle-text {
+            flex: 1;
+            text-align: left;
+        }
+
+        .toc-toggle-arrow {
+            font-size: 0.8rem;
+            transition: transform 0.3s ease, opacity 0.1s ease;
+        }
+
+        .toc-toggle-btn.active .toc-toggle-arrow {
+            transform: rotate(180deg);
+        }
+
+        /* Disable expanding animation - handled by scroll transition now */
+        .toc-toggle-btn.expanding {
+            /* No longer used */
+        }
+
+        .collapsible-toc-content {
+            position: absolute;
+            top: calc(100% + 10px);
+            left: 20px;
+            width: auto;
+            min-width: 250px;
+            max-height: 0;
+            overflow: hidden;
+            opacity: 0;
+            transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+                        opacity 0.4s ease;
+            background: rgba(240, 235, 250, 0.5);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(123, 63, 228, 0.3);
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(123, 63, 228, 0.2);
+            z-index: 1000;
+        }
+
+        /* When sticky/transitioning, use fixed positioning */
+        .collapsible-toc-container.transitioning .collapsible-toc-content,
+        .collapsible-toc-container.sticky .collapsible-toc-content {
+            position: fixed;
+            left: 20px;
+        }
+
+        .collapsible-toc-content.expanded {
+            max-height: calc(100vh - 200px);
+            opacity: 1;
+            overflow-y: auto;
+        }
+
+        .collapsible-toc-content::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .collapsible-toc-content::-webkit-scrollbar-track {
+            background: rgba(123, 63, 228, 0.05);
+            border-radius: 10px;
+        }
+
+        .collapsible-toc-content::-webkit-scrollbar-thumb {
+            background: rgba(123, 63, 228, 0.3);
+            border-radius: 10px;
+        }
+
+        .collapsible-toc-content::-webkit-scrollbar-thumb:hover {
+            background: rgba(123, 63, 228, 0.5);
+        }
+
+        .collapsible-toc-link {
+            display: block;
+            padding: 0.75rem 1.5rem 0.75rem 2rem;
+            color: #333;
+            text-decoration: none;
+            font-size: 0.95rem;
+            border-left: 3px solid transparent;
+            transition: all 0.2s ease;
+        }
+
+        .collapsible-toc-link:hover {
+            background: rgba(123, 63, 228, 0.15);
+            color: #7b3fe4;
+            border-left-color: #7b3fe4;
+        }
+
+        .collapsible-toc-link.active {
+            background: rgba(123, 63, 228, 0.15);
+            color: #7b3fe4;
+            font-weight: 600;
+            border-left-color: #7b3fe4;
+        }
+
+        .collapsible-toc-link.toc-section-title {
+            font-weight: 700;
+            color: #555;
+            margin-top: 0.5rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(123, 63, 228, 0.15);
+            padding-left: 1.5rem;
+            border-left: 3px solid transparent;
+        }
+
+        .collapsible-toc-link.toc-section-title:first-child {
+            margin-top: 0;
+            padding-top: 0.75rem;
+            border-top: none;
+        }
+
+        .collapsible-toc-link.toc-section-title:hover {
+            background: rgba(123, 63, 228, 0.15);
+            color: #7b3fe4;
+            border-left-color: #7b3fe4;
+        }
+
+        .collapsible-toc-link.toc-section-title.active {
+            background: rgba(123, 63, 228, 0.15);
+            color: #7b3fe4;
+            border-left-color: #7b3fe4;
+        }
+
+        /* Floating TOC Styles */
+        .floating-toc {
+            position: fixed;
+            left: 20px;
+            top: 95px;
+            width: 195px;
+            max-height: calc(100vh - 115px);
+            background: rgba(240, 235, 250, 0.5);
+            backdrop-filter: blur(20px);
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(123, 63, 228, 0.12);
+            padding: 15px 12px;
+            overflow-y: hidden;
+            z-index: 900;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.4s ease;
+            border: 1px solid rgba(123, 63, 228, 0.2);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .floating-toc.visible {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .toc-header {
+            margin-bottom: 12px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid rgba(123, 63, 228, 0.2);
+            flex-shrink: 0;
+        }
+
+        .toc-header h3 {
+            margin: 0;
+            font-size: 14px;
+            color: #7b3fe4;
+            font-weight: 600;
+        }
+
+        .toc-nav {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            flex: 1;
+            justify-content: space-between;
+        }
+
+        .toc-link {
+            display: block;
+            padding: 5px 10px 5px 15px;
+            color: #333;
+            text-decoration: none;
+            font-size: 11.5px;
+            border-radius: 6px;
+            transition: all 0.2s ease;
+            line-height: 1.25;
+            cursor: pointer;
+        }
+
+        .toc-link:hover {
+            background: rgba(123, 63, 228, 0.1);
+            color: #7b3fe4;
+            padding-left: 18px;
+        }
+
+        .toc-link:focus {
+            outline: 2px solid #7b3fe4;
+            outline-offset: 2px;
+        }
+
+        .toc-link.active {
+            background: rgba(123, 63, 228, 0.15);
+            color: #7b3fe4;
+            font-weight: 600;
+            border-left: 3px solid #7b3fe4;
+        }
+
+        .toc-link.toc-section-title {
+            font-weight: 700;
+            color: #555;
+            margin-top: 8px;
+            padding-top: 8px;
+            padding-left: 10px;
+            border-top: 1px solid rgba(123, 63, 228, 0.15);
+        }
+
+        .toc-link.toc-section-title:first-child {
+            margin-top: 0;
+            padding-top: 5px;
+            border-top: none;
+        }
+
+        .toc-link.toc-section-title:hover {
+            color: #333;
+            padding-left: 10px;
+        }
+
+        /* Hide on tablets and mobile */
+        @media (max-width: 1460px) {
+            .floating-toc {
+                display: none;
+            }
+        }
+    </style>
+
+    <script>
+        // Collapsible TOC with gradual transition and sticky behavior
+        const tocToggleBtn = document.getElementById('tocToggleBtn');
+        const collapsibleTocContent = document.getElementById('collapsibleTocContent');
+        const collapsibleTocContainer = document.getElementById('collapsibleToc');
+        const tocPlaceholder = document.getElementById('tocPlaceholder');
+
+        // Configuration
+        const NAV_BUTTON_HEIGHT = 60; // Navigation menu button height
+        const NAV_BUTTON_TOP = 20; // Navigation menu button top position
+        const GAP = 10; // Gap between nav button and TOC button
+        const STICKY_POSITION = NAV_BUTTON_TOP + NAV_BUTTON_HEIGHT + GAP; // 90px
+
+        // Initial measurements
+        let tocInitialOffset = 0;
+        let tocInitialHeight = 0;
+        let buttonInitialWidth = 0;
+
+        // Get initial button dimensions
+        function getInitialDimensions() {
+            if (tocInitialOffset === 0 && collapsibleTocContainer) {
+                const rect = collapsibleTocContainer.getBoundingClientRect();
+                tocInitialOffset = rect.top + window.pageYOffset;
+                tocInitialHeight = rect.height;
+                buttonInitialWidth = tocToggleBtn.offsetWidth;
+            }
+        }
+
+        // Linear interpolation helper
+        function lerp(start, end, progress) {
+            return start + (end - start) * progress;
+        }
+
+        // Update sticky behavior with gradual transition
+        function updateStickyBehavior() {
+            if (window.innerWidth <= 1460 && collapsibleTocContainer) {
+                getInitialDimensions();
+
+                const scrollPosition = window.pageYOffset;
+                const distanceToSticky = tocInitialOffset - STICKY_POSITION;
+
+                // Button scrolls naturally until it would reach sticky position
+                if (scrollPosition < distanceToSticky) {
+                    // Not yet at sticky position - button scrolls naturally with page
+                    collapsibleTocContainer.classList.remove('sticky', 'transitioning');
+                    collapsibleTocContainer.style.top = '';
+                    tocPlaceholder.classList.remove('active');
+                    tocPlaceholder.style.height = '';
+
+                    // Reset inline styles
+                    tocToggleBtn.style.width = '';
+                    tocToggleBtn.style.height = '';
+                    tocToggleBtn.style.padding = '';
+                    if (tocToggleBtn.querySelector('.toc-toggle-text')) {
+                        tocToggleBtn.querySelector('.toc-toggle-text').style.opacity = '';
+                        tocToggleBtn.querySelector('.toc-toggle-arrow').style.opacity = '';
+                    }
+                    collapsibleTocContent.style.top = '';
+                    return;
+                }
+
+                // Calculate transition progress (0 = just reached sticky position, 1 = fully transitioned)
+                const transitionDistance = 100; // Distance over which to transition (in pixels)
+                const scrollBeyondSticky = scrollPosition - distanceToSticky;
+                const progress = Math.max(0, Math.min(1, scrollBeyondSticky / transitionDistance));
+
+                if (progress >= 1) {
+                    // Fully sticky and transitioned
+                    collapsibleTocContainer.classList.add('sticky');
+                    collapsibleTocContainer.classList.remove('transitioning');
+                    collapsibleTocContainer.style.top = STICKY_POSITION + 'px';
+
+                    // Show placeholder to prevent content jump
+                    tocPlaceholder.classList.add('active');
+                    tocPlaceholder.style.height = tocInitialHeight + 'px';
+
+                    // Reset inline styles (CSS takes over)
+                    tocToggleBtn.style.width = '';
+                    tocToggleBtn.style.height = '';
+                    tocToggleBtn.style.padding = '';
+
+                    // Update dropdown position when sticky
+                    if (collapsibleTocContent.classList.contains('expanded')) {
+                        collapsibleTocContent.style.top = (STICKY_POSITION + 60 + 10) + 'px';
+                    }
+                } else {
+                    // Transitioning - button is sticky but still animating size
+                    collapsibleTocContainer.classList.add('sticky', 'transitioning');
+                    collapsibleTocContainer.style.top = STICKY_POSITION + 'px';
+
+                    // Show placeholder
+                    tocPlaceholder.classList.add('active');
+                    tocPlaceholder.style.height = tocInitialHeight + 'px';
+
+                    // Gradual size transition
+                    const currentWidth = lerp(buttonInitialWidth, 60, progress);
+                    const currentHeight = 60; // Button is always 60px height
+                    const currentPadding = lerp(24, 0, progress); // 1.5rem = 24px horizontal padding
+
+                    tocToggleBtn.style.width = currentWidth + 'px';
+                    tocToggleBtn.style.height = currentHeight + 'px';
+                    tocToggleBtn.style.padding = `0 ${currentPadding}px`;
+
+                    // Fade out text and arrow faster (complete fade by 60% progress)
+                    const fadeProgress = Math.min(1, progress / 0.6);
+                    if (tocToggleBtn.querySelector('.toc-toggle-text')) {
+                        tocToggleBtn.querySelector('.toc-toggle-text').style.opacity = 1 - fadeProgress;
+                        tocToggleBtn.querySelector('.toc-toggle-arrow').style.opacity = 1 - fadeProgress;
+                    }
+
+                    // Update dropdown position when transitioning
+                    if (collapsibleTocContent.classList.contains('expanded')) {
+                        collapsibleTocContent.style.top = (STICKY_POSITION + currentHeight + 10) + 'px';
+                    }
+                }
+            } else {
+                // Remove all sticky states on larger viewports
+                if (collapsibleTocContainer) {
+                    collapsibleTocContainer.classList.remove('sticky', 'transitioning');
+                    collapsibleTocContainer.style.top = '';
+                    tocPlaceholder.classList.remove('active');
+                }
+            }
+        }
+
+        // Toggle dropdown
+        if (tocToggleBtn && collapsibleTocContent) {
+            tocToggleBtn.addEventListener('click', function(e) {
+                e.stopPropagation(); // Prevent click from bubbling
+                const isOpen = collapsibleTocContent.classList.contains('expanded');
+
+                if (!isOpen) {
+                    // Open dropdown
+                    tocToggleBtn.classList.add('active');
+                    collapsibleTocContent.classList.add('expanded');
+
+                    // Set dropdown position based on current state
+                    if (collapsibleTocContainer.classList.contains('sticky')) {
+                        collapsibleTocContent.style.top = (STICKY_POSITION + 60 + 10) + 'px';
+                    } else if (collapsibleTocContainer.classList.contains('transitioning')) {
+                        const currentTop = parseFloat(collapsibleTocContainer.style.top) || 0;
+                        const currentHeight = parseFloat(tocToggleBtn.style.height) || 60;
+                        collapsibleTocContent.style.top = (currentTop + currentHeight + 10) + 'px';
+                    }
+                } else {
+                    // Close dropdown
+                    closeTOC();
+                }
+            });
+        }
+
+        // Close TOC function
+        function closeTOC() {
+            if (tocToggleBtn && collapsibleTocContent) {
+                tocToggleBtn.classList.remove('active');
+                collapsibleTocContent.classList.remove('expanded');
+            }
+        }
+
+        // Click outside to close
+        document.addEventListener('click', function(e) {
+            if (collapsibleTocContent && collapsibleTocContent.classList.contains('expanded')) {
+                // Check if click is outside both button and dropdown
+                if (!collapsibleTocContainer.contains(e.target)) {
+                    closeTOC();
+                }
+            }
+        });
+
+        // Close TOC when a link is clicked and scroll to section
+        const collapsibleLinks = document.querySelectorAll('.collapsible-toc-link');
+        collapsibleLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').substring(1);
+                const targetElement = document.getElementById(targetId);
+
+                if (targetElement) {
+                    // Close the TOC
+                    closeTOC();
+
+                    // Scroll to target with offset to clear nav button + TOC button + gap
+                    // Nav button: 20px top + 60px height = 80px
+                    // TOC button when sticky: 90px top + 60px height = 150px
+                    // Add 20px padding for visual clarity = 170px total
+                    const offset = 170;
+                    const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - offset;
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Listen for scroll events
+        window.addEventListener('scroll', updateStickyBehavior);
+        window.addEventListener('resize', () => {
+            tocInitialOffset = 0; // Reset on resize
+            buttonInitialWidth = 0;
+            updateStickyBehavior();
+        });
+
+        // Initial check
+        updateStickyBehavior();
+
+        // Smooth scrolling for TOC links
+        document.querySelectorAll('.toc-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').substring(1);
+                const targetElement = document.getElementById(targetId);
+
+                if (targetElement) {
+                    // Smaller offset for desktop since floating TOC is on the side
+                    const offset = 100;
+                    const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - offset;
+
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Scroll spy functionality
+        const observerOptions = {
+            root: null,
+            rootMargin: '-100px 0px -66%',
+            threshold: 0
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const id = entry.target.getAttribute('id');
+
+                    // Update floating TOC links
+                    document.querySelectorAll('.toc-link').forEach(link => {
+                        link.classList.remove('active');
+                    });
+                    const activeLink = document.querySelector(`.toc-link[data-section="${id}"]`);
+                    if (activeLink) {
+                        activeLink.classList.add('active');
+                    }
+
+                    // Update collapsible TOC dropdown links
+                    document.querySelectorAll('.collapsible-toc-link').forEach(link => {
+                        link.classList.remove('active');
+                    });
+                    const activeCollapsibleLink = document.querySelector(`.collapsible-toc-link[href="#${id}"]`);
+                    if (activeCollapsibleLink) {
+                        activeCollapsibleLink.classList.add('active');
+
+                        // Scroll active link into view if dropdown is expanded
+                        if (collapsibleTocContent && collapsibleTocContent.classList.contains('expanded')) {
+                            activeCollapsibleLink.scrollIntoView({
+                                behavior: 'smooth',
+                                block: 'nearest',
+                                inline: 'nearest'
+                            });
+                        }
+                    }
+                }
+            });
+        }, observerOptions);
+
+        // Observe all sections
+        document.querySelectorAll('[id]').forEach(section => {
+            if (section.tagName === 'H2' || section.tagName === 'H3') {
+                observer.observe(section);
+            }
+        });
+
+        // Show/hide TOC on scroll (only for large viewports)
+        const floatingToc = document.getElementById('floatingToc');
+        const targetHeader = document.querySelector('.history-hero h1');
+
+        function handleTocVisibility() {
+            // Only apply scroll behavior on large screens
+            if (window.innerWidth > 1460) {
+                if (targetHeader) {
+                    const headerTop = targetHeader.getBoundingClientRect().top + window.pageYOffset;
+                    const scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
+
+                    if (scrollPosition >= headerTop) {
+                        floatingToc.classList.add('visible');
+                    } else {
+                        floatingToc.classList.remove('visible');
+                    }
+                }
+            }
+        }
+
+        // Check on scroll
+        window.addEventListener('scroll', handleTocVisibility);
+
+        // Check on page load and resize
+        window.addEventListener('resize', handleTocVisibility);
+        handleTocVisibility();
+    </script>
+
+    <!-- Scroll Animation Script -->
+    <script>
+        // Intersection Observer for scroll animations
+        const animationObserverOptions = {
+            threshold: 0.05,
+            rootMargin: '0px 0px -20px 0px'
+        };
+
+        const animationObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-in');
+                    animationObserver.unobserve(entry.target);
+                }
+            });
+        }, animationObserverOptions);
+
+        // Observe elements when DOM is loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            // Observe main title
+            const mainTitle = document.querySelector('.memories-main-title');
+            if (mainTitle) animationObserver.observe(mainTitle);
+
+            // Observe section titles (The Vedic Path, Ancestral Threads)
+            const sectionTitles = document.querySelectorAll('.centered-section-title');
+            sectionTitles.forEach(title => animationObserver.observe(title));
+
+            // Observe intro text blocks
+            const introTexts = document.querySelectorAll('.heritage-intro-text');
+            introTexts.forEach(text => animationObserver.observe(text));
+
+            // Observe all heritage subsections (animate as whole blocks)
+            const subsections = document.querySelectorAll('.heritage-subsection');
+            subsections.forEach(subsection => animationObserver.observe(subsection));
+        });
+    </script>
+</body>
+</html>

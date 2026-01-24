@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Family Tree Visualization</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+</head>
+<body>
+    <div class="family-equation">ℱ = ∑<sub>i=1</sub><sup>∞</sup> G<sub>i</sub>(L,M,T)</div>
+
+    <!-- Mataji Image -->
+    <img src="Images/Mataji.jpg" alt="Mataji" class="mataji-image" id="matajiImage">
+
+    <!-- Ganesh Image -->
+    <img src="Images/Ganesh.jpg" alt="Ganesh" class="ganesh-image" id="ganeshImage">
+
+    <!-- Navigation Menu Toggle -->
+    <button class="nav-menu-toggle" id="navMenuToggle">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+
+    <!-- Navigation Menu Overlay -->
+    <div class="nav-menu-overlay" id="navMenuOverlay"></div>
+
+    <!-- Navigation Menu -->
+    <nav class="nav-menu" id="navMenu">
+        <h2>Navigation</h2>
+        <a href="landing.html" class="nav-menu-item">🏠 Home</a>
+        <a href="tree.html" class="nav-menu-item active-page">🌳 Family Tree</a>
+        <a href="family-data.html" class="nav-menu-item">📊 Family Data</a>
+        <a href="family-history.html" class="nav-menu-item">🏛️ Family History</a>
+        <a href="family-timeline.html" class="nav-menu-item">📖 Family Timeline</a>
+    </nav>
+
+    <div class="tree-container">
+        <svg id="tree-canvas"></svg>
+    </div>
+    <script src="script.js?v=20260111b"></script>
+
+    <!-- Navigation Menu Toggle Script -->
+    <script>
+        const navMenuToggle = document.getElementById('navMenuToggle');
+        const navMenu = document.getElementById('navMenu');
+        const navMenuOverlay = document.getElementById('navMenuOverlay');
+
+        navMenuToggle.addEventListener('click', function() {
+            navMenuToggle.classList.toggle('active');
+            navMenu.classList.toggle('active');
+            navMenuOverlay.classList.toggle('active');
+        });
+
+        navMenuOverlay.addEventListener('click', function() {
+            navMenuToggle.classList.remove('active');
+            navMenu.classList.remove('active');
+            navMenuOverlay.classList.remove('active');
+        });
+    </script>
+
+    <!-- Page Load Animation Script -->
+    <script>
+        // Trigger animations on page load
+        window.addEventListener('load', function() {
+            // Animate tree container
+            const treeContainer = document.querySelector('.tree-container');
+            if (treeContainer) treeContainer.classList.add('animate-in');
+
+            // Animate images
+            const matajiImage = document.getElementById('matajiImage');
+            if (matajiImage) matajiImage.classList.add('animate-in');
+
+            const ganeshImage = document.getElementById('ganeshImage');
+            if (ganeshImage) ganeshImage.classList.add('animate-in');
+
+            // Animate family equation
+            const familyEquation = document.querySelector('body > .family-equation');
+            if (familyEquation) familyEquation.classList.add('animate-in');
+
+            // Animate zoom controls (wait a bit for them to be created by script.js)
+            setTimeout(function() {
+                const zoomControls = document.querySelector('.zoom-controls');
+                if (zoomControls) zoomControls.classList.add('animate-in');
+
+                const searchContainer = document.querySelector('.search-container');
+                if (searchContainer) searchContainer.classList.add('animate-in');
+            }, 100);
+        });
+    </script>
+</body>
+</html>

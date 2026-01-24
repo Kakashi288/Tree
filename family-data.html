@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Family Data Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+<body>
+    <style>
+        /* Prevent FOUC - hide content until loaded */
+        .dashboard-container {
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .dashboard-container.loaded {
+            opacity: 1;
+        }
+
+        .loading-overlay {
+            display: flex !important;
+        }
+
+        .loading-overlay.hidden {
+            display: none !important;
+        }
+    </style>
+
+    <!-- Navigation Menu Toggle -->
+    <button class="nav-menu-toggle" id="navMenuToggle">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+
+    <!-- Navigation Menu Overlay -->
+    <div class="nav-menu-overlay" id="navMenuOverlay"></div>
+
+    <!-- Navigation Menu -->
+    <nav class="nav-menu" id="navMenu">
+        <h2>Navigation</h2>
+        <a href="landing.html" class="nav-menu-item">🏠 Home</a>
+        <a href="tree.html" class="nav-menu-item">🌳 Family Tree</a>
+        <a href="family-data.html" class="nav-menu-item active-page">📊 Family Data</a>
+        <a href="family-history.html" class="nav-menu-item">🏛️ Family History</a>
+        <a href="family-timeline.html" class="nav-menu-item">📖 Family Timeline</a>
+    </nav>
+
+    <!-- Top Action Buttons -->
+    <div class="top-action-buttons">
+        <button id="export-pdf" class="btn-primary">📥 Export PDF</button>
+        <button id="dark-mode-toggle" class="btn-icon" title="Toggle Dark Mode">🌙</button>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div id="loading-overlay" class="loading-overlay">
+        <div class="loading-spinner"></div>
+        <p>Loading family data...</p>
+    </div>
+
+    <div class="dashboard-container">
+        <header class="dashboard-header">
+            <div class="family-equation">ℱ = ∑<sub>i=1</sub><sup>∞</sup> G<sub>i</sub>(L,M,T)</div>
+            <h1>Bhalsod Family Data</h1>
+            <p class="subtitle">Comprehensive insights into your family tree</p>
+
+            <!-- Control Bar -->
+            <div class="control-bar">
+                <input type="text" id="search-box" placeholder="🔍 Search family members..." class="search-input" autocomplete="off">
+                <div class="filter-controls">
+                    <label for="gen-filter-min">Generation:</label>
+                    <input type="number" id="gen-filter-min" placeholder="Min" min="1" class="gen-filter">
+                    <span>to</span>
+                    <input type="number" id="gen-filter-max" placeholder="Max" min="1" class="gen-filter">
+                    <button id="reset-filters" class="btn-secondary">Reset</button>
+                </div>
+            </div>
+
+            <!-- Search Results -->
+            <div id="search-results" class="search-results" style="display: none;"></div>
+        </header>
+
+        <!-- Key Statistics Tiles -->
+        <section class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-icon">📊</div>
+                <div class="stat-value" id="total-members">-</div>
+                <div class="stat-label">Total Family Members</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">🏛️</div>
+                <div class="stat-value" id="total-generations">-</div>
+                <div class="stat-label">Generations</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">👥</div>
+                <div class="stat-value" id="largest-generation">-</div>
+                <div class="stat-label">Largest Generation</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">👶</div>
+                <div class="stat-value" id="avg-children">-</div>
+                <div class="stat-label">Avg Children per Family</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">🌳</div>
+                <div class="stat-value" id="deepest-lineage">-</div>
+                <div class="stat-label">Deepest Lineage</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">🌿</div>
+                <div class="stat-value" id="total-branches">-</div>
+                <div class="stat-label">Total Branches</div>
+            </div>
+        </section>
+
+        <!-- Generation Analysis Charts -->
+        <section class="charts-section">
+            <h2>Generation Analysis</h2>
+            <div class="charts-grid">
+                <div class="chart-card">
+                    <h3>Members per Generation</h3>
+                    <canvas id="generation-bar-chart"></canvas>
+                </div>
+                <div class="chart-card">
+                    <h3>Generation Distribution</h3>
+                    <canvas id="generation-pie-chart"></canvas>
+                </div>
+            </div>
+            <div class="charts-grid">
+                <div class="chart-card wide">
+                    <h3>Family Growth Over Generations</h3>
+                    <canvas id="generation-line-chart"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <!-- Family Structure Insights -->
+        <section class="charts-section">
+            <h2>Family Structure Insights</h2>
+            <div class="charts-grid">
+                <div class="chart-card wide">
+                    <h3>Top 10 Largest Families</h3>
+                    <canvas id="largest-families-chart"></canvas>
+                </div>
+            </div>
+            <div class="charts-grid">
+                <div class="chart-card">
+                    <h3>Nuclear Family Sizes</h3>
+                    <canvas id="family-size-histogram"></canvas>
+                </div>
+                <div class="chart-card">
+                    <h3>Active Family Branches (Gen 10-23)</h3>
+                    <canvas id="branch-comparison-chart"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <!-- Name Analytics -->
+        <section class="charts-section">
+            <h2>Name Analytics</h2>
+            <div class="charts-grid">
+                <div class="chart-card wide">
+                    <h3>Most Common Names (Top 15)</h3>
+                    <canvas id="common-names-chart"></canvas>
+                </div>
+            </div>
+            <div class="charts-grid">
+                <div class="chart-card">
+                    <h3>Unique vs Repeated Names</h3>
+                    <canvas id="name-uniqueness-chart"></canvas>
+                </div>
+                <div class="chart-card">
+                    <h3>Name Length Distribution</h3>
+                    <canvas id="name-length-chart"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <!-- Lineage Tracking -->
+        <section class="charts-section">
+            <h2>Lineage Tracking</h2>
+            <div class="descendant-cards-grid">
+                <div class="descendant-card">
+                    <h3>Top Ancestors by Descendants</h3>
+                    <div id="top-ancestors-list"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Family Trivia -->
+        <section class="charts-section">
+            <h2>📚 Family Trivia & Insights</h2>
+            <div class="trivia-grid">
+                <div class="trivia-card">
+                    <div class="trivia-icon">📏</div>
+                    <h3>Longest Name</h3>
+                    <div class="trivia-value" id="longest-name">-</div>
+                    <div class="trivia-detail" id="longest-name-detail">-</div>
+                </div>
+                <div class="trivia-card">
+                    <div class="trivia-icon">📐</div>
+                    <h3>Shortest Name</h3>
+                    <div class="trivia-value" id="shortest-name">-</div>
+                    <div class="trivia-detail" id="shortest-name-detail">-</div>
+                </div>
+                <div class="trivia-card">
+                    <div class="trivia-icon">🔤</div>
+                    <h3>Most Common First Letter</h3>
+                    <div class="trivia-value" id="common-letter">-</div>
+                    <div class="trivia-detail" id="common-letter-detail">-</div>
+                </div>
+                <div class="trivia-card">
+                    <div class="trivia-icon">📈</div>
+                    <h3>Fastest Growing Generation</h3>
+                    <div class="trivia-value" id="fastest-gen">-</div>
+                    <div class="trivia-detail" id="fastest-gen-detail">-</div>
+                </div>
+            </div>
+
+            <div class="charts-grid">
+                <div class="chart-card wide">
+                    <h3>Generation Growth Rate (%)</h3>
+                    <canvas id="growth-rate-chart"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <!-- Additional Statistics -->
+        <section class="charts-section">
+            <h2>Additional Statistics</h2>
+            <div class="info-grid">
+                <div class="info-card">
+                    <h3>Generation Details</h3>
+                    <div id="generation-details-table"></div>
+                </div>
+                <div class="info-card">
+                    <h3>Key Facts</h3>
+                    <ul id="key-facts-list"></ul>
+                </div>
+            </div>
+        </section>
+
+        <footer class="dashboard-footer">
+            <p>&copy; 2026 Bhalsod Family Tree. Preserving memories, connecting generations.</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="family-data.js"></script>
+
+    <!-- Navigation Menu Toggle Script -->
+    <script>
+        const navMenuToggle = document.getElementById('navMenuToggle');
+        const navMenu = document.getElementById('navMenu');
+        const navMenuOverlay = document.getElementById('navMenuOverlay');
+
+        navMenuToggle.addEventListener('click', function() {
+            navMenuToggle.classList.toggle('active');
+            navMenu.classList.toggle('active');
+            navMenuOverlay.classList.toggle('active');
+        });
+
+        navMenuOverlay.addEventListener('click', function() {
+            navMenuToggle.classList.remove('active');
+            navMenu.classList.remove('active');
+            navMenuOverlay.classList.remove('active');
+        });
+    </script>
+
+    <!-- Page Load Handler -->
+    <script>
+        window.addEventListener('load', function() {
+            // Hide loading overlay
+            document.getElementById('loading-overlay').classList.add('hidden');
+
+            // Show dashboard content with fade-in
+            document.querySelector('.dashboard-container').classList.add('loaded');
+        });
+    </script>
+
+    <!-- Scroll Animation Script -->
+    <script>
+        // Intersection Observer for scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-in');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements when DOM is loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            // Observe stat cards
+            const statCards = document.querySelectorAll('.stat-card');
+            statCards.forEach(card => observer.observe(card));
+
+            // Observe chart section headers
+            const chartHeaders = document.querySelectorAll('.charts-section h2');
+            chartHeaders.forEach(header => observer.observe(header));
+
+            // Observe chart cards
+            const chartCards = document.querySelectorAll('.chart-card');
+            chartCards.forEach(card => observer.observe(card));
+
+            // Observe trivia cards
+            const triviaCards = document.querySelectorAll('.trivia-card');
+            triviaCards.forEach(card => observer.observe(card));
+
+            // Observe info cards
+            const infoCards = document.querySelectorAll('.info-card');
+            infoCards.forEach(card => observer.observe(card));
+
+            // Observe descendant cards
+            const descendantCards = document.querySelectorAll('.descendant-card');
+            descendantCards.forEach(card => observer.observe(card));
+        });
+    </script>
+</body>
+</html>

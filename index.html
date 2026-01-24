@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome - Bhalsod Family</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Canvas for Matrix effect */
+        #matrixCanvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            display: block;
+            cursor: default;
+        }
+
+        /* Watermarked equations overlay */
+        .equation-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 5;
+            overflow: hidden;
+        }
+
+        .equation-watermark {
+            position: absolute;
+            color: rgba(255, 255, 255, 0.35);
+            font-family: 'Courier New', monospace;
+            font-weight: 400;
+            white-space: nowrap;
+            user-select: none;
+        }
+
+        .equation-watermark a {
+            color: rgba(255, 255, 255, 0.35);
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            pointer-events: auto;
+        }
+
+        .equation-watermark a:hover {
+            color: rgba(255, 255, 255, 0.9);
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+        }
+
+        .welcome-container {
+            text-align: center;
+            position: relative;
+            z-index: 10;
+        }
+
+        h1 {
+            color: white;
+            font-size: 4rem;
+            font-weight: 700;
+            margin-bottom: 3rem;
+            text-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            animation: fadeInDown 1s ease-out;
+        }
+
+        .enter-button {
+            display: inline-block;
+            padding: 18px 72px;
+            background: white;
+            color: #667eea;
+            text-decoration: none;
+            font-size: 1.2rem;
+            font-weight: 600;
+            border-radius: 50px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            animation: fadeInUp 1s ease-out;
+            animation-delay: 0.3s;
+            animation-fill-mode: both;
+        }
+
+        .enter-button:hover {
+            transform: translateY(-8px) scale(1.05);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+            background: #e8ecff;
+            cursor: default;
+        }
+
+        .enter-button:active {
+            transform: translateY(-3px) scale(1.02);
+        }
+
+        .lagrangian {
+            color: white;
+            font-size: 1.8rem;
+            margin-top: 1rem;
+            font-family: 'Courier New', monospace;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+            animation: fadeIn 1.5s ease-out;
+            animation-delay: 0.6s;
+            animation-fill-mode: both;
+            line-height: 1.6;
+        }
+
+        .lagrangian:first-of-type {
+            margin-top: 3rem;
+        }
+
+        .lagrangian a {
+            color: white;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .lagrangian a:hover {
+            color: #f8f9ff;
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+            transform: scale(1.2);
+            display: inline-block;
+        }
+
+        .password-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .password-modal.active {
+            display: flex;
+        }
+
+        .password-box {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.15) 0%, rgba(118, 75, 162, 0.15) 100%);
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 8px 32px rgba(102, 126, 234, 0.3), 0 0 60px rgba(118, 75, 162, 0.2);
+            text-align: center;
+            max-width: 400px;
+            width: 90%;
+        }
+
+        .password-box h2 {
+            color: white;
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+            text-shadow: 0 2px 10px rgba(102, 126, 234, 0.5);
+        }
+
+        .password-box input {
+            width: 100%;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 10px;
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            box-sizing: border-box;
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+        .password-box input::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .password-box input:focus {
+            outline: none;
+            border-color: rgba(255, 255, 255, 0.7);
+            background: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 0 20px rgba(102, 126, 234, 0.4);
+        }
+
+        .password-box button {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.3) 0%, rgba(118, 75, 162, 0.3) 100%);
+            backdrop-filter: blur(10px);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .password-box button:hover {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.4) 0%, rgba(118, 75, 162, 0.4) 100%);
+            border-color: rgba(255, 255, 255, 0.6);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        .password-error {
+            color: #ff6b6b;
+            background: rgba(255, 107, 107, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 107, 107, 0.3);
+            border-radius: 8px;
+            padding: 10px;
+            margin-top: 10px;
+            font-size: 0.9rem;
+            display: none;
+        }
+
+        .password-error.show {
+            display: block;
+        }
+
+        /* Loading Animation */
+        .loading-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+        .loading-overlay.active {
+            display: flex;
+        }
+
+        .infinity-loader {
+            font-size: 12rem;
+            color: white;
+            animation: infinityPulse 2s ease-in-out infinite;
+            filter: drop-shadow(0 0 30px rgba(255, 255, 255, 0.6));
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 10;
+        }
+
+        @keyframes infinityPulse {
+            0%, 100% {
+                transform: translate(-50%, -50%) scale(1);
+                opacity: 1;
+            }
+            50% {
+                transform: translate(-50%, -50%) scale(1.2);
+                opacity: 0.8;
+            }
+        }
+
+        .loading-text {
+            color: white;
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-top: 8rem;
+            animation: fadeInOut 2s ease-in-out infinite;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            position: absolute;
+            bottom: 15%;
+        }
+
+        @keyframes fadeInOut {
+            0%, 100% {
+                opacity: 0.4;
+            }
+            50% {
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+                margin-bottom: 2rem;
+            }
+
+            .enter-button {
+                padding: 14px 36px;
+                font-size: 1rem;
+            }
+
+            .infinity-loader {
+                font-size: 10rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .infinity-loader {
+                font-size: 8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Matrix Canvas Background -->
+    <canvas id="matrixCanvas"></canvas>
+
+    <!-- Watermarked equations overlay -->
+    <div class="equation-overlay">
+        <div class="equation-watermark" style="font-size: 1.4rem; top: 8%; left: 5%; transform: rotate(-5deg);">ℒ = -¼ F<sub>μν</sub> F<sup>μν</sup> + (D<sub>μ</sub> φ)<sup>†</sup> (D<sup>μ</sup> φ) - m²|φ|² - λ|φ|⁴</div>
+        <div class="equation-watermark" style="font-size: 1.5rem; top: 15%; left: 75%; transform: rotate(6deg);">G<sub>μν</sub> = R<sub>μν</sub> - ½g<sub>μν</sub>R</div>
+        <div class="equation-watermark" style="font-size: 1.3rem; top: 25%; left: 15%; transform: rotate(-7deg);">Γ<sup>σ</sup><sub>μν</sub> = ½g<sup>σρ</sup>(∂<sub>μ</sub>g<sub>νρ</sub> + ∂<sub>ν</sub>g<sub>μρ</sub> - ∂<sub>ρ</sub>g<sub>μν</sub>)</div>
+        <div class="equation-watermark" style="font-size: 1.6rem; top: 35%; left: 65%; transform: rotate(4deg);">H² = (ȧ/a)² = (8πG/3)ρ - k/a² + Λ/3</div>
+        <div class="equation-watermark" style="font-size: 1.4rem; top: 45%; left: 10%; transform: rotate(8deg);">ds² = -c²dt² + a(t)²[dr²/(1-kr²) + r²(dθ² + sin²θ dφ²)]</div>
+        <div class="equation-watermark" style="font-size: 1.5rem; top: 55%; left: 70%; transform: rotate(-5deg);">Z = ∫ [DA<sub>μ</sub>][Dψ][Dψ̄] exp(i∫d⁴x ℒ<sub>QED</sub>/ℏ)</div>
+        <div class="equation-watermark" style="font-size: 1.7rem; top: 65%; left: 25%; transform: rotate(-6deg);">ℒ = √(-g) [R/(16πG) - ¼ F<sup>μν</sup> F<sub>μν</sub>]</div>
+
+        <!-- Clickable Family equation with infinity symbol -->
+        <div class="equation-watermark" style="font-size: 1.6rem; top: 82%; left: 50%; transform: translateX(-50%) rotate(-3deg);">
+            ℱ = ∑<sub>i=1</sub><sup><a href="landing.html" id="infinityLink">∞</a></sup> G<sub>i</sub>(L,M,T)
+        </div>
+
+        <div class="equation-watermark" style="font-size: 1.4rem; top: 85%; left: 20%; transform: rotate(5deg);">G<sub>μν</sub> = R<sub>μν</sub> - ½g<sub>μν</sub>R</div>
+        <div class="equation-watermark" style="font-size: 1.5rem; top: 92%; left: 80%; transform: rotate(-4deg);">H² = (ȧ/a)² = (8πG/3)ρ - k/a² + Λ/3</div>
+    </div>
+
+    <div class="welcome-container">
+        <h1>Welcome</h1>
+        <div class="enter-button">Enter</div>
+    </div>
+
+    <!-- Password Modal -->
+    <div class="password-modal" id="passwordModal">
+        <div class="password-box">
+            <h2>Enter Password</h2>
+            <input type="password" id="passwordInput" placeholder="Password" autofocus>
+            <button onclick="checkPassword()">Enter</button>
+            <p class="password-error" id="passwordError">Incorrect password. Please try again.</p>
+        </div>
+    </div>
+
+    <!-- Loading Animation -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="infinity-loader">∞</div>
+        <div class="loading-text">Entering...</div>
+    </div>
+
+    <script>
+        // Matrix-style digital rain effect with equations
+        const canvas = document.getElementById('matrixCanvas');
+        const ctx = canvas.getContext('2d');
+
+        // Set canvas size
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        // Equation character set (breaking equations into smaller parts)
+        const equationChars = [
+            'ℒ', 'F', 'μν', 'D', 'φ', 'm²', 'λ', '¼', '†',
+            'G', 'R', 'g', '½', '∂', 'Γ', 'σ', 'ρ',
+            'ℱ', '∑', '∞', 'L', 'M', 'T', 'Z', '∫',
+            'DA', 'Dψ', 'Dψ̄', 'exp', 'ℏ', 'QED',
+            'ds²', 'c²', 'dt²', 'a(t)', 'dr²', 'kr²', 'dθ²', 'sin²θ', 'dφ²',
+            'H²', 'ȧ/a', '8πG', 'k/a²', 'Λ/3',
+            '∂μ', '∂ν', '∂ρ', 'D<sub>μ</sub>', 'D<sup>μ</sup>',
+            '|φ|²', '|φ|⁴', '-¼', '+', '-', '=', '(', ')'
+        ];
+
+        // Font size for characters
+        const fontSize = 16;
+        const columns = Math.floor(canvas.width / fontSize);
+
+        // Array to track Y position of drops in each column
+        const drops = new Array(columns).fill(0);
+
+        // Initialize drops at random positions throughout the screen for continuous effect
+        for (let i = 0; i < drops.length; i++) {
+            drops[i] = Math.random() * (canvas.height / fontSize);
+        }
+
+        // Draw gradient background on canvas (matching body gradient)
+        function drawGradientBackground() {
+            const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+            gradient.addColorStop(0, '#667eea');
+            gradient.addColorStop(1, '#764ba2');
+            ctx.fillStyle = gradient;
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+        }
+
+        // Draw initial gradient background
+        drawGradientBackground();
+
+        // Drawing function
+        function draw() {
+            // Create trailing fade effect with semi-transparent overlay
+            ctx.fillStyle = 'rgba(102, 126, 234, 0.05)'; // Purple tint to match gradient
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            // Set text properties for rain
+            ctx.font = `${fontSize}px 'Courier New', monospace`;
+
+            // Loop through each column
+            for (let i = 0; i < drops.length; i++) {
+                // Pick random equation character
+                const char = equationChars[Math.floor(Math.random() * equationChars.length)];
+
+                // Brighter white for the "head" of the drop
+                ctx.fillStyle = 'rgba(255, 255, 255, 0.95)';
+
+                // Draw the character
+                const x = i * fontSize;
+                const y = drops[i] * fontSize;
+                ctx.fillText(char, x, y);
+
+                // Reset drop to top with random chance when it reaches bottom
+                if (y > canvas.height && Math.random() > 0.975) {
+                    drops[i] = 0;
+                }
+
+                // Increment Y position for next frame
+                drops[i]++;
+            }
+        }
+
+        // Run animation at ~30 FPS
+        setInterval(draw, 33);
+
+        // Handle window resize
+        window.addEventListener('resize', function() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+
+            // Recalculate columns
+            const newColumns = Math.floor(canvas.width / fontSize);
+            drops.length = newColumns;
+            for (let i = 0; i < drops.length; i++) {
+                if (drops[i] === undefined) {
+                    drops[i] = Math.random() * (canvas.height / fontSize);
+                }
+            }
+
+            // Redraw gradient background
+            drawGradientBackground();
+        });
+    </script>
+
+    <script>
+        // Password hash (SHA-256 of your chosen password)
+        // Current password: "Bhalsoda"
+        const passwordHash = "f5465f0de44eae51ddd5cb93728cf14164a2ff1e96a669ef0c909df3d5043019";
+
+        // Check if user is already authenticated in this session
+        if (sessionStorage.getItem('authenticated') === 'true') {
+            // Auto-redirect to main site if already authenticated
+            window.location.replace('landing.html');
+        }
+
+        // SHA-256 hash function
+        async function sha256(message) {
+            const msgBuffer = new TextEncoder().encode(message);
+            const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
+            const hashArray = Array.from(new Uint8Array(hashBuffer));
+            return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+        }
+
+        // Check password
+        async function checkPassword() {
+            const input = document.getElementById('passwordInput').value;
+            const hash = await sha256(input);
+
+            if (hash === passwordHash) {
+                // Correct password - show loading animation
+                document.getElementById('passwordModal').classList.remove('active');
+                document.getElementById('loadingOverlay').classList.add('active');
+
+                // Store authentication and redirect after animation
+                sessionStorage.setItem('authenticated', 'true');
+                setTimeout(() => {
+                    window.location.replace('landing.html');
+                }, 7000); // 7 seconds for testing
+            } else {
+                // Wrong password - show error
+                document.getElementById('passwordError').classList.add('show');
+                document.getElementById('passwordInput').value = '';
+                document.getElementById('passwordInput').focus();
+            }
+        }
+
+        // Show modal when infinity symbol is clicked
+        document.addEventListener('DOMContentLoaded', function() {
+            const infinityLink = document.getElementById('infinityLink');
+
+            infinityLink.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.getElementById('passwordModal').classList.add('active');
+                document.getElementById('passwordInput').focus();
+            });
+
+            // Allow Enter key to submit password
+            document.getElementById('passwordInput').addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    checkPassword();
+                }
+            });
+        });
+    </script>
+</body>
+</html>

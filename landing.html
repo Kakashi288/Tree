@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Family Tree - Discover Your Roots</title>
+    <link rel="stylesheet" href="styles.css">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function(){
+            emailjs.init("UQIAN58pk32SA6Sp5");
+        })();
+    </script>
+</head>
+<body>
+    <div class="landing-container">
+        <header class="hero">
+            <div class="family-equation">ℱ = ∑<sub>i=1</sub><sup>∞</sup> G<sub>i</sub>(L,M,T)</div>
+            <p class="family-presents">Bhalsod Family presents</p>
+            <h1>Explore Our Heritage</h1>
+            <p class="tagline">Visualize and explore your family connections in a dynamic, interactive tree</p>
+            <div class="cta-buttons">
+                <a href="tree.html" class="cta-button">View Family Tree</a>
+                <a href="family-data.html" class="cta-button cta-button-secondary">Family Data</a>
+                <a href="family-history.html" class="cta-button cta-button-secondary">Family History</a>
+                <a href="family-timeline.html" class="cta-button cta-button-secondary">Family Timeline</a>
+            </div>
+        </header>
+
+        <div class="content">
+            <section class="intro">
+                <h2>Your Family Story Unfolds</h2>
+                <p>Experience your family history like never before with our interactive family tree visualization. Connect generations, explore relationships, and preserve your family's legacy for future generations.</p>
+                <p>Dive into the interactive tree to visualize connections, browse the Family Data page for key insights, or explore the Family History page to discover stories and context behind our heritage.</p>
+            </section>
+
+            <section class="features">
+                <div class="feature-card">
+                    <h3>Interactive Visualization</h3>
+                    <p>Navigate through your family tree with smooth, intuitive controls. Zoom, pan, and explore every branch of your family history.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Designed for Generations</h3>
+                    <p>A clean, modern interface that makes exploring your family tree a delightful experience on any device.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Easy to Navigate</h3>
+                    <p>Clear visual connections and relationships make it simple to understand how your family members are connected.</p>
+                </div>
+            </section>
+
+            <section class="about">
+                <h2>About This Family Tree</h2>
+                <p>This interactive family tree lets you explore the Bhalsod family across multiple generations. Each family member appears as a node displaying their name, making it easy to see how everyone connects at a glance.</p>
+                <p>Want to learn more about someone? Simply click on their node or use the search function to find specific family members.</p>
+                <p>Ready to explore? Click "View Family Tree" above to begin your journey through our heritage.</p>
+            </section>
+
+            <section class="contact">
+                <h2>Get in Touch</h2>
+                <p>Have questions or want to share your family history? We'd love to hear from you!</p>
+                <form class="contact-form" id="contactForm">
+                    <div class="form-group">
+                        <label for="from_name">Name</label>
+                        <input type="text" id="from_name" name="from_name" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="from_email">Email</label>
+                        <input type="email" id="from_email" name="from_email" placeholder="your.email@example.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" rows="6" placeholder="Your message here..." required></textarea>
+                    </div>
+                    <button type="submit" class="submit-button">Send Message</button>
+                    <div id="formMessage" class="form-message" style="display: none;"></div>
+                </form>
+            </section>
+        </div>
+
+        <footer class="footer">
+            <p>&copy; 2026 Bhalsod Family Tree. Preserving memories, connecting generations.</p>
+        </footer>
+    </div>
+
+    <script>
+        // Handle contact form submission with EmailJS
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const formMessage = document.getElementById('formMessage');
+            const submitButton = this.querySelector('.submit-button');
+
+            // Disable button and show loading state
+            submitButton.disabled = true;
+            submitButton.textContent = 'Sending...';
+
+            // Send email using EmailJS
+            emailjs.sendForm('service_0a2ecad', 'template_h6ipsom', this)
+                .then(function(response) {
+                    console.log('SUCCESS!', response.status, response.text);
+
+                    // Show success message
+                    formMessage.className = 'form-message success-message';
+                    formMessage.innerHTML = '<strong>Success!</strong> Thank you for your message! We will get back to you soon.';
+                    formMessage.style.display = 'block';
+
+                    // Reset form
+                    document.getElementById('contactForm').reset();
+
+                    // Re-enable button
+                    submitButton.disabled = false;
+                    submitButton.textContent = 'Send Message';
+
+                    // Hide message after 5 seconds
+                    setTimeout(() => {
+                        formMessage.style.display = 'none';
+                    }, 5000);
+
+                }, function(error) {
+                    console.log('FAILED...', error);
+
+                    // Show error message
+                    formMessage.className = 'form-message error-message';
+                    formMessage.innerHTML = '<strong>Error!</strong> Failed to send message. Please try again or contact us directly.';
+                    formMessage.style.display = 'block';
+
+                    // Re-enable button
+                    submitButton.disabled = false;
+                    submitButton.textContent = 'Send Message';
+
+                    // Hide error message after 5 seconds
+                    setTimeout(() => {
+                        formMessage.style.display = 'none';
+                    }, 5000);
+                });
+        });
+    </script>
+
+    <!-- Page Animation Script -->
+    <script>
+        // Animate hero section on page load
+        window.addEventListener('load', function() {
+            // Animate only the family equation in hero
+            const heroEquation = document.querySelector('.hero .family-equation');
+            if (heroEquation) heroEquation.classList.add('animate-in');
+
+            // Animate CTA buttons
+            const ctaButtons = document.querySelectorAll('.cta-button');
+            ctaButtons.forEach(button => button.classList.add('animate-in'));
+        });
+
+        // Intersection Observer for scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-in');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        // Observe scroll elements when DOM is loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            // Observe intro section
+            const intro = document.querySelector('.intro');
+            if (intro) observer.observe(intro);
+
+            // Observe feature cards
+            const featureCards = document.querySelectorAll('.feature-card');
+            featureCards.forEach(card => observer.observe(card));
+
+            // Observe about section
+            const about = document.querySelector('.about');
+            if (about) observer.observe(about);
+
+            // Observe contact section
+            const contact = document.querySelector('.contact');
+            if (contact) observer.observe(contact);
+        });
+    </script>
+</body>
+</html>
