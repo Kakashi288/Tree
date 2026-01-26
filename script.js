@@ -34424,35 +34424,86 @@ window.addEventListener('resize', () => {
 });
 
 // Add orientation change listener for mobile devices (iPad, tablets, phones)
-// Only redraw on orientation changes (portrait <-> landscape) as these are significant layout changes
+// Only adjust viewBox on orientation changes - no need to redraw entire tree
 window.addEventListener('orientationchange', () => {
-    // Add loading class to prevent interactions and show visual feedback
-    const treeContainer = document.querySelector('.tree-container');
-    if (treeContainer) {
-        treeContainer.style.opacity = '0.6';
-        treeContainer.style.pointerEvents = 'none';
-    }
-
-    // Use requestAnimationFrame to avoid blocking the UI thread
+    // Immediate viewBox adjustment - no redraw needed
     requestAnimationFrame(() => {
-        // Small delay to ensure viewport dimensions are updated
-        setTimeout(() => {
-            drawTree();
-            initializeZoomPan(); // Recalculate baseViewBox
+        const viewportWidth = window.innerWidth;
+        const viewportHeight = window.innerHeight;
 
-            // Reset zoom state
-            zoomPanState.currentScale = 1.0;
-            zoomPanState.currentX = zoomPanState.baseViewBox.x;
-            zoomPanState.currentY = zoomPanState.baseViewBox.y;
-            updateImageVisibility(1.0);
-            updateZoomButtons();
+        // Get current viewBox
+        const currentViewBox = svg.getAttribute('viewBox').split(' ').map(parseFloat);
+        const currentCenterX = currentViewBox[0] + currentViewBox[2] / 2;
+        const currentCenterY = currentViewBox[1] + currentViewBox[3] / 2;
 
-            // Re-enable interactions and restore opacity
-            if (treeContainer) {
-                treeContainer.style.opacity = '1';
-                treeContainer.style.pointerEvents = 'auto';
-            }
-        }, 100);
+        // Calculate base dimensions
+        const baseTreeWidth = 3000 * 1.15;
+        const baseTreeHeight = 2200 * 1.15;
+        const branchHeightFactor = 441.0151869375 * 1.15;
+        const branchGenerations = 10;
+
+        const treeAspectRatio = baseTreeWidth / (baseTreeHeight + (branchGenerations * branchHeightFactor));
+        const viewportAspectRatio = viewportWidth / viewportHeight;
+
+        let viewBoxWidth, viewBoxHeight;
+
+        if (viewportAspectRatio > treeAspectRatio) {
+            viewBoxHeight = baseTreeHeight + (branchGenerations * branchHeightFactor);
+            viewBoxWidth = viewBoxHeight * viewportAspectRatio;
+        } else {
+            viewBoxWidth = baseTreeWidth;
+            viewBoxHeight = viewBoxWidth / viewportAspectRatio;
+        }
+
+        // Apply scaling based on orientation
+        const isLandscape = viewportWidth > viewportHeight;
+
+        if (isLandscape && viewportHeight <= 500) {
+            // Landscape mode - bigger tree
+            viewBoxWidth *= 1.2;
+            viewBoxHeight *= 1.2;
+        } else if (viewportWidth <= 450) {
+            viewBoxWidth *= 3.333;
+            viewBoxHeight *= 3.333;
+        } else if (viewportWidth <= 600) {
+            viewBoxWidth *= 2.857;
+            viewBoxHeight *= 2.857;
+        } else if (viewportWidth < 750) {
+            viewBoxWidth *= 2.5;
+            viewBoxHeight *= 2.5;
+        } else if (viewportWidth < 871) {
+            viewBoxWidth *= 2;
+            viewBoxHeight *= 2;
+        } else if (viewportWidth < 1000) {
+            viewBoxWidth *= 1.667;
+            viewBoxHeight *= 1.667;
+        } else if (viewportWidth < 1400) {
+            viewBoxWidth *= 1.111;
+            viewBoxHeight *= 1.111;
+        }
+
+        // Keep tree centered on the same point
+        const newX = currentCenterX - viewBoxWidth / 2;
+        const newY = currentCenterY - viewBoxHeight / 2;
+
+        // Update viewBox with smooth transition
+        svg.style.transition = 'none'; // Disable transition temporarily
+        svg.setAttribute('viewBox', `${newX} ${newY} ${viewBoxWidth} ${viewBoxHeight}`);
+
+        // Update zoom state
+        zoomPanState.baseViewBox.width = viewBoxWidth;
+        zoomPanState.baseViewBox.height = viewBoxHeight;
+        zoomPanState.currentScale = 1.0;
+        zoomPanState.currentX = newX;
+        zoomPanState.currentY = newY;
+
+        updateImageVisibility(1.0);
+        updateZoomButtons();
+
+        // Re-enable transition after a frame
+        requestAnimationFrame(() => {
+            svg.style.transition = '';
+        });
     });
 });
 

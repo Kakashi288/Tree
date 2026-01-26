@@ -58,6 +58,57 @@
             navMenu.classList.remove('active');
             navMenuOverlay.classList.remove('active');
         });
+
+        // Close nav menu on orientation change to prevent freezing
+        window.addEventListener('orientationchange', function() {
+            // Force close immediately - no transition delay
+            navMenuToggle.classList.remove('active');
+            navMenu.classList.remove('active');
+            navMenuOverlay.classList.remove('active');
+
+            // Force hide menu during rotation to prevent flickering
+            navMenu.style.display = 'none';
+            navMenuOverlay.style.display = 'none';
+
+            // Re-enable display after a short delay (after orientation settles)
+            setTimeout(function() {
+                navMenu.style.display = '';
+                navMenuOverlay.style.display = '';
+            }, 500);
+        });
+
+        // Also close on resize (backup for devices that don't fire orientationchange)
+        let resizeTimeout;
+        window.addEventListener('resize', function() {
+            clearTimeout(resizeTimeout);
+            resizeTimeout = setTimeout(function() {
+                // Check if orientation actually changed (significant size swap)
+                const currentWidth = window.innerWidth;
+                const currentHeight = window.innerHeight;
+                const isNowLandscape = currentWidth > currentHeight;
+
+                // Close menu if orientation changed
+                if (window.lastOrientation !== isNowLandscape) {
+                    navMenuToggle.classList.remove('active');
+                    navMenu.classList.remove('active');
+                    navMenuOverlay.classList.remove('active');
+
+                    // Force hide during transition
+                    navMenu.style.display = 'none';
+                    navMenuOverlay.style.display = 'none';
+
+                    setTimeout(function() {
+                        navMenu.style.display = '';
+                        navMenuOverlay.style.display = '';
+                    }, 300);
+
+                    window.lastOrientation = isNowLandscape;
+                }
+            }, 100);
+        });
+
+        // Initialize orientation tracking
+        window.lastOrientation = window.innerWidth > window.innerHeight;
     </script>
 
     <!-- Page Load Animation Script -->

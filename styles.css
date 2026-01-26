@@ -3028,11 +3028,21 @@ canvas {
         transform: translateY(-7px) rotate(-45deg);
     }
 
-    /* Zoom controls - smaller and left-aligned at bottom */
+    /* Nav menu - ensure it stays fully off-screen */
+    .nav-menu {
+        width: 100%;
+        left: -100%;
+        transition: left 0.3s ease;
+    }
+
+    .nav-menu.active {
+        left: 0;
+    }
+
+    /* Zoom controls - smaller and closer to bottom, RIGHT side */
     .zoom-controls {
         bottom: 15px;
-        left: 15px; /* Changed from right to left */
-        right: auto;
+        right: 15px;
         gap: 8px;
     }
 
@@ -3043,7 +3053,7 @@ canvas {
         border-radius: 8px;
     }
 
-    /* Search toggle button - smaller */
+    /* Search toggle button - smaller to match nav button */
     .search-toggle-btn {
         width: 45px;
         height: 45px;
