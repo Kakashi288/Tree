@@ -759,7 +759,12 @@ if (svg) {
         lastTouchCenter: null,
 
         // Pan sensitivity multiplier (higher = faster panning)
-        panSensitivity: 1.5
+        // Reduced for touch devices for more controlled panning
+        panSensitivity: ('ontouchstart' in window) ? 0.5 : 1.5,
+
+        // Pinch-zoom dampening factor (0-1, lower = more dampening)
+        // Reduces sensitivity of pinch-to-zoom on touch devices
+        pinchZoomDampening: 0.35
     };
 
     function buildFamilyTree() {
@@ -2068,8 +2073,14 @@ function handleTouchMove(event) {
         };
 
         if (zoomPanState.lastTouchDistance) {
-            // Calculate scale factor
-            const scaleFactor = currentDistance / zoomPanState.lastTouchDistance;
+            // Calculate raw scale factor
+            const rawScaleFactor = currentDistance / zoomPanState.lastTouchDistance;
+
+            // Apply dampening to make pinch-zoom more controlled
+            // Formula: 1 + (change - 1) * dampening
+            // This reduces the sensitivity of the zoom
+            const scaleFactor = 1 + (rawScaleFactor - 1) * zoomPanState.pinchZoomDampening;
+
             let newScale = zoomPanState.currentScale * scaleFactor;
 
             // Clamp to min/max
