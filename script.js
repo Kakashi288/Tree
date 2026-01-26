@@ -2640,8 +2640,15 @@ function drawTree() {
         viewBoxHeight = viewBoxWidth / viewportAspectRatio;
     }
 
-    // Tree scaling based on viewport width
-    if (viewportWidth <= 450) {
+    // Tree scaling based on viewport size and orientation
+    const isLandscape = viewportWidth > viewportHeight;
+
+    if (isLandscape && viewportHeight <= 500) {
+        // Landscape mode on mobile devices (height <= 500px)
+        // Make tree bigger in landscape by reducing viewBox multiplier
+        viewBoxWidth *= 1.2;  // Much bigger tree (was 1.667-3.333)
+        viewBoxHeight *= 1.2;
+    } else if (viewportWidth <= 450) {
         // Mobile phones (320px - 450px): scale tree to 30% size (viewBox ~3.333x larger)
         viewBoxWidth *= 3.333;
         viewBoxHeight *= 3.333;
@@ -34419,18 +34426,34 @@ window.addEventListener('resize', () => {
 // Add orientation change listener for mobile devices (iPad, tablets, phones)
 // Only redraw on orientation changes (portrait <-> landscape) as these are significant layout changes
 window.addEventListener('orientationchange', () => {
-    // Small delay to ensure viewport dimensions are updated
-    setTimeout(() => {
-        drawTree();
-        initializeZoomPan(); // Recalculate baseViewBox
+    // Add loading class to prevent interactions and show visual feedback
+    const treeContainer = document.querySelector('.tree-container');
+    if (treeContainer) {
+        treeContainer.style.opacity = '0.6';
+        treeContainer.style.pointerEvents = 'none';
+    }
 
-        // Reset zoom state
-        zoomPanState.currentScale = 1.0;
-        zoomPanState.currentX = zoomPanState.baseViewBox.x;
-        zoomPanState.currentY = zoomPanState.baseViewBox.y;
-        updateImageVisibility(1.0);
-        updateZoomButtons();
-    }, 100);
+    // Use requestAnimationFrame to avoid blocking the UI thread
+    requestAnimationFrame(() => {
+        // Small delay to ensure viewport dimensions are updated
+        setTimeout(() => {
+            drawTree();
+            initializeZoomPan(); // Recalculate baseViewBox
+
+            // Reset zoom state
+            zoomPanState.currentScale = 1.0;
+            zoomPanState.currentX = zoomPanState.baseViewBox.x;
+            zoomPanState.currentY = zoomPanState.baseViewBox.y;
+            updateImageVisibility(1.0);
+            updateZoomButtons();
+
+            // Re-enable interactions and restore opacity
+            if (treeContainer) {
+                treeContainer.style.opacity = '1';
+                treeContainer.style.pointerEvents = 'auto';
+            }
+        }, 100);
+    });
 });
 
 } // End of if (svg) check

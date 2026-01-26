@@ -32,6 +32,7 @@ body {
     overflow: hidden;
     position: relative;
     background: linear-gradient(to bottom, #fff 0%, #f8f4f0 100%);
+    transition: opacity 0.3s ease; /* Smooth transition during orientation change */
 }
 
 /* Add padding for mobile/tablet viewports */
@@ -3027,10 +3028,11 @@ canvas {
         transform: translateY(-7px) rotate(-45deg);
     }
 
-    /* Zoom controls - smaller and closer to bottom */
+    /* Zoom controls - smaller and left-aligned at bottom */
     .zoom-controls {
         bottom: 15px;
-        right: 15px;
+        left: 15px; /* Changed from right to left */
+        right: auto;
         gap: 8px;
     }
 
@@ -3103,17 +3105,33 @@ canvas {
         height: 40px;
         top: 10px;
         left: 10px;
+        gap: 5px; /* Add gap between hamburger lines */
+        padding: 10px; /* Add padding to center lines properly */
     }
 
     .nav-menu-toggle span {
-        width: 22px;
+        width: 20px;
         height: 2px;
     }
 
-    /* Zoom controls - smaller and tighter to corner */
+    /* Fix hamburger line transforms for smaller button */
+    .nav-menu-toggle.active span:nth-child(1) {
+        transform: translateY(7px) rotate(45deg);
+    }
+
+    .nav-menu-toggle.active span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .nav-menu-toggle.active span:nth-child(3) {
+        transform: translateY(-7px) rotate(-45deg);
+    }
+
+    /* Zoom controls - left-aligned at bottom like portrait */
     .zoom-controls {
         bottom: 10px;
-        right: 10px;
+        left: 10px; /* Changed from right to left */
+        right: auto;
         gap: 6px;
     }
 
