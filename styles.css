@@ -31,12 +31,20 @@ body {
     max-height: 100vh;
     overflow: hidden;
     position: relative;
-    background: linear-gradient(to bottom, #fff 0%, #f8f4f0 100%);
+    background: #fff;
     transition: opacity 0.3s ease; /* Smooth transition during orientation change */
 }
 
 /* Add padding for mobile/tablet viewports */
 @media (max-width: 1000px) {
+    .tree-container {
+        padding: 5px;
+        box-sizing: border-box;
+    }
+}
+
+/* Add padding for portrait tablets (1000-1400px) */
+@media (min-width: 1000px) and (max-width: 1400px) and (orientation: portrait) {
     .tree-container {
         padding: 5px;
         box-sizing: border-box;
@@ -1865,6 +1873,14 @@ canvas {
         font-size: 0.85rem;
     }
 
+    /* Keep dark mode toggle button at consistent size */
+    .btn-icon {
+        width: 52px;
+        height: 52px;
+        padding: 0;
+        font-size: 1.4rem;
+    }
+
     .search-input {
         min-width: 0;
         font-size: 0.88rem;
@@ -1955,14 +1971,22 @@ canvas {
 
     .top-action-buttons {
         top: 20px;
-        right: 85px;
+        right: 20px;
         gap: 8px;
+        flex-direction: row;
     }
 
     .btn-primary, .btn-secondary {
-        width: 100%;
         padding: 9px 16px;
         font-size: 0.83rem;
+    }
+
+    /* Keep dark mode toggle button at consistent size */
+    .btn-icon {
+        width: 45px;
+        height: 45px;
+        padding: 0;
+        font-size: 1.3rem;
     }
 
     .search-input {
@@ -2554,6 +2578,13 @@ canvas {
     .nav-menu-toggle {
         width: 58px;
         height: 58px;
+        gap: 6px;
+        padding: 15px;
+    }
+
+    .nav-menu-toggle span {
+        width: 30px;
+        height: 3px;
     }
 
     .nav-menu {
@@ -2578,6 +2609,13 @@ canvas {
     .nav-menu-toggle {
         width: 56px;
         height: 56px;
+        gap: 6px;
+        padding: 14px;
+    }
+
+    .nav-menu-toggle span {
+        width: 29px;
+        height: 3px;
     }
 
     .nav-menu {
@@ -2602,6 +2640,13 @@ canvas {
     .nav-menu-toggle {
         width: 54px;
         height: 54px;
+        gap: 5px;
+        padding: 14px;
+    }
+
+    .nav-menu-toggle span {
+        width: 28px;
+        height: 3px;
     }
 
     .nav-menu {
@@ -2626,6 +2671,13 @@ canvas {
     .nav-menu-toggle {
         width: 52px;
         height: 52px;
+        gap: 5px;
+        padding: 13px;
+    }
+
+    .nav-menu-toggle span {
+        width: 26px;
+        height: 3px;
     }
 
     .nav-menu {
@@ -2649,8 +2701,15 @@ canvas {
 
 @media (max-width: 480px) {
     .nav-menu-toggle {
-        width: 55px;
-        height: 55px;
+        width: 45px;
+        height: 45px;
+        gap: 5px;
+        padding: 11px;
+    }
+
+    .nav-menu-toggle span {
+        width: 24px;
+        height: 3px;
     }
 
     .nav-menu {
@@ -2711,8 +2770,8 @@ canvas {
 
 /* Zoom Buttons */
 .zoom-btn {
-    width: 50px;
-    height: 50px;
+    width: 60px;
+    height: 60px;
     border: none;
     border-radius: 10px;
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -2760,6 +2819,46 @@ canvas {
     outline-offset: 2px;
 }
 
+/* Search Container */
+.search-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1500;
+}
+
+/* Search Toggle Button */
+.search-toggle-btn {
+    width: 60px;
+    height: 60px;
+    border: none;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+}
+
+.search-toggle-btn:hover {
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+.search-toggle-btn:active {
+    transform: translateY(0) scale(0.95);
+    transition: all 0.1s ease;
+}
+
 /* Mobile Responsive Adjustments */
 /* Large tablets and small desktops (1200px) */
 @media (max-width: 1200px) {
@@ -2781,23 +2880,38 @@ canvas {
     }
 
     .zoom-btn {
-        width: 48px;
-        height: 48px;
+        width: 58px;
+        height: 58px;
         font-size: 23px;
     }
 
     .search-toggle-btn {
-        width: 48px;
-        height: 48px;
+        width: 58px;
+        height: 58px;
         font-size: 23px;
     }
 
     .search-panel {
+        top: 60px;
+        height: 58px;
         width: 330px;
         max-height: 480px;
     }
 
+    .tree-search-results {
+        top: calc(60px + 58px + 1px); /* panel top + panel height + 1px gap */
+        width: 330px;
+    }
+
+    .search-result-item {
+        height: 58px;
+        overflow: hidden;
+        padding: 0 20px;
+    }
+
     .reopen-modal-btn {
+        top: 79px;
+        right: 20px;
         font-size: 0.9rem;
         padding: 9px 17px;
     }
@@ -2824,24 +2938,42 @@ canvas {
 
     .zoom-controls {
         bottom: 18px;
-        right: 18px;
+        right: 20px;
     }
 
     .zoom-btn {
-        width: 46px;
-        height: 46px;
+        width: 56px;
+        height: 56px;
         font-size: 22px;
     }
 
     .search-toggle-btn {
-        width: 46px;
-        height: 46px;
+        width: 56px;
+        height: 56px;
         font-size: 22px;
     }
 
     .search-panel {
+        top: 58px;
+        height: 56px;
         width: 320px;
         max-height: 460px;
+    }
+
+    .tree-search-results {
+        top: calc(58px + 56px + 1px); /* panel top + panel height + 1px gap */
+        width: 320px;
+    }
+
+    .search-result-item {
+        height: 56px;
+        overflow: hidden;
+        padding: 0 18px;
+    }
+
+    .reopen-modal-btn {
+        top: 77px;
+        right: 20px;
     }
 
     body > .family-equation {
@@ -2866,24 +2998,42 @@ canvas {
 
     .zoom-controls {
         bottom: 17px;
-        right: 17px;
+        right: 20px;
     }
 
     .zoom-btn {
-        width: 45px;
-        height: 45px;
+        width: 54px;
+        height: 54px;
         font-size: 21px;
     }
 
     .search-toggle-btn {
-        width: 45px;
-        height: 45px;
+        width: 54px;
+        height: 54px;
         font-size: 21px;
     }
 
     .search-panel {
+        top: 56px;
+        height: 54px;
         width: 310px;
         max-height: 450px;
+    }
+
+    .tree-search-results {
+        top: calc(56px + 54px + 1px); /* panel top + panel height + 1px gap */
+        width: 310px;
+    }
+
+    .search-result-item {
+        height: 54px;
+        overflow: hidden;
+        padding: 0 16px;
+    }
+
+    .reopen-modal-btn {
+        top: 75px;
+        right: 20px;
     }
 
     body > .family-equation {
@@ -2912,14 +3062,14 @@ canvas {
     }
 
     .zoom-btn {
-        width: 48px;
-        height: 48px;
+        width: 52px;
+        height: 52px;
         font-size: 22px;
     }
 
     .search-toggle-btn {
-        width: 48px;
-        height: 48px;
+        width: 52px;
+        height: 52px;
         font-size: 22px;
     }
 
@@ -2929,6 +3079,8 @@ canvas {
     }
 
     .search-panel {
+        top: 54px;
+        height: 52px;
         width: 90vw;
         max-width: 350px;
         max-height: 440px;
@@ -2936,8 +3088,32 @@ canvas {
         box-sizing: border-box;
     }
 
+    .tree-search-results {
+        top: calc(54px + 52px + 1px); /* panel top + panel height + 1px gap */
+        width: 90vw;
+        max-width: 350px;
+    }
+
+    .search-result-item {
+        height: 52px;
+        overflow: hidden;
+        padding: 0 15px;
+    }
+
+    /* Child of text */
+    .search-result-item > div > div:nth-child(2) {
+        font-size: 10px !important;
+        margin-top: 3px !important;
+    }
+
+    /* Duplicate badge (1/3, etc.) */
+    .search-result-item span[style*="background: #667eea"] {
+        font-size: 9px !important;
+        padding: 1px 4px !important;
+    }
+
     .reopen-modal-btn {
-        top: 80px;
+        top: 73px;
         right: 15px;
     }
 
@@ -2979,12 +3155,40 @@ canvas {
     }
 
     .search-panel {
+        top: 54px;
+        height: 52px;
         width: 88vw;
         max-width: 340px;
         max-height: 420px;
     }
 
+    .tree-search-results {
+        top: calc(54px + 52px + 1px); /* panel top + panel height + 1px gap */
+        width: 88vw;
+        max-width: 340px;
+    }
+
+    .search-result-item {
+        height: 52px;
+        overflow: hidden;
+        padding: 0 15px;
+    }
+
+    /* Child of text */
+    .search-result-item > div > div:nth-child(2) {
+        font-size: 10px !important;
+        margin-top: 3px !important;
+    }
+
+    /* Duplicate badge (1/3, etc.) */
+    .search-result-item span[style*="background: #667eea"] {
+        font-size: 9px !important;
+        padding: 1px 4px !important;
+    }
+
     .reopen-modal-btn {
+        top: 73px;
+        right: 15px;
         font-size: 0.87rem;
         padding: 8px 16px;
     }
@@ -3013,11 +3217,27 @@ canvas {
     .nav-menu-toggle {
         width: 45px;
         height: 45px;
+        gap: 5px;
+        padding: 11px;
     }
 
     .nav-menu-toggle span {
         width: 24px;
-        height: 2.5px;
+        height: 3px;
+    }
+
+    /* Top action buttons - keep same size and position */
+    .top-action-buttons {
+        gap: 8px;
+        flex-direction: row;
+    }
+
+    /* Keep dark mode toggle button at consistent size */
+    .btn-icon {
+        width: 45px;
+        height: 45px;
+        padding: 0;
+        font-size: 1.3rem;
     }
 
     .nav-menu-toggle.active span:nth-child(1) {
@@ -3042,7 +3262,7 @@ canvas {
     /* Zoom controls - smaller and closer to bottom, RIGHT side */
     .zoom-controls {
         bottom: 15px;
-        right: 15px;
+        right: 20px;
         gap: 8px;
     }
 
@@ -3062,19 +3282,26 @@ canvas {
     }
 
     .search-container {
-        top: 90px;
+        top: 20px;
+        right: 20px;
     }
 
     .search-panel {
+        top: 47px;
+        height: 45px;
         width: calc(100vw - 30px);
         max-width: 350px;
         max-height: 400px;
         right: -15px;
     }
 
+    .tree-search-results {
+        top: calc(47px + 45px + 1px); /* panel top + panel height + 1px gap */
+    }
+
     .reopen-modal-btn {
-        top: 155px;
-        right: 15px;
+        top: 66px;
+        right: 20px;
         font-size: 0.8rem;
         padding: 7px 14px;
     }
@@ -3083,90 +3310,6 @@ canvas {
         font-size: 1.3rem;
         left: 75px;
         top: 25px;
-    }
-}
-
-/* Mobile landscape orientation - maximize tree size and hide decorative elements */
-@media (max-width: 900px) and (max-height: 500px) and (orientation: landscape) {
-    .mataji-image,
-    .ganesh-image {
-        display: none !important; /* Hide decorative images in landscape to maximize vertical space */
-    }
-
-    body > .family-equation {
-        display: none !important; /* Hide equation to maximize space */
-    }
-
-    /* Make tree container take full viewport */
-    .tree-container {
-        width: 100vw;
-        height: 100vh;
-        padding: 0;
-    }
-
-    #tree-canvas {
-        width: 100%;
-        height: 100%;
-    }
-
-    /* Smaller nav and controls for landscape */
-    .nav-menu-toggle {
-        width: 40px;
-        height: 40px;
-        top: 10px;
-        left: 10px;
-        gap: 5px; /* Add gap between hamburger lines */
-        padding: 10px; /* Add padding to center lines properly */
-    }
-
-    .nav-menu-toggle span {
-        width: 20px;
-        height: 2px;
-    }
-
-    /* Fix hamburger line transforms for smaller button */
-    .nav-menu-toggle.active span:nth-child(1) {
-        transform: translateY(7px) rotate(45deg);
-    }
-
-    .nav-menu-toggle.active span:nth-child(2) {
-        opacity: 0;
-    }
-
-    .nav-menu-toggle.active span:nth-child(3) {
-        transform: translateY(-7px) rotate(-45deg);
-    }
-
-    /* Zoom controls - left-aligned at bottom like portrait */
-    .zoom-controls {
-        bottom: 10px;
-        left: 10px; /* Changed from right to left */
-        right: auto;
-        gap: 6px;
-    }
-
-    .zoom-btn {
-        width: 40px;
-        height: 40px;
-        font-size: 20px;
-        border-radius: 8px;
-    }
-
-    /* Search toggle - smaller */
-    .search-toggle-btn {
-        width: 40px;
-        height: 40px;
-        font-size: 20px;
-        border-radius: 8px;
-    }
-
-    .search-container {
-        top: 10px;
-        right: 10px;
-    }
-
-    .search-panel {
-        max-height: calc(100vh - 70px);
     }
 }
 
@@ -3245,7 +3388,7 @@ body.dragging {
 /* Responsive modal sizing and scaling for different viewports */
 
 /* Tablet portrait (748px - 999px): Top center, scaled 60% (40% reduction), reduced height */
-@media (min-width: 748px) and (max-width: 999px) {
+@media (min-width: 748px) and (max-width: 999px) and (orientation: portrait) {
     .person-info-modal {
         width: 350px;
         max-height: 400px;
@@ -3274,11 +3417,85 @@ body.dragging {
     }
 }
 
-/* Mobile landscape (481px - 747px): Right side, scaled 50%, much smaller height */
-@media (min-width: 481px) and (max-width: 747px) {
+/* Landscape mobile (748px - 900px): Scaled 50%, centered horizontally */
+@media (min-width: 748px) and (max-width: 900px) and (max-height: 500px) and (orientation: landscape) {
     .person-info-modal {
-        width: 220px;
-        max-height: 200px;
+        width: 50vw;
+        max-width: 400px;
+        height: 80vh;
+        max-height: none;
+        transform: scale(0.5);
+        transform-origin: top center;
+    }
+
+    /* Smaller buttons and text for landscape */
+    .person-info-modal .person-info-header h2 {
+        font-size: 1.4rem;
+    }
+
+    .person-info-modal .generation-badge {
+        font-size: 0.75rem;
+        padding: 3px 8px;
+    }
+
+    .person-info-modal .person-info-close {
+        font-size: 1.4rem;
+        width: 26px;
+        height: 26px;
+        line-height: 26px;
+    }
+
+    .person-info-modal .person-info-body {
+        font-size: 0.85rem;
+    }
+
+    .person-info-modal .person-info-body p {
+        margin-bottom: 6px;
+    }
+}
+
+/* Mobile landscape (481px - 747px): Centered on viewport, size based on viewport height */
+@media (min-width: 481px) and (max-width: 747px) and (orientation: landscape) {
+    .person-info-modal {
+        width: 50vw;
+        max-width: 400px;
+        height: 80vh;
+        max-height: none;
+        transform: scale(0.5);
+        transform-origin: top center;
+    }
+
+    /* Much smaller buttons and text */
+    .person-info-modal .person-info-header h2 {
+        font-size: 1.4rem;
+    }
+
+    .person-info-modal .generation-badge {
+        font-size: 0.75rem;
+        padding: 3px 8px;
+    }
+
+    .person-info-modal .person-info-close {
+        font-size: 1.4rem;
+        width: 26px;
+        height: 26px;
+        line-height: 26px;
+    }
+
+    .person-info-modal .person-info-body {
+        font-size: 0.85rem;
+    }
+
+    .person-info-modal .person-info-body p {
+        margin-bottom: 6px;
+    }
+}
+
+/* Mobile landscape (481px - 747px): Portrait fallback */
+@media (min-width: 481px) and (max-width: 747px) and (orientation: portrait) {
+    .person-info-modal {
+        width: 200px;
+        max-height: 180px;
         transform: scale(0.5);
         transform-origin: center right;
     }
@@ -3309,8 +3526,43 @@ body.dragging {
     }
 }
 
-/* Mobile portrait (<500px): Centered, scaled 50%, increased height for better content viewing */
-@media (max-width: 500px) {
+/* Mobile portrait (471px - 500px): Centered between nav and search */
+@media (min-width: 471px) and (max-width: 500px) {
+    .person-info-modal {
+        width: 200px;
+        max-height: 180px;
+        transform: scale(0.5);
+        transform-origin: top center;
+    }
+
+    /* Much smaller buttons and text */
+    .person-info-modal .person-info-header h2 {
+        font-size: 1.4rem;
+    }
+
+    .person-info-modal .generation-badge {
+        font-size: 0.75rem;
+        padding: 3px 8px;
+    }
+
+    .person-info-modal .person-info-close {
+        font-size: 1.4rem;
+        width: 26px;
+        height: 26px;
+        line-height: 26px;
+    }
+
+    .person-info-modal .person-info-body {
+        font-size: 0.85rem;
+    }
+
+    .person-info-modal .person-info-body p {
+        margin-bottom: 6px;
+    }
+}
+
+/* Mobile portrait (<470px): Full width spanning nav to search, scaled 50% */
+@media (max-width: 470px) {
     .person-info-modal {
         width: 160px;
         max-height: 120px; /* Increased by 20px from 100px */
@@ -3556,52 +3808,16 @@ body.dragging {
 
 /* ===== SEARCH FUNCTIONALITY ===== */
 
-/* Search Container */
-.search-container {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    z-index: 1500;
-}
-
-/* Search Toggle Button */
-.search-toggle-btn {
-    width: 50px;
-    height: 50px;
-    border: none;
-    border-radius: 10px;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
-    font-size: 24px;
-    cursor: pointer;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-    transition: all 0.3s ease;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    -webkit-tap-highlight-color: transparent;
-    -webkit-touch-callout: none;
-    user-select: none;
-    -webkit-user-select: none;
-    touch-action: manipulation;
-}
-
-.search-toggle-btn:hover {
-    transform: translateY(-2px) scale(1.05);
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
-}
-
-.search-toggle-btn:active {
-    transform: translateY(0) scale(0.95);
-    transition: all 0.1s ease;
-}
-
 /* Search Panel */
 .search-panel {
     position: absolute;
-    top: 60px;
+    top: 62px;
     right: 0;
     width: 350px;
+    height: 60px;
+    padding: 0 15px;
+    display: flex;
+    align-items: center;
     background: white;
     border-radius: 12px;
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
@@ -3611,7 +3827,6 @@ body.dragging {
     transition: all 0.3s ease;
     overflow: hidden;
     box-sizing: border-box;
-    padding: 15px;
 }
 
 .search-panel.active {
@@ -3623,7 +3838,8 @@ body.dragging {
 /* Search Input */
 .search-panel .search-input {
     width: 100%;
-    padding: 0;
+    height: 100%;
+    padding: 0 5px;
     border: none;
     font-size: 16px;
     outline: none;
@@ -3645,7 +3861,7 @@ body.dragging {
 /* Tree Search Results - Separate container */
 .tree-search-results {
     position: absolute;
-    top: calc(60px + 15px + 20px + 15px + 1px); /* panel top + top padding + input height + bottom padding + 1px gap */
+    top: calc(62px + 60px + 1px); /* panel top + panel height + 1px gap */
     right: 0;
     width: 350px; /* Match search panel width */
     background: white;
@@ -3661,8 +3877,10 @@ body.dragging {
 /* Mobile responsive - reduce search panel and results width for viewports <500px */
 @media (max-width: 500px) {
     .search-panel {
+        top: 47px;
+        height: 45px;
         width: 220px;
-        padding: 10px;
+        padding: 0 10px;
     }
 
     .search-panel .search-input {
@@ -3671,21 +3889,34 @@ body.dragging {
 
     .tree-search-results {
         width: 220px; /* Match search panel width */
-        top: calc(60px + 10px + 18px + 10px + 1px); /* panel top + top padding + smaller input height + bottom padding + 1px gap */
+        top: calc(47px + 45px + 1px); /* panel top + panel height + 1px gap */
         max-height: 300px;
     }
 
     .search-result-item {
-        padding: 12px 15px;
-        min-height: 50px;
+        padding: 0 12px;
+        height: 45px;
+        overflow: hidden;
     }
 
     .result-name {
-        font-size: 13px;
+        font-size: 11px;
     }
 
     .gen-label {
-        font-size: 11px;
+        font-size: 9px;
+    }
+
+    /* Child of text */
+    .search-result-item > div > div:nth-child(2) {
+        font-size: 9px !important;
+        margin-top: 3px !important;
+    }
+
+    /* Duplicate badge (1/3, etc.) */
+    .search-result-item span[style*="background: #667eea"] {
+        font-size: 9px !important;
+        padding: 2px 5px !important;
     }
 }
 
@@ -3707,7 +3938,7 @@ body.dragging {
 }
 
 .search-result-item {
-    padding: 15px 20px;
+    padding: 0 20px;
     border-bottom: 1px solid #f0f0f0;
     cursor: pointer;
     transition: all 0.2s ease;
@@ -3719,7 +3950,8 @@ body.dragging {
     box-sizing: border-box;
     margin: 0;
     background: white;
-    min-height: 60px;
+    height: 60px;
+    overflow: hidden;
 }
 
 .search-result-item:hover {
@@ -3831,7 +4063,7 @@ line.lineage-highlighted {
 /* Reopen Modal Button */
 .reopen-modal-btn {
     position: fixed;
-    top: 80px;
+    top: 81px;
     right: 20px;
     padding: 10px 20px;
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -5267,3 +5499,138 @@ body > .family-equation.animate-in {
         font-size: 0.95rem;
     }
 }
+
+/* Mobile landscape orientation - maximize tree size and hide decorative elements */
+/* MOVED TO END: This query must come last to avoid being overridden by other max-width queries */
+@media (max-width: 900px) and (max-height: 500px) and (orientation: landscape) {
+    .mataji-image,
+    .ganesh-image {
+        display: none !important; /* Hide decorative images in landscape to maximize vertical space */
+    }
+
+    body > .family-equation {
+        display: none !important; /* Hide equation to maximize space */
+    }
+
+    /* Make tree container take full viewport */
+    .tree-container {
+        width: 100vw;
+        height: 100vh;
+        padding: 0;
+    }
+
+    #tree-canvas {
+        width: 100%;
+        height: 100%;
+    }
+
+    /* Smaller nav and controls for landscape */
+    .nav-menu-toggle {
+        width: 40px;
+        height: 40px;
+        top: 10px;
+        left: 10px;
+        gap: 5px; /* Add gap between hamburger lines */
+        padding: 10px; /* Add padding to center lines properly */
+    }
+
+    .nav-menu-toggle span {
+        width: 20px;
+        height: 3px;
+    }
+
+    /* Fix hamburger line transforms for smaller button */
+    .nav-menu-toggle.active span:nth-child(1) {
+        transform: translateY(7px) rotate(45deg);
+    }
+
+    .nav-menu-toggle.active span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .nav-menu-toggle.active span:nth-child(3) {
+        transform: translateY(-7px) rotate(-45deg);
+    }
+
+    /* Zoom controls - right-aligned at bottom */
+    .zoom-controls {
+        bottom: 10px;
+        right: 10px;
+        left: auto;
+        gap: 6px;
+    }
+
+    .zoom-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 20px;
+        border-radius: 8px;
+    }
+
+    /* Search toggle - smaller */
+    .search-toggle-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 20px;
+        border-radius: 8px;
+    }
+
+    .search-container {
+        top: 10px;
+        right: 10px;
+    }
+
+    .search-panel {
+        top: 42px;
+        height: 40px;
+        width: 200px;
+        padding: 0 10px;
+        display: flex;
+        align-items: center;
+        max-height: calc(100vh - 70px);
+    }
+
+    .search-panel .search-input {
+        height: 100%;
+        font-size: 14px;
+        padding: 0 5px;
+    }
+
+    .tree-search-results {
+        top: calc(42px + 40px + 1px); /* panel top + panel height + 1px gap */
+        width: 200px;
+        max-height: calc(100vh - 120px);
+    }
+
+    .search-result-item {
+        height: 40px;
+        overflow: hidden;
+        padding: 0 10px;
+    }
+
+    .result-name {
+        font-size: 10px;
+    }
+
+    .gen-label {
+        font-size: 8px;
+    }
+
+    /* Child of text */
+    .search-result-item > div > div:nth-child(2) {
+        font-size: 8px !important;
+        margin-top: 3px !important;
+    }
+
+    /* Duplicate badge (1/3, etc.) */
+    .search-result-item span[style*="background: #667eea"] {
+        font-size: 8px !important;
+        padding: 2px 4px !important;
+    }
+
+    .reopen-modal-btn {
+        top: 51px;
+        right: 10px;
+    }
+}
+

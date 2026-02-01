@@ -616,6 +616,21 @@
                                 font-size: 0.9rem;
                             }
                         }
+
+                        @media (max-width: 420px) {
+                            .prajapati-branches-table {
+                                margin: 1rem 0;
+                            }
+
+                            .prajapati-branches-table td {
+                                padding: 0.25rem 0.5rem;
+                                font-size: 0.65rem;
+                            }
+
+                            .prajapati-branches-table table {
+                                width: 100%;
+                            }
+                        }
                     </style>
                 </div>
 
@@ -1087,7 +1102,7 @@
                     </div>
 
                     <p>
-                        Out of the Bhalsod families in the UK, 26 have migrated from Africa. 17 other families are on account of partition.
+                        Out of the Bhalsod families in the UK, 31 have migrated from Africa. 17 other families are on account of partition.
                     </p>
 
                     <!-- UK Families Migration Details Table -->
@@ -1101,16 +1116,12 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>26 Families</td>
-                                    <td>Came from African countries, migrants from 1962</td>
-                                </tr>
-                                <tr>
-                                    <td>5 Families</td>
+                                    <td>31 Families</td>
                                     <td>Came from African countries, migrants from 1962</td>
                                 </tr>
                                 <tr>
                                     <td>17 Families</td>
-                                    <td>On account of partition of families</td>
+                                    <td>On account of partition</td>
                                 </tr>
                                 <tr class="table-total-row">
                                     <td><strong>Total 48 Families</strong></td>
@@ -1918,7 +1929,6 @@
             top: calc(100% + 10px);
             left: 20px;
             width: auto;
-            min-width: 250px;
             max-height: 0;
             overflow: hidden;
             opacity: 0;
@@ -2119,6 +2129,104 @@
                 display: none;
             }
         }
+
+        /* Responsive TOC Button Sizing - Match Nav Button */
+        @media (max-width: 1200px) {
+            .toc-toggle-btn {
+                min-width: 58px;
+                height: 58px;
+            }
+            .collapsible-toc-container.sticky .toc-toggle-btn {
+                width: 58px !important;
+                min-width: 58px !important;
+                height: 58px !important;
+            }
+        }
+
+        @media (max-width: 1024px) {
+            .toc-toggle-btn {
+                min-width: 56px;
+                height: 56px;
+            }
+            .collapsible-toc-container.sticky .toc-toggle-btn {
+                width: 56px !important;
+                min-width: 56px !important;
+                height: 56px !important;
+            }
+        }
+
+        @media (max-width: 900px) {
+            .toc-toggle-btn {
+                min-width: 54px;
+                height: 54px;
+            }
+            .collapsible-toc-container.sticky .toc-toggle-btn {
+                width: 54px !important;
+                min-width: 54px !important;
+                height: 54px !important;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .toc-toggle-btn {
+                min-width: 52px;
+                height: 52px;
+            }
+            .collapsible-toc-container.sticky .toc-toggle-btn {
+                width: 52px !important;
+                min-width: 52px !important;
+                height: 52px !important;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .toc-toggle-btn {
+                min-width: 52px;
+                height: 52px;
+            }
+            .collapsible-toc-container.sticky .toc-toggle-btn {
+                width: 52px !important;
+                min-width: 52px !important;
+                height: 52px !important;
+            }
+        }
+
+        @media (max-width: 500px) {
+            .toc-toggle-btn {
+                min-width: 45px;
+                height: 45px;
+            }
+            .collapsible-toc-container.sticky .toc-toggle-btn {
+                width: 45px !important;
+                min-width: 45px !important;
+                height: 45px !important;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .toc-toggle-btn {
+                min-width: 45px;
+                height: 45px;
+            }
+            .collapsible-toc-container.sticky .toc-toggle-btn {
+                width: 45px !important;
+                min-width: 45px !important;
+                height: 45px !important;
+            }
+        }
+
+        /* Mobile landscape orientation - match nav button */
+        @media (max-width: 900px) and (max-height: 500px) and (orientation: landscape) {
+            .toc-toggle-btn {
+                min-width: 40px;
+                height: 40px;
+            }
+            .collapsible-toc-container.sticky .toc-toggle-btn {
+                width: 40px !important;
+                min-width: 40px !important;
+                height: 40px !important;
+            }
+        }
     </style>
 
     <script>
@@ -2128,11 +2236,24 @@
         const collapsibleTocContainer = document.getElementById('collapsibleToc');
         const tocPlaceholder = document.getElementById('tocPlaceholder');
 
-        // Configuration
-        const NAV_BUTTON_HEIGHT = 60; // Navigation menu button height
+        // Configuration - Function to get responsive nav button height
+        function getNavButtonHeight() {
+            const width = window.innerWidth;
+            if (width <= 480 || width <= 500) return 45;
+            if (width <= 768) return 52;
+            if (width <= 900) return 54;
+            if (width <= 1024) return 56;
+            if (width <= 1200) return 58;
+            return 60;
+        }
+
         const NAV_BUTTON_TOP = 20; // Navigation menu button top position
         const GAP = 10; // Gap between nav button and TOC button
-        const STICKY_POSITION = NAV_BUTTON_TOP + NAV_BUTTON_HEIGHT + GAP; // 90px
+
+        // Get sticky position dynamically
+        function getStickyPosition() {
+            return NAV_BUTTON_TOP + getNavButtonHeight() + GAP;
+        }
 
         // Initial measurements
         let tocInitialOffset = 0;
@@ -2145,6 +2266,10 @@
                 const rect = collapsibleTocContainer.getBoundingClientRect();
                 tocInitialOffset = rect.top + window.pageYOffset;
                 tocInitialHeight = rect.height;
+            }
+
+            // Capture button width ONCE on first call (when button shows full text)
+            if (buttonInitialWidth === 0 && tocToggleBtn) {
                 buttonInitialWidth = tocToggleBtn.offsetWidth;
             }
         }
@@ -2160,7 +2285,7 @@
                 getInitialDimensions();
 
                 const scrollPosition = window.pageYOffset;
-                const distanceToSticky = tocInitialOffset - STICKY_POSITION;
+                const distanceToSticky = tocInitialOffset - getStickyPosition();
 
                 // Button scrolls naturally until it would reach sticky position
                 if (scrollPosition < distanceToSticky) {
@@ -2191,7 +2316,7 @@
                     // Fully sticky and transitioned
                     collapsibleTocContainer.classList.add('sticky');
                     collapsibleTocContainer.classList.remove('transitioning');
-                    collapsibleTocContainer.style.top = STICKY_POSITION + 'px';
+                    collapsibleTocContainer.style.top = getStickyPosition() + 'px';
 
                     // Show placeholder to prevent content jump
                     tocPlaceholder.classList.add('active');
@@ -2204,20 +2329,21 @@
 
                     // Update dropdown position when sticky
                     if (collapsibleTocContent.classList.contains('expanded')) {
-                        collapsibleTocContent.style.top = (STICKY_POSITION + 60 + 10) + 'px';
+                        collapsibleTocContent.style.top = (getStickyPosition() + getNavButtonHeight() + 10) + 'px';
                     }
                 } else {
                     // Transitioning - button is sticky but still animating size
                     collapsibleTocContainer.classList.add('sticky', 'transitioning');
-                    collapsibleTocContainer.style.top = STICKY_POSITION + 'px';
+                    collapsibleTocContainer.style.top = getStickyPosition() + 'px';
 
                     // Show placeholder
                     tocPlaceholder.classList.add('active');
                     tocPlaceholder.style.height = tocInitialHeight + 'px';
 
                     // Gradual size transition
-                    const currentWidth = lerp(buttonInitialWidth, 60, progress);
-                    const currentHeight = 60; // Button is always 60px height
+                    const navButtonHeight = getNavButtonHeight();
+                    const currentWidth = lerp(buttonInitialWidth, navButtonHeight, progress);
+                    const currentHeight = navButtonHeight;
                     const currentPadding = lerp(24, 0, progress); // 1.5rem = 24px horizontal padding
 
                     tocToggleBtn.style.width = currentWidth + 'px';
@@ -2233,7 +2359,7 @@
 
                     // Update dropdown position when transitioning
                     if (collapsibleTocContent.classList.contains('expanded')) {
-                        collapsibleTocContent.style.top = (STICKY_POSITION + currentHeight + 10) + 'px';
+                        collapsibleTocContent.style.top = (getStickyPosition() + currentHeight + 10) + 'px';
                     }
                 }
             } else {
@@ -2259,11 +2385,20 @@
 
                     // Set dropdown position based on current state
                     if (collapsibleTocContainer.classList.contains('sticky')) {
-                        collapsibleTocContent.style.top = (STICKY_POSITION + 60 + 10) + 'px';
+                        collapsibleTocContent.style.top = (getStickyPosition() + getNavButtonHeight() + 10) + 'px';
                     } else if (collapsibleTocContainer.classList.contains('transitioning')) {
                         const currentTop = parseFloat(collapsibleTocContainer.style.top) || 0;
-                        const currentHeight = parseFloat(tocToggleBtn.style.height) || 60;
+                        const currentHeight = parseFloat(tocToggleBtn.style.height) || getNavButtonHeight();
                         collapsibleTocContent.style.top = (currentTop + currentHeight + 10) + 'px';
+                    }
+
+                    // Match dropdown width to button's initial width (before sticky shrinking)
+                    getInitialDimensions(); // Ensure buttonInitialWidth is set
+                    if (buttonInitialWidth > 0) {
+                        collapsibleTocContent.style.width = buttonInitialWidth + 'px';
+                    } else {
+                        // Fallback: use current button width
+                        collapsibleTocContent.style.width = tocToggleBtn.offsetWidth + 'px';
                     }
                 } else {
                     // Close dropdown
@@ -2320,12 +2455,18 @@
         window.addEventListener('scroll', updateStickyBehavior);
         window.addEventListener('resize', () => {
             tocInitialOffset = 0; // Reset on resize
-            buttonInitialWidth = 0;
+            // DO NOT reset buttonInitialWidth - keep it consistent across all viewports
             updateStickyBehavior();
         });
 
-        // Initial check
-        updateStickyBehavior();
+        // Initial check and capture button dimensions on page load
+        setTimeout(() => {
+            updateStickyBehavior();
+            // Ensure initial button width is captured before any scrolling
+            if (buttonInitialWidth === 0 && tocToggleBtn) {
+                buttonInitialWidth = tocToggleBtn.offsetWidth;
+            }
+        }, 100);
 
         // Smooth scrolling for TOC links
         document.querySelectorAll('.toc-link').forEach(link => {

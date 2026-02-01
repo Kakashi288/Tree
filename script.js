@@ -1867,6 +1867,10 @@ function handleZoom(direction) {
         // Show decorative images when resetting zoom
         updateImageVisibility(1.0);
 
+        // Clear lineage highlighting and remove reopen modal button for full reset
+        clearLineageHighlighting();
+        removeReopenModalButton();
+
         setTimeout(() => {
             svg.style.transition = 'none';
         }, 400);
@@ -1950,11 +1954,20 @@ function updateImageVisibility(scale) {
 
 // Start drag/pan operation
 function startDrag(event) {
-    // Prevent if clicking on a button or other interactive element
-    if (event.target.tagName === 'BUTTON' || event.target.closest('.zoom-controls')) {
+    // Prevent if clicking on a button, interactive element, or person node
+    const target = event.target;
+    const personNode = target.closest('.person-node');
+
+    console.log('startDrag called - target:', target.tagName, 'personNode:', personNode ? 'YES' : 'NO');
+
+    if (event.target.tagName === 'BUTTON' ||
+        event.target.closest('.zoom-controls') ||
+        personNode) {
+        console.log('startDrag: Prevented (button, zoom controls, or person node)');
         return;
     }
 
+    console.log('startDrag: Initiating drag');
     zoomPanState.isDragging = true;
 
     // Get start position
@@ -2031,6 +2044,8 @@ function endDrag() {
 
 // Handle touch start for pinch-zoom
 function handleTouchStart(event) {
+    console.log('SVG touchstart - target:', event.target.tagName);
+
     if (event.touches.length === 2) {
         // Two fingers - prepare for pinch-zoom
         const touch1 = event.touches[0];
@@ -2050,12 +2065,23 @@ function handleTouchStart(event) {
         event.preventDefault();
     } else if (event.touches.length === 1) {
         // Single finger - start drag
+        console.log('SVG touchstart: Starting drag (should not happen on person node)');
         startDrag(event);
+        event.preventDefault();
     }
 }
 
 // Handle touch move for pinch-zoom and drag
 function handleTouchMove(event) {
+    // Check if touching a person node - if so, don't pan (let node handle it)
+    const target = event.target;
+    const personNode = target.closest('.person-node');
+
+    if (personNode) {
+        // Touching a person node - don't interfere
+        return;
+    }
+
     if (event.touches.length === 2) {
         // Two fingers - pinch-zoom
         const touch1 = event.touches[0];
@@ -2103,7 +2129,7 @@ function handleTouchMove(event) {
 
         event.preventDefault();
     } else if (event.touches.length === 1) {
-        // Single finger - drag
+        // Single finger - drag (only if not on a person node)
         doDrag(event);
     }
 }
@@ -2351,9 +2377,6 @@ function zoomToNode(name, generation, uniqueId, showModal = false) {
     // Highlight the node (outline only)
     nodeGroup.classList.add('highlighted');
 
-    // Add ripple effect circles with bounce animation
-    createRippleEffect(nodeX, nodeY, nodeGroup);
-
     // Calculate zoom to 7x for very close view
     const targetScale = 7.0;
     const base = zoomPanState.baseViewBox;
@@ -2366,46 +2389,74 @@ function zoomToNode(name, generation, uniqueId, showModal = false) {
     const newX = nodeX - newWidth / 2;
     const newY = nodeY - newHeight / 2;
 
-    // Apply smooth cinematic zoom/pan using GSAP for proper viewBox animation
-    gsap.to(svg, {
-        duration: 1.2,
-        ease: "power2.inOut",
-        attr: { viewBox: `${newX} ${newY} ${newWidth} ${newHeight}` },
-        onUpdate: function() {
-            // Update state during animation
-            const currentViewBox = svg.getAttribute('viewBox').split(' ').map(parseFloat);
-            zoomPanState.currentX = currentViewBox[0];
-            zoomPanState.currentY = currentViewBox[1];
-        },
-        onComplete: function() {
-            // Ensure final state is set
-            zoomPanState.currentScale = targetScale;
-            zoomPanState.currentX = newX;
-            zoomPanState.currentY = newY;
-        }
-    });
+    // Check if we're already at or near the target zoom and centered on this node
+    const currentViewBox = svg.getAttribute('viewBox').split(' ').map(parseFloat);
+    const currentWidth = currentViewBox[2];
+    const currentScale = base.width / currentWidth;
+    const isAlreadyZoomed = Math.abs(currentScale - targetScale) < 0.5; // Within 0.5x of target
+    const currentCenterX = currentViewBox[0] + currentWidth / 2;
+    const currentCenterY = currentViewBox[1] + currentViewBox[3] / 2;
+    const isCentered = Math.abs(currentCenterX - nodeX) < 100 && Math.abs(currentCenterY - nodeY) < 100;
 
-    // Hide decorative images when zooming to a node
-    updateImageVisibility(targetScale);
+    if (isAlreadyZoomed && isCentered && showModal) {
+        // Already zoomed in on or near this node - skip zoom animation, show modal immediately with ripples
+        console.log('Already zoomed in on this node, showing modal immediately with ripples');
 
-    updateZoomButtons();
+        // Add ripple effect circles with bounce animation
+        createRippleEffect(nodeX, nodeY, nodeGroup);
 
-    // Close search panel after animation
-    setTimeout(() => {
-        document.getElementById('search-panel').classList.remove('active');
-    }, 1400);
-
-    // Show modal after zoom animation completes
-    if (showModal) {
-        console.log('showModal is true, will show modal in 1300ms');
-        setTimeout(() => {
-            console.log('Now showing modal for:', name, generation);
-            const parentsStr = nodeGroup.getAttribute('data-person-parents');
-            const parents = parentsStr ? JSON.parse(parentsStr) : [];
-            showPersonInfo(name, generation, parents);
-        }, 1300); // Show modal after smooth cinematic zoom completes
+        // Show modal immediately
+        const parentsStr = nodeGroup.getAttribute('data-person-parents');
+        const parents = parentsStr ? JSON.parse(parentsStr) : [];
+        showPersonInfo(name, generation, parents);
     } else {
-        console.log('showModal is false, not showing modal');
+        // Need to zoom - apply smooth cinematic zoom/pan using GSAP
+
+        // Apply smooth cinematic zoom/pan using GSAP for proper viewBox animation
+        gsap.to(svg, {
+            duration: 1.2,
+            ease: "power2.inOut",
+            attr: { viewBox: `${newX} ${newY} ${newWidth} ${newHeight}` },
+            onStart: function() {
+                // Add ripple effect at start of zoom animation
+                createRippleEffect(nodeX, nodeY, nodeGroup);
+            },
+            onUpdate: function() {
+                // Update state during animation
+                const currentViewBox = svg.getAttribute('viewBox').split(' ').map(parseFloat);
+                zoomPanState.currentX = currentViewBox[0];
+                zoomPanState.currentY = currentViewBox[1];
+            },
+            onComplete: function() {
+                // Ensure final state is set
+                zoomPanState.currentScale = targetScale;
+                zoomPanState.currentX = newX;
+                zoomPanState.currentY = newY;
+            }
+        });
+
+        // Hide decorative images when zooming to a node
+        updateImageVisibility(targetScale);
+
+        updateZoomButtons();
+
+        // Close search panel after animation
+        setTimeout(() => {
+            document.getElementById('search-panel').classList.remove('active');
+        }, 1400);
+
+        // Show modal after zoom animation completes
+        if (showModal) {
+            console.log('showModal is true, will show modal in 1300ms');
+            setTimeout(() => {
+                console.log('Now showing modal for:', name, generation);
+                const parentsStr = nodeGroup.getAttribute('data-person-parents');
+                const parents = parentsStr ? JSON.parse(parentsStr) : [];
+                showPersonInfo(name, generation, parents);
+            }, 1300); // Show modal after smooth cinematic zoom completes
+        } else {
+            console.log('showModal is false, not showing modal');
+        }
     }
 }
 
@@ -2642,6 +2693,7 @@ function drawTree() {
 
     // Tree scaling based on viewport size and orientation
     const isLandscape = viewportWidth > viewportHeight;
+    const isPortrait = !isLandscape;
 
     if (isLandscape && viewportHeight <= 500) {
         // Landscape mode on mobile devices (height <= 500px)
@@ -2669,11 +2721,25 @@ function drawTree() {
         viewBoxWidth *= 1.667;
         viewBoxHeight *= 1.667;
     } else if (viewportWidth < 1400) {
-        // 1000px to 1399px: scale tree down by 10% to 90% size (viewBox ~1.111x larger)
-        viewBoxWidth *= 1.111;
-        viewBoxHeight *= 1.111;
+        // 1000px to 1399px: orientation-based scaling
+        if (isPortrait) {
+            // Portrait tablets (e.g., iPad 1024x1366): scale tree to 55% size for better fit
+            viewBoxWidth *= 1.8;
+            viewBoxHeight *= 1.8;
+        } else {
+            // Landscape tablets/laptops: scale tree to 83% size for clearance from zoom controls
+            viewBoxWidth *= 1.2;
+            viewBoxHeight *= 1.2;
+        }
+    } else if (viewportWidth >= 1400) {
+        // 1400px and above: orientation-based scaling
+        if (isPortrait && viewportWidth < 1600) {
+            // Large portrait tablets (1400-1599px): still need some scaling
+            viewBoxWidth *= 1.111;
+            viewBoxHeight *= 1.111;
+        }
+        // Landscape desktops 1400px+: tree at 100% normal size (no scaling)
     }
-    // 1400px and above: tree at 100% normal size
 
     svg.setAttribute('viewBox', `0 0 ${viewBoxWidth} ${viewBoxHeight}`);
     svg.setAttribute('preserveAspectRatio', 'xMidYMid meet');
@@ -34118,15 +34184,26 @@ function showPersonInfo(name, generation, parents) {
     const viewportHeight = window.innerHeight;
 
     // Determine device type based on viewport width
-    const isSmallMobile = viewportWidth < 500;
+    const isSmallMobile = viewportWidth < 470;
     const isBelowTablet = viewportWidth < 750;
     const isTabletPortrait = viewportWidth >= 750 && viewportWidth < 1000;
     const isLargerDevice = viewportWidth >= 1000;
+    const isLandscape = viewportWidth > viewportHeight; // Landscape orientation
 
     let modalLeft, modalTop;
 
-    if (isBelowTablet) {
-        // Below 750px: Modal centered between nav and search buttons, top-aligned
+    if (isBelowTablet && isLandscape) {
+        // Mobile landscape: Center modal horizontally, align top with nav button
+        const navMenuToggle = document.querySelector('.nav-menu-toggle');
+        const navRect = navMenuToggle.getBoundingClientRect();
+
+        modal.style.width = '';
+        modal.style.maxWidth = '';
+
+        modalLeft = (viewportWidth / 2) - (modalWidth / 2);
+        modalTop = navRect.top; // Align with nav button top edge
+    } else if (isBelowTablet) {
+        // Below 750px portrait: Modal centered between nav and search buttons, top-aligned
         const navMenuToggle = document.querySelector('.nav-menu-toggle');
         const searchContainer = document.querySelector('.search-container');
 
@@ -34134,7 +34211,7 @@ function showPersonInfo(name, generation, parents) {
         const searchRect = searchContainer ? searchContainer.getBoundingClientRect() : { left: viewportWidth - 80, right: viewportWidth - 20, top: 20 };
 
         if (isSmallMobile) {
-            // Below 500px: Modal width spans from left edge of nav to right edge of search
+            // Below 470px: Modal width spans from left edge of nav to right edge of search
             const navLeft = navRect.left;
             const searchRight = searchRect.right;
             const fullWidth = searchRight - navLeft;
@@ -34146,7 +34223,7 @@ function showPersonInfo(name, generation, parents) {
             // Position at left edge of nav button
             modalLeft = navLeft;
         } else {
-            // 500-749px: Center horizontally between nav and search buttons
+            // 470-749px: Center horizontally between nav and search buttons
             // Reset width to default (CSS handles sizing)
             modal.style.width = '';
             modal.style.maxWidth = '';
@@ -34263,10 +34340,15 @@ function addPersonNodeClickListeners() {
     nodes.forEach(node => {
         node.style.cursor = 'pointer';
 
-        // Handler function for both click and touch
-        const handleNodeInteraction = (e) => {
+        // Track touch state to distinguish tap from drag
+        let touchStartTime = 0;
+        let touchStartPos = null;
+        let touchMoved = false;
+
+        // Handler function for click
+        const handleNodeClick = (e) => {
             e.stopPropagation();
-            e.preventDefault(); // Prevent default touch behavior
+            e.preventDefault();
 
             const name = node.getAttribute('data-person-name');
             const generation = parseInt(node.getAttribute('data-person-generation'));
@@ -34276,15 +34358,71 @@ function addPersonNodeClickListeners() {
             console.log('Node clicked:', name, 'Generation:', generation, 'Parents:', parents);
 
             // Use zoomToNode to center the node and then show modal
-            // This ensures consistent UX whether clicking from search or directly on tree
             zoomToNode(name, generation, parentsStr, true);
         };
 
-        // Add click event listener for mouse/desktop
-        node.addEventListener('click', handleNodeInteraction);
+        // Handler for touch start
+        const handleTouchStart = (e) => {
+            e.stopPropagation();
+            e.stopImmediatePropagation(); // Prevent ANY other handlers from firing
 
-        // Add touch event listener for mobile/tablet
-        node.addEventListener('touchend', handleNodeInteraction);
+            touchStartTime = Date.now();
+            touchStartPos = {
+                x: e.touches[0].clientX,
+                y: e.touches[0].clientY
+            };
+            touchMoved = false;
+            console.log('Touch start on node:', node.getAttribute('data-person-name'));
+        };
+
+        // Handler for touch move
+        const handleTouchMove = (e) => {
+            if (touchStartPos) {
+                const deltaX = Math.abs(e.touches[0].clientX - touchStartPos.x);
+                const deltaY = Math.abs(e.touches[0].clientY - touchStartPos.y);
+                // If moved more than 10px, consider it a drag
+                if (deltaX > 10 || deltaY > 10) {
+                    touchMoved = true;
+                    e.stopPropagation();
+                    e.stopImmediatePropagation();
+                }
+            }
+        };
+
+        // Handler for touch end
+        const handleTouchEnd = (e) => {
+            e.stopPropagation();
+            e.stopImmediatePropagation(); // Prevent ANY other handlers from firing
+            e.preventDefault();
+
+            const touchDuration = Date.now() - touchStartTime;
+
+            console.log('Touch end on node:', node.getAttribute('data-person-name'),
+                       'Duration:', touchDuration, 'Moved:', touchMoved);
+
+            // Only trigger if it was a quick tap (not a drag)
+            if (!touchMoved && touchDuration < 500) {
+                const name = node.getAttribute('data-person-name');
+                const generation = parseInt(node.getAttribute('data-person-generation'));
+                const parentsStr = node.getAttribute('data-person-parents');
+
+                console.log('Valid tap detected, calling zoomToNode');
+                zoomToNode(name, generation, parentsStr, true);
+            }
+
+            // Reset
+            touchStartTime = 0;
+            touchStartPos = null;
+            touchMoved = false;
+        };
+
+        // Add click event listener for mouse/desktop
+        node.addEventListener('click', handleNodeClick);
+
+        // Add touch event listeners for mobile/tablet with capture phase
+        node.addEventListener('touchstart', handleTouchStart, { capture: true, passive: false });
+        node.addEventListener('touchmove', handleTouchMove, { capture: true, passive: false });
+        node.addEventListener('touchend', handleTouchEnd, { capture: true, passive: false });
     });
 
     console.log('Click and touch listeners attached successfully');
@@ -34413,6 +34551,9 @@ window.addEventListener('resize', () => {
             drawTree();
             initializeZoomPan(); // Recalculate baseViewBox
 
+            // Re-attach click/touch listeners to nodes after redraw
+            addPersonNodeClickListeners();
+
             // Reset zoom state
             zoomPanState.currentScale = 1.0;
             zoomPanState.currentX = zoomPanState.baseViewBox.x;
@@ -34457,6 +34598,7 @@ window.addEventListener('orientationchange', () => {
 
         // Apply scaling based on orientation
         const isLandscape = viewportWidth > viewportHeight;
+        const isPortrait = !isLandscape;
 
         if (isLandscape && viewportHeight <= 500) {
             // Landscape mode - bigger tree
@@ -34478,8 +34620,24 @@ window.addEventListener('orientationchange', () => {
             viewBoxWidth *= 1.667;
             viewBoxHeight *= 1.667;
         } else if (viewportWidth < 1400) {
-            viewBoxWidth *= 1.111;
-            viewBoxHeight *= 1.111;
+            // 1000px to 1399px: orientation-based scaling
+            if (isPortrait) {
+                // Portrait tablets (e.g., iPad 1024x1366): scale tree to 55% size
+                viewBoxWidth *= 1.8;
+                viewBoxHeight *= 1.8;
+            } else {
+                // Landscape tablets/laptops: scale tree to 83% size for clearance
+                viewBoxWidth *= 1.2;
+                viewBoxHeight *= 1.2;
+            }
+        } else if (viewportWidth >= 1400) {
+            // 1400px and above: orientation-based scaling
+            if (isPortrait && viewportWidth < 1600) {
+                // Large portrait tablets (1400-1599px): still need some scaling
+                viewBoxWidth *= 1.111;
+                viewBoxHeight *= 1.111;
+            }
+            // Landscape desktops 1400px+: tree at 100% normal size (no scaling)
         }
 
         // Keep tree centered on the same point
