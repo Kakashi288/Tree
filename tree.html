@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Family Tree Visualization</title>
     <link rel="stylesheet" href="styles.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
@@ -109,6 +109,68 @@
 
         // Initialize orientation tracking
         window.lastOrientation = window.innerWidth > window.innerHeight;
+    </script>
+
+    <!-- iOS Keyboard Fix Script -->
+    <script>
+        // Fix iOS keyboard causing nav button shift
+        // When the keyboard appears, iOS Safari can cause position: fixed elements to shift
+
+        // Store original viewport width
+        let originalViewportWidth = window.innerWidth;
+
+        // Function to prevent layout shift when keyboard appears
+        function preventKeyboardShift() {
+            // Lock the viewport width
+            document.documentElement.style.setProperty('--viewport-width', `${originalViewportWidth}px`);
+
+            // Prevent horizontal scroll
+            document.body.style.overflowX = 'hidden';
+            document.documentElement.style.overflowX = 'hidden';
+
+            // Ensure body width stays fixed
+            document.body.style.width = `${originalViewportWidth}px`;
+            document.body.style.maxWidth = `${originalViewportWidth}px`;
+        }
+
+        // Function to restore normal behavior
+        function restoreLayout() {
+            document.body.style.overflowX = '';
+            document.documentElement.style.overflowX = '';
+            document.body.style.width = '';
+            document.body.style.maxWidth = '';
+        }
+
+        // Wait for search input to be created by script.js
+        setTimeout(function() {
+            const searchInput = document.getElementById('search-input');
+
+            if (searchInput) {
+                // When search input gets focus (keyboard appears)
+                searchInput.addEventListener('focus', function() {
+                    // Only apply fix on iOS devices
+                    const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+                    if (isIOS) {
+                        preventKeyboardShift();
+                    }
+                });
+
+                // When search input loses focus (keyboard disappears)
+                searchInput.addEventListener('blur', function() {
+                    const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+                    if (isIOS) {
+                        setTimeout(restoreLayout, 100); // Small delay to let keyboard close
+                    }
+                });
+            }
+        }, 500); // Wait for script.js to create the search input
+
+        // Update viewport width on orientation change
+        window.addEventListener('orientationchange', function() {
+            setTimeout(function() {
+                originalViewportWidth = window.innerWidth;
+            }, 300);
+        });
     </script>
 
     <!-- Page Load Animation Script -->
