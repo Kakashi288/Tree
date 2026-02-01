@@ -34190,30 +34190,30 @@ function showPersonInfo(name, generation, parents) {
     const isLargerDevice = viewportWidth >= 1000;
     const isLandscape = viewportWidth > viewportHeight; // Landscape orientation
 
+    // Get fixed button positions from CSS (not affected by scroll/zoom)
+    const isLandscapeMobile = viewportWidth <= 900 && viewportHeight <= 500 && isLandscape;
+    const navButtonLeft = isLandscapeMobile ? 10 : 20;
+    const navButtonTop = isLandscapeMobile ? 10 : 20;
+    const buttonSize = isLandscapeMobile ? 40 : (viewportWidth <= 480 ? 45 : (viewportWidth <= 768 ? 52 : (viewportWidth <= 900 ? 54 : (viewportWidth <= 1024 ? 56 : (viewportWidth <= 1200 ? 58 : 60)))));
+    const searchButtonRight = isLandscapeMobile ? 10 : 20; // Fixed right position from CSS (10px in landscape, 20px otherwise)
+    const searchButtonTop = isLandscapeMobile ? 10 : 20; // Search button at same top position as nav button
+
     let modalLeft, modalTop;
 
     if (isBelowTablet && isLandscape) {
         // Mobile landscape: Center modal horizontally, align top with nav button
-        const navMenuToggle = document.querySelector('.nav-menu-toggle');
-        const navRect = navMenuToggle.getBoundingClientRect();
-
         modal.style.width = '';
         modal.style.maxWidth = '';
 
         modalLeft = (viewportWidth / 2) - (modalWidth / 2);
-        modalTop = navRect.top; // Align with nav button top edge
+        modalTop = navButtonTop; // Use fixed CSS value instead of getBoundingClientRect
     } else if (isBelowTablet) {
         // Below 750px portrait: Modal centered between nav and search buttons, top-aligned
-        const navMenuToggle = document.querySelector('.nav-menu-toggle');
-        const searchContainer = document.querySelector('.search-container');
-
-        const navRect = navMenuToggle ? navMenuToggle.getBoundingClientRect() : { left: 20, right: 80, top: 20 };
-        const searchRect = searchContainer ? searchContainer.getBoundingClientRect() : { left: viewportWidth - 80, right: viewportWidth - 20, top: 20 };
 
         if (isSmallMobile) {
             // Below 470px: Modal width spans from left edge of nav to right edge of search
-            const navLeft = navRect.left;
-            const searchRight = searchRect.right;
+            const navLeft = navButtonLeft;
+            const searchRight = viewportWidth - searchButtonRight;
             const fullWidth = searchRight - navLeft;
 
             // Set modal width to span the full distance
@@ -34228,28 +34228,29 @@ function showPersonInfo(name, generation, parents) {
             modal.style.width = '';
             modal.style.maxWidth = '';
 
-            modalLeft = (navRect.right + searchRect.left) / 2 - (modalWidth / 2);
+            const navRight = navButtonLeft + buttonSize;
+            const searchLeft = viewportWidth - searchButtonRight - buttonSize;
+            modalLeft = (navRight + searchLeft) / 2 - (modalWidth / 2);
         }
 
         // Top-align with the buttons
-        modalTop = navRect.top;
+        modalTop = navButtonTop; // Use fixed CSS value
     } else if (isTabletPortrait) {
         // Tablet portrait (750-999px): Top center, equidistant from nav menu button and search button
-        const navMenuToggle = document.querySelector('.nav-menu-toggle');
-        const searchContainer = document.querySelector('.search-container');
-
-        const navRect = navMenuToggle ? navMenuToggle.getBoundingClientRect() : { right: 80, top: 20 };
-        const searchRect = searchContainer ? searchContainer.getBoundingClientRect() : { left: viewportWidth - 80, top: 20 };
 
         // Reset width to default (CSS handles sizing)
         modal.style.width = '';
         modal.style.maxWidth = '';
 
-        // Center horizontally between nav button and search button
-        modalLeft = (navRect.right + searchRect.left) / 2 - (modalWidth / 2);
+        // Use fixed CSS positions
+        const navRight = navButtonLeft + buttonSize;
+        const searchLeft = viewportWidth - searchButtonRight - buttonSize;
 
-        // Top-align with the buttons (use the top of nav button)
-        modalTop = navRect.top;
+        // Center horizontally between nav button and search button
+        modalLeft = (navRight + searchLeft) / 2 - (modalWidth / 2);
+
+        // Top-align with the buttons (use the fixed top value)
+        modalTop = navButtonTop;
     } else {
         // Desktop/Laptop (1000px+): Position between search and zoom controls on right side
         const searchContainer = document.querySelector('.search-container');
